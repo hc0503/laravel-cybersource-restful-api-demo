@@ -24,16 +24,4 @@ Auth::routes(['verify' => true]);
 
 Route::middleware(['auth', 'verified'])->group( function () {
     Route::get('/home', [HomeController::class, 'index'])->name('home');
-
-    Route::post('save-token', [HomeController::class, 'postSaveToken'])->name('save-token');
-    Route::post('send-notification', [HomeController::class, 'postSendNotification'])->name('send.notification');
-
-    Route::get('payments', [PaymentController::class, 'getPayments']);
-    Route::post('charge', [PaymentController::class, 'postCharge'])->name('charge');
-    Route::get('test', [PaymentController::class, 'getTest'])->name('test');
-});
-
-Route::group(['prefix' => 'social'], function () {
-    Route::get('redirect/{provider}', [ProfileController::class, 'getSocialRedirect']);
-    Route::get('callback/{provider}', [ProfileController::class, 'getSocialCallback']);
 });
