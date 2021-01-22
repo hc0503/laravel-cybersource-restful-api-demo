@@ -29,4 +29,14 @@ return [
         'secret' => env('AWS_SECRET_ACCESS_KEY'),
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
+
+    'cybersource' => [
+        'merchant_id' => env('MERCHANT_ID'),
+        'apikey_id' => env('APIKEY_ID'),
+        'secret_key' => env('SECRET_KEY'),
+        'key_alias' => env('KEY_ALIAS'),
+        'key_pass' => env('KEY_PASS'),
+        'key_file_name' => env('KEY_FILE_NAME'),
+        'run_env' => env('RUN_ENV')
+    ]
 ];
