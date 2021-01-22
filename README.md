@@ -48,19 +48,19 @@ Method: POST
 Params:
 ```json
 {
-	"number": 4111111111111111
-	"expiration_month": 12
-	"expiration_year": 2031
-	"total_amount": "150"
-	"currency": "USD"
-	"first_name": "Devdream"
-	"last_name": "Solution"
-	"address1": "1 Market St"
-	"locality": "San Francisco"
-	"administrative_area": "CA"
-	"postal_code": 94105
-	"country": "US"
-	"email": "q3construction1@gmail.com"
+	"number": 4111111111111111,
+	"expiration_month": 12,
+	"expiration_year": 2031,
+	"total_amount": "150",
+	"currency": "USD",
+	"first_name": "Devdream",
+	"last_name": "Solution",
+	"address1": "1 Market St",
+	"locality": "San Francisco",
+	"administrative_area": "CA",
+	"postal_code": 94105,
+	"country": "US",
+	"email": "q3construction1@gmail.com",
 	"phone_number": "4158880000"
 }
 ```
