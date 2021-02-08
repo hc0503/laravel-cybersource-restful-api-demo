@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "bf565371d68468c7437ccd262fdb9e1c",
+    "content-hash": "cc32fb04b3f6bff3f767d4cfce74a455",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -2206,6 +2206,67 @@
                 }
             ],
             "time": "2021-01-27T23:03:34+00:00"
+        },
+        {
+            "name": "sudiptpa/guid",
+            "version": "v1.0.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/sudiptpa/guid.git",
+                "reference": "270fb4d270bedbfffe2270c43320cad8cbaf510f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/sudiptpa/guid/zipball/270fb4d270bedbfffe2270c43320cad8cbaf510f",
+                "reference": "270fb4d270bedbfffe2270c43320cad8cbaf510f",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "~1.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                },
+                "laravel": {
+                    "aliases": {
+                        "Guid": "Sujip\\Guid\\Facades\\Guid"
+                    },
+                    "providers": [
+                        "Sujip\\Guid\\GuidServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "files": [
+                    "src/helpers.php"
+                ],
+                "psr-4": {
+                    "Sujip\\Guid\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Sujip Thapa",
+                    "email": "sudiptpa@gmail.com",
+                    "homepage": "https://sujipthapa.co",
+                    "role": "Web Developer"
+                }
+            ],
+            "description": "A Simple GUID generator Package for PHP.",
+            "homepage": "https://github.com/sudiptpa/guid",
+            "keywords": [
+                "guid"
+            ],
+            "time": "2020-08-08T10:41:26+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
