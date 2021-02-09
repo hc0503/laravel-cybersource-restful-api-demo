@@ -2,7 +2,7 @@
 
 <html lang="en" class="default-style">
 <head>
-  <title>Coming soon - Magazine Heaven Direct</title>
+  <title>Coming soon - {{ config('app.name') }}</title>
 
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="IE=edge,chrome=1">
@@ -60,7 +60,7 @@
             </div>
           </div>
           <div class="text-large ml-3">
-            Magazine Heaven Direct
+            {{ config('app.name') }}
           </div>
         </div>
 
