@@ -1,0 +1,17 @@
+body {
+  font-family: "Raleway", -apple-system, BlinkMacSystemFont, "Segoe UI", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  line-height: 1.65;
+}
+
+.font-secondary {
+  font-family: "Raleway", -apple-system, BlinkMacSystemFont, "Segoe UI", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+}
+
+.coming-soon-subscribe {
+  width: 100%;
+}
+@media (min-width: 768px) {
+  .coming-soon-subscribe {
+    max-width: 540px;
+  }
+}
