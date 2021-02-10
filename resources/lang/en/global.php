@@ -2,6 +2,8 @@
 
 return [
 	'logOut' => 'Log Out',
+	'createdAt' => 'Created At',
+	'action' => 'Action',
 	'login' => [
 		'title' => 'Login',
 		'formDescription' => 'Login to Your Account',
@@ -25,6 +27,27 @@ return [
 		'termsAndPolicy' => 'terms of service and privacy policy',
 		'willSendEmail' => 'We’ll occasionally send you account related emails.',
 		'haveAccount' => 'Already have an account?'
+	],
+	'users' => [
+		'title' => 'Users',
+		'list' => 'User List',
+		'create' => 'Create User',
+		'edit' => 'Edit User',
+		'name' => 'Contact Name',
+		'email' => 'Email',
+		'company' => 'Company',
+		'website' => 'Website',
+		'address' => 'Address',
+		'city' => 'Town / City',
+		'zip' => 'ZIP / Postal Code',
+		'country' => 'Country',
+		'saveAndAnother' => 'Save & Another',
+		'saveAndExit' => 'Save & Exit',
+		'message' => [
+			'saveSuccess' => 'The user is stored successfully.',
+			'updateSuccess' => 'The user is updated successfully.',
+			'deleteSuccess' => 'The user is deleted successfully.'
+		]
 	],
 	'home' => [
 		'title' => 'Home',

@@ -12,14 +12,11 @@
 	</div>
 	<!-- Links -->
 	<ul class="sidenav-inner py-1">
-		<li class="sidenav-item">
-			<a href="typography.html" class="sidenav-link"><i class="sidenav-icon ion ion-md-quote"></i>
-			<div>Typography</div>
+		<li class="sidenav-item {{ request()->is('portal/users') ? 'active' : '' }}">
+			<a href="{{ route('portal.users.index') }}" class="sidenav-link"><i class="sidenav-icon lnr lnr-users"></i>
+			<div>{{ __('global.users.title') }}</div>
 			</a>
 		</li>
-
-		<li class="sidenav-divider mb-1"></li>
-		<li class="sidenav-header small font-weight-semibold">EXTRAS</li>
 
 		<!-- Pages -->
 		<li class="sidenav-item">
