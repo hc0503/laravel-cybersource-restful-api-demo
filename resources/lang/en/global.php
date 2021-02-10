@@ -70,5 +70,8 @@ return [
 	],
 	'siteMap' => [
 		'title' => 'SiteMap'
+	],
+	'comingSoon' => [
+		'title' => 'Coming Soon'
 	]
 ];

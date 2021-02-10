@@ -14,7 +14,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('coming-soon');
+    $pageTitle = __('global.comingSoon.title');
+
+    return view('coming-soon', compact('pageTitle'));
 });
 
 Auth::routes();

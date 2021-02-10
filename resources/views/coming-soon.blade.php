@@ -2,7 +2,7 @@
 
 <html lang="en" class="default-style">
 <head>
-  <title>Coming soon - {{ config('app.name') }}</title>
+  <title>{{ $pageTitle }} - {{ config('app.name') }}</title>
 
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="IE=edge,chrome=1">
@@ -14,26 +14,26 @@
   <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
   <!-- Icon fonts -->
-  <link rel="stylesheet" href="assets/vendor/fonts/ionicons.css">
-  <link rel="stylesheet" href="assets/vendor/fonts/linearicons.css">
+  <link rel="stylesheet" href="{{ asset('assets/vendor/fonts/ionicons.css') }}">
+  <link rel="stylesheet" href="assets/vendor/fonts/linearicons.css') }}">
 
   <!-- Core stylesheets -->
-  <link rel="stylesheet" href="assets/vendor/css/rtl/bootstrap.css" class="theme-settings-bootstrap-css">
-  <link rel="stylesheet" href="assets/vendor/css/rtl/appwork.css" class="theme-settings-appwork-css">
-  <link rel="stylesheet" href="assets/vendor/css/rtl/theme-corporate.css" class="theme-settings-theme-css">
-  <link rel="stylesheet" href="assets/vendor/css/rtl/colors.css" class="theme-settings-colors-css">
-  <link rel="stylesheet" href="assets/vendor/css/rtl/uikit.css">
+  <link rel="stylesheet" href="{{ asset('assets/vendor/css/rtl/bootstrap.css') }}" class="theme-settings-bootstrap-css">
+  <link rel="stylesheet" href="{{ asset('assets/vendor/css/rtl/appwork.css') }}" class="theme-settings-appwork-css">
+  <link rel="stylesheet" href="{{ asset('assets/vendor/css/rtl/theme-corporate.css') }}" class="theme-settings-theme-css">
+  <link rel="stylesheet" href="{{ asset('assets/vendor/css/rtl/colors.css') }}" class="theme-settings-colors-css">
+  <link rel="stylesheet" href="{{ asset('assets/vendor/css/rtl/uikit.css') }}">
 
-  <script src="assets/vendor/js/material-ripple.js"></script>
-  <script src="assets/vendor/js/layout-helpers.js"></script>
+  <script src="{{ asset('assets/vendor/js/material-ripple.js') }}"></script>
+  <script src="{{ asset('assets/vendor/js/layout-helpers.js') }}"></script>
 
   <!-- Theme settings -->
   <!-- This file MUST be included after core stylesheets and layout-helpers.js in the <head> section -->
   <script src="assets/vendor/js/theme-settings.js"></script>
   <script>
     window.themeSettings = new ThemeSettings({
-      cssPath: 'assets/vendor/css/rtl/',
-      themesPath: 'assets/vendor/css/rtl/'
+      cssPath: "{{ asset('assets/vendor/css/rtl') }}/",
+      themesPath: "{{ asset('assets/vendor/css/rtl') }}/"
     });
   </script>
 
@@ -41,13 +41,13 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
   <!-- Page -->
-  <link rel="stylesheet" href="assets/css/coming-soon.css">
+  <link rel="stylesheet" href="{{ asset('assets/css/coming-soon.css') }}">
 </head>
 
 <body>
 
   <!-- Wrapper -->
-  <div class="d-flex align-items-stretch w-100 ui-mh-100vh ui-bg-cover ui-bg-overlay-container" style="background-image: url(assets/img/bg/4.jpg);">
+  <div class="d-flex align-items-stretch w-100 ui-mh-100vh ui-bg-cover ui-bg-overlay-container" style="background-image: url(assets/img/bg/coming-soon.jpg);">
     <div class="row no-gutters w-100">
       <div class="ui-bg-overlay bg-dark opacity-50"></div>
 
@@ -112,7 +112,7 @@
   </div>
 
   <!-- Core scripts -->
-  <script src="assets/vendor/libs/popper/popper.js"></script>
-  <script src="assets/vendor/js/bootstrap.js"></script>
+  <script src="{{ asset('assets/vendor/libs/popper/popper.js') }}"></script>
+  <script src="{{ asset('assets/vendor/js/bootstrap.js') }}"></script>
 </body>
 </html>
