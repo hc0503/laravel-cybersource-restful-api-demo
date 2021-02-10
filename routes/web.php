@@ -19,10 +19,9 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
-
 Route::middleware(['auth', 'verified'])->group( function () {
-    Route::group(['middleware' => 'role:Admin', 'prefix' => 'admin', 'as'=>'admin.'], function () {
-
+    // Route::group(['middleware' => 'role:Admin', 'prefix' => 'portal', 'as'=>'portal.'], function () {
+    Route::group(['prefix' => 'portal', 'as'=>'portal.'], function () {
+        Route::get('/home', 'HomeController@index')->name('home');
     });
 });

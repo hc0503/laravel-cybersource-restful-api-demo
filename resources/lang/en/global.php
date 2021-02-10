@@ -1,6 +1,7 @@
 <?php
 
 return [
+	'logOut' => 'Log Out',
 	'login' => [
 		'title' => 'Login',
 		'formDescription' => 'Login to Your Account',
@@ -24,5 +25,27 @@ return [
 		'termsAndPolicy' => 'terms of service and privacy policy',
 		'willSendEmail' => 'We’ll occasionally send you account related emails.',
 		'haveAccount' => 'Already have an account?'
+	],
+	'home' => [
+		'title' => 'Home',
+	],
+	'aboutUs' => [
+		'title' => 'About Us',
+		'footTitle' => 'About Us & Our Services'
+	],
+	'magazineGallery' => [
+		'title' => 'Magazine Gallery'
+	],
+	'contactUs' => [
+		'title' => 'Contact Us'
+	],
+	'termsAndConditions' => [
+		'title' => 'Terms & Conditions'
+	],
+	'privacyPolicy' => [
+		'title' => 'Privacy Policy'
+	],
+	'siteMap' => [
+		'title' => 'SiteMap'
 	]
 ];
