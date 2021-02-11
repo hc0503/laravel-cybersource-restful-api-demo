@@ -29,13 +29,13 @@
 
   <!-- Theme settings -->
   <!-- This file MUST be included after core stylesheets and layout-helpers.js in the <head> section -->
-  <script src="assets/vendor/js/theme-settings.js"></script>
+  {{-- <script src="assets/vendor/js/theme-settings.js"></script>
   <script>
     window.themeSettings = new ThemeSettings({
       cssPath: "{{ asset('assets/vendor/css/rtl') }}/",
       themesPath: "{{ asset('assets/vendor/css/rtl') }}/"
     });
-  </script>
+  </script> --}}
 
   <!-- Core scripts -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>

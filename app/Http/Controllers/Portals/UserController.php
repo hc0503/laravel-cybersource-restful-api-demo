@@ -8,6 +8,7 @@ use App\Models\User;
 use DataTables;
 use Carbon\Carbon;
 use Spatie\Permission\Models\Role;
+use PragmaRX\Countries\Package\Countries;
 
 class UserController extends Controller
 {
@@ -37,8 +38,8 @@ class UserController extends Controller
                     else
                         $disabled = '';
 
-                    $btn = '<a href="'. route('portal.users.edit', $row->guid) .'" data-id="'.$row->guid.'" class="btn btn-primary btn-sm mb-1"><i class="fas fa-edit"></i></a>';
-                    $btn .= ' <button onclick="deleteUser('. "'$row->guid'" .')" data-id="'.$row->guid.'" class="btn btn-danger btn-sm mb-1" '. $disabled .'><i class="fas fa-trash"></i></button>';
+                    $btn = '<a href="'. route('portal.users.edit', $row->guid) .'" data-id="'.$row->guid.'" class="btn btn-primary btn-sm mb-1"><i class="far fa-edit"></i></a>';
+                    $btn .= ' <button onclick="deleteUser('. "'$row->guid'" .')" data-id="'.$row->guid.'" class="btn btn-danger btn-sm mb-1" '. $disabled .'><i class="far fa-trash-alt"></i></button>';
                     $btn .= '<form id="deleteForm'. $row->guid .'" action="'. route('portal.users.destroy', $row->guid) .'" method="POST" style="display: none">
                     <input type="hidden" name="_token" value="'. csrf_token() .'">
                     <input type="hidden" name="_method" value="DELETE">
@@ -62,9 +63,18 @@ class UserController extends Controller
     public function create()
     {
         $roles = Role::query()->orderBy('id', 'desc')->get();
+        $countries = Countries::all()
+            ->map(function ($country) {
+                return [
+                    'code' => $country->cca2,
+                    'name' => $country->name->common
+                ];
+            })
+            ->values();
+
         $pageTitle = __('global.users.create');
 
-        return view('portals.users.create', compact('roles', 'pageTitle'));
+        return view('portals.users.create', compact('roles', 'pageTitle', 'countries'));
     }
 
     /**
@@ -152,7 +162,7 @@ class UserController extends Controller
         $user->update($validated);
 
         return redirect()
-            ->route('portals.users.index')
+            ->route('portal.users.index')
             ->with('status', 'success')
             ->with('message', __('global.users.message.updateSuccess'));
     }
@@ -165,6 +175,12 @@ class UserController extends Controller
      */
     public function destroy($guid)
     {
-        //
+        $user = User::query()->whereGuid($guid)->first();
+        $user->delete();
+
+        return redirect()
+            ->route('portal.users.index')
+            ->with('status', 'success')
+            ->with('message', __('global.users.message.deleteSuccess'));
     }
 }

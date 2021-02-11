@@ -46,8 +46,14 @@ return [
 		'message' => [
 			'saveSuccess' => 'The user is stored successfully.',
 			'updateSuccess' => 'The user is updated successfully.',
-			'deleteSuccess' => 'The user is deleted successfully.'
+			'deleteSuccess' => 'The user is deleted successfully.',
 		]
+	],
+	'roles' => [
+		'title' => 'Roles',
+		'list' => 'Role List',
+		'create' => 'Create Role',
+		'edit' => 'Edit Role'
 	],
 	'home' => [
 		'title' => 'Home',
@@ -73,5 +79,11 @@ return [
 	],
 	'comingSoon' => [
 		'title' => 'Coming Soon'
+	],
+	'swal' => [
+		'delete' => [
+			'title' => 'Are you sure?',
+			'text' => 'You will not be able to recover this imaginary data!'
+		]
 	]
 ];

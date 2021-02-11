@@ -17,6 +17,12 @@
 			<div>{{ __('global.users.title') }}</div>
 			</a>
 		</li>
+		
+		<li class="sidenav-item {{ request()->is('portal/roles') ? 'active' : '' }}">
+			<a href="{{ route('portal.roles.index') }}" class="sidenav-link"><i class="sidenav-icon lnr lnr-users"></i>
+			<div>{{ __('global.roles.title') }}</div>
+			</a>
+		</li>
 
 		<!-- Pages -->
 		<li class="sidenav-item">

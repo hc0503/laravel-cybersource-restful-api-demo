@@ -40,7 +40,7 @@
 						<div class="form-row">
 							<div class="form-group col-md-6 col-sm-12">
 								<label class="form-label" for="name">{{ __('global.users.name') }} *</label>
-								<input id="name" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ $user->name }}" required autofocus>
+								<input id="name" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ $user->name }}" autofocus>
 								@error('name')
 									<span class="invalid-feedback" role="alert">
 										<strong>{{ $message }}</strong>
@@ -50,7 +50,7 @@
 	
 							<div class="form-group col-md-6 col-sm-12">
 								<label class="form-label" for="email">{{ __('global.users.email') }} *</label>
-								<input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ $user->email }}" required autocomplete="off">
+								<input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ $user->email }}" autocomplete="off">
 								@error('email')
 									<span class="invalid-feedback" role="alert">
 										<strong>{{ $message }}</strong>
@@ -84,7 +84,7 @@
 						<div class="form-row">
 							<div class="form-group col-md-6 col-sm-12">
 								<label class="form-label" for="address">{{ __('global.users.address') }} *</label>
-								<input id="address" class="form-control @error('address') is-invalid @enderror" name="address" value="{{ $user->address }}" required>
+								<input id="address" class="form-control @error('address') is-invalid @enderror" name="address" value="{{ $user->address }}">
 								@error('address')
 									<span class="invalid-feedback" role="alert">
 										<strong>{{ $message }}</strong>
@@ -94,7 +94,7 @@
 	
 							<div class="form-group col-md-6 col-sm-12">
 								<label class="form-label" for="city">{{ __('global.users.city') }} *</label>
-								<input id="city" class="form-control @error('city') is-invalid @enderror" name="city" value="{{ $user->city }}" required>
+								<input id="city" class="form-control @error('city') is-invalid @enderror" name="city" value="{{ $user->city }}">
 								@error('city')
 									<span class="invalid-feedback" role="alert">
 										<strong>{{ $message }}</strong>
@@ -106,7 +106,7 @@
 						<div class="form-row">
 							<div class="form-group col-md-6 col-sm-12">
 								<label class="form-label" for="zip">{{ __('global.users.zip') }} *</label>
-								<input id="zip" class="form-control @error('zip') is-invalid @enderror" name="zip" value="{{ $user->zip }}" required>
+								<input id="zip" class="form-control @error('zip') is-invalid @enderror" name="zip" value="{{ $user->zip }}">
 								@error('zip')
 									<span class="invalid-feedback" role="alert">
 										<strong>{{ $message }}</strong>
@@ -116,7 +116,7 @@
 	
 							<div class="form-group col-md-6 col-sm-12">
 								<label class="form-label" for="country">{{ __('global.users.country') }} *</label>
-								<input id="country" class="form-control @error('country') is-invalid @enderror" name="country" value="{{ $user->country }}" required>
+								<input id="country" class="form-control @error('country') is-invalid @enderror" name="country" value="{{ $user->country }}">
 								@error('country')
 									<span class="invalid-feedback" role="alert">
 										<strong>{{ $message }}</strong>

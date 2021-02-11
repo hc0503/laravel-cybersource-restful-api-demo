@@ -25,5 +25,7 @@ class UsersTableSeeder extends Seeder
             'email' => 'user@user.com'
         ]);
         $user->assignRole('User');
+
+        factory(User::class, 15)->create();
     }
 }

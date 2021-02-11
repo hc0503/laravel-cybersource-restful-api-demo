@@ -43,7 +43,7 @@
 											<th>{{ trans('global.users.zip') }}</th>
 											<th>{{ trans('global.users.country') }}</th>
 											<th>{{ trans('global.createdAt') }}</th>
-											<th>{{ trans('global.action') }}</th>
+											<th width="0px;">{{ trans('global.action') }}</th>
 										</tr>
 									</thead>
 									<tfoot>
@@ -72,10 +72,12 @@
 
 @push('css')
 <link rel="stylesheet" href="{{ asset('assets/vendor/libs/datatables/datatables.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/vendor/libs/sweetalert2/sweetalert2.css') }}">
 @endpush
 
 @push('js')
 <script src="{{ asset('assets/vendor/libs/datatables/datatables.js') }}"></script>
+<script src="{{ asset('assets/vendor/libs/sweetalert2/sweetalert2.js') }}"></script>
 <script>
 	$('#dataTable').dataTable({
 		'processing': true,
@@ -98,5 +100,22 @@
 			{'data': 'action'},
 		]
 	});
+
+	function deleteUser(userId) {
+		Swal.fire({
+			title: "{{ __('global.swal.delete.title') }}", 
+			text: "{{ __('global.swal.delete.text') }}",
+			type: 'warning',
+			showCancelButton: true,
+			customClass: {
+				confirmButton: 'btn btn-secondary btn-lg',
+				cancelButton: 'btn btn-default btn-lg'
+			}
+		}).then(function (result) {
+			if (result.value) {
+				$('#deleteForm'+userId).submit();
+			}
+		})
+    }
 </script>
 @endpush

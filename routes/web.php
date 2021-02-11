@@ -26,5 +26,6 @@ Route::middleware(['auth', 'verified'])->group( function () {
     Route::group(['prefix' => 'portal', 'as'=>'portal.'], function () {
         Route::get('/home', 'HomeController@index')->name('home');
         Route::resource('/users', 'Portals\UserController');
+        Route::resource('/roles', 'Portals\RoleController');
     });
 });
