@@ -11,7 +11,7 @@
 				<a href="{{ route('portal.home') }}">{{ __('global.home.title') }}</a>
 			</li>
 			<li class="breadcrumb-item">
-				<a href="{{ route('portal.users.index') }}">{{ __('global.users.title') }}</a>
+				<a href="{{ route('portal.usermanage.users.index') }}">{{ __('global.users.title') }}</a>
 			</li>
 			<li class="breadcrumb-item active">{{ $pageTitle }}</li>
 			</ol>
@@ -30,7 +30,7 @@
 			<div class="card">
 				<div class="card-body">
                 <!-- Form -->
-                <form id="form" class="my-5" method="POST" action="{{ route('portal.users.update', $user->guid) }}">
+                <form id="form" class="my-5" method="POST" action="{{ route('portal.usermanage.users.update', $user->guid) }}">
 						
 						@csrf
 						@method('PUT')
@@ -114,11 +114,16 @@
 								@enderror
 							</div>
 	
-							<div class="form-group col-md-6 col-sm-12">
+							<div class="form-group col-md-6 col-sm-12 @error('country') is-invalid @enderror">
 								<label class="form-label" for="country">{{ __('global.users.country') }} *</label>
-								<input id="country" class="form-control @error('country') is-invalid @enderror" name="country" value="{{ $user->country }}">
+								<select id="country" name="country" class="form-control" style="width: 100%">
+									<option></option>
+									@foreach ($countries as $country)
+									<option value="{{ $country->code }}" {{ $user->country == $country->code ? 'selected' : '' }}>{{ $country->name }}</option>
+									@endforeach
+								 </select>
 								@error('country')
-									<span class="invalid-feedback" role="alert">
+									<span class="invalid-feedback" role="alert" style="display: block !important;">
 										<strong>{{ $message }}</strong>
 									</span>
 								@enderror
@@ -157,7 +162,17 @@
 @endsection
 
 @push('css')
+<link rel="stylesheet" href="{{ asset('assets/vendor/libs/select2/select2.css') }}">
 @endpush
 
 @push('js')
+<script src="{{ asset('assets/vendor/libs/select2/select2.js') }}"></script>
+<script>
+	$('#country')
+		.wrap('<div class="position-relative"></div>')
+		.select2({
+			placeholder: 'Select value',
+			dropdownParent: $('#country').parent()
+		});
+</script>
 @endpush

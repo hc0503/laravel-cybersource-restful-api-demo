@@ -11,7 +11,7 @@
 				<a href="{{ route('portal.home') }}">{{ __('global.home.title') }}</a>
 			</li>
 			<li class="breadcrumb-item">
-				<a href="{{ route('portal.users.index') }}">{{ __('global.users.title') }}</a>
+				<a href="{{ route('portal.usermanage.users.index') }}">{{ __('global.users.title') }}</a>
 			</li>
 			<li class="breadcrumb-item active">{{ $pageTitle }}</li>
 			</ol>
@@ -30,7 +30,7 @@
 			<div class="card">
 				<div class="card-body">
                 <!-- Form -->
-                <form id="form" class="my-5" method="POST" action="{{ route('portal.users.store') }}">
+                <form id="form" method="POST" action="{{ route('portal.usermanage.users.store') }}">
 						
 						@csrf
 
@@ -121,7 +121,7 @@
 									@endforeach
 								 </select>
 								@error('country')
-									<span class="invalid-feedback" role="alert">
+									<span class="invalid-feedback" role="alert" style="display: block !important;">
 										<strong>{{ $message }}</strong>
 									</span>
 								@enderror

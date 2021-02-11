@@ -4,6 +4,7 @@ return [
 	'logOut' => 'Log Out',
 	'createdAt' => 'Created At',
 	'action' => 'Action',
+	'userManagement' => 'User Management',
 	'login' => [
 		'title' => 'Login',
 		'formDescription' => 'Login to Your Account',

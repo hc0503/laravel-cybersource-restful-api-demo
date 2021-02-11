@@ -12,33 +12,24 @@
 	</div>
 	<!-- Links -->
 	<ul class="sidenav-inner py-1">
-		<li class="sidenav-item {{ request()->is('portal/users') ? 'active' : '' }}">
-			<a href="{{ route('portal.users.index') }}" class="sidenav-link"><i class="sidenav-icon lnr lnr-users"></i>
-			<div>{{ __('global.users.title') }}</div>
-			</a>
-		</li>
-		
-		<li class="sidenav-item {{ request()->is('portal/roles') ? 'active' : '' }}">
-			<a href="{{ route('portal.roles.index') }}" class="sidenav-link"><i class="sidenav-icon lnr lnr-users"></i>
-			<div>{{ __('global.roles.title') }}</div>
-			</a>
-		</li>
-
 		<!-- Pages -->
-		<li class="sidenav-item">
+		<li class="sidenav-item {{ request()->is('portal/usermanage/*') ? 'active open' : '' }}">
 			<a href="javascript:void(0)" class="sidenav-link sidenav-toggle">
-			<i class="sidenav-icon ion ion-md-document"></i>
-			<div>Pages</div>
-			<div class="pl-1 ml-auto">
-				<div class="badge badge-primary">59</div>
-			</div>
+				<i class="sidenav-icon lnr lnr-users"></i>
+				<div>{{ __('global.userManagement') }}</div>
 			</a>
 			<ul class="sidenav-menu">
-			<li class="sidenav-item">
-				<a href="pages_faq.html" class="sidenav-link">
-					<div>FAQ</div>
-				</a>
-			</li>
+				<li class="sidenav-item {{ request()->is('portal/usermanage/users') ? 'active' : '' }}">
+					<a href="{{ route('portal.usermanage.users.index') }}" class="sidenav-link">
+						<div>{{ __('global.users.title') }}</div>
+					</a>
+				</li>
+
+				<li class="sidenav-item {{ request()->is('portal/usermanage/roles') ? 'active' : '' }}">
+					<a href="{{ route('portal.usermanage.roles.index') }}" class="sidenav-link">
+						<div>{{ __('global.roles.title') }}</div>
+					</a>
+				</li>
 			</ul>
 		</li>
 	</ul>

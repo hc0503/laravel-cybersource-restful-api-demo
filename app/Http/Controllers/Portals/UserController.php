@@ -38,15 +38,18 @@ class UserController extends Controller
                     else
                         $disabled = '';
 
-                    $btn = '<a href="'. route('portal.users.edit', $row->guid) .'" data-id="'.$row->guid.'" class="btn btn-primary btn-sm mb-1"><i class="far fa-edit"></i></a>';
+                    $btn = '<a href="'. route('portal.usermanage.users.edit', $row->guid) .'" data-id="'.$row->guid.'" class="btn btn-primary btn-sm mb-1"><i class="far fa-edit"></i></a>';
                     $btn .= ' <button onclick="deleteUser('. "'$row->guid'" .')" data-id="'.$row->guid.'" class="btn btn-danger btn-sm mb-1" '. $disabled .'><i class="far fa-trash-alt"></i></button>';
-                    $btn .= '<form id="deleteForm'. $row->guid .'" action="'. route('portal.users.destroy', $row->guid) .'" method="POST" style="display: none">
+                    $btn .= '<form id="deleteForm'. $row->guid .'" action="'. route('portal.usermanage.users.destroy', $row->guid) .'" method="POST" style="display: none">
                     <input type="hidden" name="_token" value="'. csrf_token() .'">
                     <input type="hidden" name="_method" value="DELETE">
                     @method("DELETE")
                     </form>';
 
                     return $btn;
+                })
+                ->editColumn('country', function ($row) {
+                    return Countries::where('cca2', $row->country)->first()->name->common;
                 })
                 ->rawColumns(['website', 'action'])
                 ->make(true);
@@ -101,7 +104,7 @@ class UserController extends Controller
         
         if ($request->exit === 'true')
             return redirect()
-                ->route('portal.users.index')
+                ->route('portal.usermanage.users.index')
                 ->with('status', 'success')
                 ->with('message', __('global.users.message.saveSuccess'));
         else
@@ -131,9 +134,17 @@ class UserController extends Controller
     public function edit($guid)
     {
         $user = User::query()->whereGuid($guid)->first();
+        $countries = Countries::all()
+            ->map(function ($country) {
+                return [
+                    'code' => $country->cca2,
+                    'name' => $country->name->common
+                ];
+            })
+            ->values();
         $pageTitle = __('global.users.edit');
 
-        return view('portals.users.edit', compact('user', 'pageTitle'));
+        return view('portals.users.edit', compact('user', 'pageTitle', 'countries'));
     }
 
     /**
@@ -162,7 +173,7 @@ class UserController extends Controller
         $user->update($validated);
 
         return redirect()
-            ->route('portal.users.index')
+            ->route('portal.usermanage.users.index')
             ->with('status', 'success')
             ->with('message', __('global.users.message.updateSuccess'));
     }
@@ -179,7 +190,7 @@ class UserController extends Controller
         $user->delete();
 
         return redirect()
-            ->route('portal.users.index')
+            ->route('portal.usermanage.users.index')
             ->with('status', 'success')
             ->with('message', __('global.users.message.deleteSuccess'));
     }

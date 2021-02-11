@@ -26,7 +26,7 @@
 		<div class="col-12">
 			<div class="card">
 					<div class="card-body">
-						<a href="{{ route('portal.users.create') }}" class="btn waves-effect waves-light btn-secondary">
+						<a href="{{ route('portal.usermanage.users.create') }}" class="btn waves-effect waves-light btn-secondary">
 							<i class="fas fa-plus"></i> {{ trans('global.users.create') }}
 						</a>
 						<div class="table-responsive mt-2">
@@ -83,7 +83,7 @@
 		'processing': true,
 		'serverSide': true,
 		'ajax': {
-			'url': "{{ route('portal.users.index') }}",
+			'url': "{{ route('portal.usermanage.users.index') }}",
 			'type': 'GET'
 		},
 		'columns': [
