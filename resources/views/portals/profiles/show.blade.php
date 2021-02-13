@@ -10,19 +10,28 @@
 			<li class="breadcrumb-item">
 				<a href="{{ route('portal.home') }}">{{ __('global.home.title') }}</a>
 			</li>
-			<li class="breadcrumb-item">
-				<a href="{{ route('portal.usermanage.users.index') }}">{{ __('global.users.title') }}</a>
-			</li>
 			<li class="breadcrumb-item active">{{ $pageTitle }}</li>
 			</ol>
 		</div>
 	</div>
 </div>
 <div class="container-fluid">
+	@if (session()->get('status'))
+	<div class="alert alert-{{ session()->get('status') }}">
+		<i class="ti-user"></i> {{ session()->get('message') }}
+		<button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">×</span> </button>
+	</div>
+	@endif
 	<div class="row">
 		<div class="col-12">
 			<div class="card">
 				<div class="card-body">
+					<div class="text-right">
+						<a href="{{ route('portal.profiles.edit', $user->guid) }}" class="btn waves-effect waves-light btn-secondary">
+							<i class="fas fa-edit"></i> {{ __('global.profiles.edit') }}
+						</a>
+					</div>
+
 					<div class="form-row">
 						<div class="form-group col-md-6 col-sm-12">
 							<label class="form-label" for="name">{{ __('global.users.name') }}</label>
@@ -75,16 +84,6 @@
 							</select>
 						</div>
 					</div>
-
-					<div class="form-group @error('roles') is-invalid @enderror">
-						<label class="form-label" for="roles">{{ __('global.roles.title') }}</label>
-						<select id="roles" name="roles[]" class="form-control" style="width: 100%" multiple disabled>
-							<option></option>
-							@foreach ($roles as $role)
-							<option value="{{ $role->name }}" {{ in_array($role->name, $user->roles->pluck('name')->toArray()) ? 'selected' : '' }}>{{ $role->name }}</option>
-							@endforeach
-						</select>
-					</div>
 				</div>
 			</div>
 		</div>
@@ -104,13 +103,6 @@
 		.select2({
 			placeholder: 'Select value',
 			dropdownParent: $('#country').parent()
-		});
-		
-	$('#roles')
-		.wrap('<div class="position-relative"></div>')
-		.select2({
-			placeholder: 'Select value',
-			dropdownParent: $('#roles').parent()
 		});
 </script>
 @endpush

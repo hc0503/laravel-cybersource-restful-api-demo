@@ -97,7 +97,7 @@
 				</span>
 			</a>
 			<div class="dropdown-menu dropdown-menu-right">
-				<a href="javascript:void(0)" class="dropdown-item"><i class="ion ion-ios-person text-lightest"></i> &nbsp; My profile</a>
+				<a href="{{ route('portal.profiles.show', auth()->user()->guid) }}" class="dropdown-item"><i class="ion ion-ios-person text-lightest"></i> &nbsp; {{ __('global.profiles.myProfile') }}</a>
 				<div class="dropdown-divider"></div>
 				<form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
 					@csrf

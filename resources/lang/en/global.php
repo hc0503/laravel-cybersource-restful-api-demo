@@ -77,6 +77,15 @@ return [
 			'deleteSuccess' => 'The permission is deleted successfully.',
 		]
 	],
+	'profiles' => [
+		'title' => 'Profile',
+		'myProfile' => 'My Profile',
+		'edit' => 'Edit Profile',
+		'update' => 'Update Profile',
+		'message' => [
+			'updateSuccess' => 'The profile is updated successfully.'
+		]
+	],
 	'home' => [
 		'title' => 'Home',
 	],

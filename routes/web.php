@@ -26,6 +26,12 @@ Route::middleware(['auth', 'verified'])->group( function () {
     Route::group(['prefix' => 'portal', 'as' => 'portal.'], function () {
         Route::get('/home', 'HomeController@index')->name('home');
 
+        Route::group(['prefix' => 'profiles', 'as' => 'profiles.'], function () {
+            Route::get('/show/{guid}', 'Portals\ProfileController@show')->name('show');
+            Route::get('/edit/{guid}', 'Portals\ProfileController@edit')->name('edit');
+            Route::post('/update/{guid}', 'Portals\ProfileController@update')->name('update');
+        });
+
         Route::group(['prefix' => 'usermanage', 'as' => 'usermanage.'], function () {
             Route::resource('/users', 'Portals\UserController');
             Route::get('/login/{guid}', 'Portals\UserController@loginUsingId')->name('users.login');
