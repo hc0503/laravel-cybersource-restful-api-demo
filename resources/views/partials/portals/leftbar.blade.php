@@ -19,15 +19,21 @@
 				<div>{{ __('global.userManagement') }}</div>
 			</a>
 			<ul class="sidenav-menu">
-				<li class="sidenav-item {{ request()->is('portal/usermanage/users') ? 'active' : '' }}">
-					<a href="{{ route('portal.usermanage.users.index') }}" class="sidenav-link">
-						<div>{{ __('global.users.title') }}</div>
+				<li class="sidenav-item {{ request()->is('portal/usermanage/permissions') ? 'active' : '' }}">
+					<a href="{{ route('portal.usermanage.permissions.index') }}" class="sidenav-link">
+						<div>{{ __('global.permissions.title') }}</div>
 					</a>
 				</li>
 
 				<li class="sidenav-item {{ request()->is('portal/usermanage/roles') ? 'active' : '' }}">
 					<a href="{{ route('portal.usermanage.roles.index') }}" class="sidenav-link">
 						<div>{{ __('global.roles.title') }}</div>
+					</a>
+				</li>
+
+				<li class="sidenav-item {{ request()->is('portal/usermanage/users') ? 'active' : '' }}">
+					<a href="{{ route('portal.usermanage.users.index') }}" class="sidenav-link">
+						<div>{{ __('global.users.title') }}</div>
 					</a>
 				</li>
 			</ul>

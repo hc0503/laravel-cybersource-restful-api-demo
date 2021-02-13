@@ -46,7 +46,7 @@
 						</div>
 
 						<div class="form-group @error('permissions') is-invalid @enderror">
-							<label class="form-label" for="permissions">{{ __('global.roles.permissions') }} *</label>
+							<label class="form-label" for="permissions">{{ __('global.permissions.title') }} *</label>
 							<select id="permissions" name="permissions[]" class="form-control" style="width: 100%" multiple>
 								<option></option>
 								@foreach ($permissions as $permission)

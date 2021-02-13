@@ -58,11 +58,23 @@ return [
 		'edit' => 'Edit Role',
 		'show' => 'Show Role',
 		'name' => 'Name',
-		'permissions' => 'Permissions',
 		'message' => [
 			'saveSuccess' => 'The role is stored successfully.',
 			'updateSuccess' => 'The role is updated successfully.',
 			'deleteSuccess' => 'The role is deleted successfully.',
+		]
+	],
+	'permissions' => [
+		'title' => 'Permissions',
+		'list' => 'Permission List',
+		'create' => 'Create Permission',
+		'edit' => 'Edit Permission',
+		'show' => 'Show Permission',
+		'name' => 'Name',
+		'message' => [
+			'saveSuccess' => 'The permission is stored successfully.',
+			'updateSuccess' => 'The permission is updated successfully.',
+			'deleteSuccess' => 'The permission is deleted successfully.',
 		]
 	],
 	'home' => [

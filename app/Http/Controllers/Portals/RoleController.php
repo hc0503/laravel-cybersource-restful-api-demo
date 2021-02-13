@@ -26,7 +26,7 @@ class RoleController extends Controller
             return Datatables::of($roles)
                 ->addIndexColumn()
                 ->editColumn('created_at', function ($row) {
-                    return Carbon::parse($row->created_at)->toDateTimeString();
+                    return Carbon::parse($row->created_at)->toDateString();
                 })
                 ->addColumn('action', function ($row) {
                     $btn = '<a href="'. route('portal.usermanage.roles.show', $row->id) .'" data-id="'.$row->id.'" class="btn btn-success btn-sm mb-1 mr-1"><i class="far fa-eye"></i></a>';
@@ -143,6 +143,7 @@ class RoleController extends Controller
         ]);
 
         $role = Role::findOrFail($id);
+        $role->update($validated);
         $role->syncPermissions($validated['permissions']);
 
         return redirect()

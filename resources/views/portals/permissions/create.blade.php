@@ -11,7 +11,7 @@
 				<a href="{{ route('portal.home') }}">{{ __('global.home.title') }}</a>
 			</li>
 			<li class="breadcrumb-item">
-				<a href="{{ route('portal.usermanage.roles.index') }}">{{ __('global.roles.title') }}</a>
+				<a href="{{ route('portal.usermanage.permissions.index') }}">{{ __('global.permissions.title') }}</a>
 			</li>
 			<li class="breadcrumb-item active">{{ $pageTitle }}</li>
 			</ol>
@@ -30,14 +30,14 @@
 			<div class="card">
 				<div class="card-body">
                 <!-- Form -->
-                <form id="form" method="POST" action="{{ route('portal.usermanage.roles.update', $role->id) }}">
+                <form id="form" method="POST" action="{{ route('portal.usermanage.permissions.store') }}">
 						
 						@csrf
-						@method('PUT')
 
+						<input id="exit" name="exit" value="true" hidden/>
 						<div class="form-group">
-							<label class="form-label" for="name">{{ __('global.roles.name') }} *</label>
-							<input id="name" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ $role->name }}" autofocus>
+							<label class="form-label" for="name">{{ __('global.permissions.name') }} *</label>
+							<input id="name" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" autofocus>
 							@error('name')
 								<span class="invalid-feedback" role="alert">
 									<strong>{{ $message }}</strong>
@@ -45,23 +45,9 @@
 							@enderror
 						</div>
 
-						<div class="form-group @error('permissions') is-invalid @enderror">
-							<label class="form-label" for="permissions">{{ __('global.permissions.title') }} *</label>
-							<select id="permissions" name="permissions[]" class="form-control" style="width: 100%" multiple>
-								<option></option>
-								@foreach ($permissions as $permission)
-								<option value="{{ $permission->name }}" {{ in_array($permission->name, $role->permissions->pluck('name')->toArray()) ? 'selected' : '' }}>{{ $permission->name }}</option>
-								@endforeach
-							 </select>
-							@error('permissions')
-								<span class="invalid-feedback" role="alert" style="display: block !important;">
-									<strong>{{ $message }}</strong>
-								</span>
-							@enderror
-						</div>
-
 						<div class="d-flex justify-content-between align-items-center m-0">
-							<button type="submit" class="btn btn-secondary">{{ __('global.users.saveAndExit') }}</button>
+							<button type="submit" class="btn btn-info" onclick="saveAnother();">{{ __('global.users.saveAndAnother') }}</button>
+							<button type="submit" class="btn btn-secondary" onclick="saveExit();">{{ __('global.users.saveAndExit') }}</button>
 						</div>
 				  </form>
 				  <!-- / Form -->
@@ -85,5 +71,17 @@
 			placeholder: 'Select value',
 			dropdownParent: $('#permissions').parent()
 		});
+		
+	function saveAnother() {
+		event.preventDefault();
+		$('#exit').val(false);
+		$('#form').submit();
+	}
+
+	function saveExit() {
+		event.preventDefault();
+		$('#exit').val(true);
+		$('#form').submit();
+	}
 </script>
 @endpush

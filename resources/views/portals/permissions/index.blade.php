@@ -26,16 +26,15 @@
 		<div class="col-12">
 			<div class="card">
 					<div class="card-body">
-						<a href="{{ route('portal.usermanage.roles.create') }}" class="btn waves-effect waves-light btn-secondary">
-							<i class="fas fa-plus"></i> {{ trans('global.roles.create') }}
+						<a href="{{ route('portal.usermanage.permissions.create') }}" class="btn waves-effect waves-light btn-secondary">
+							<i class="fas fa-plus"></i> {{ trans('global.permissions.create') }}
 						</a>
 						<div class="table-responsive mt-2">
 							<table id="dataTable" class="datatables-demo table table-striped table-bordered">
 									<thead>
 										<tr>
 											<th>#</th>
-											<th>{{ trans('global.roles.name') }}</th>
-											<th>{{ trans('global.permissions.title') }}</th>
+											<th>{{ trans('global.permissions.name') }}</th>
 											<th>{{ trans('global.createdAt') }}</th>
 											<th width="0px;">{{ trans('global.action') }}</th>
 										</tr>
@@ -43,8 +42,7 @@
 									<tfoot>
 										<tr>
 											<th>#</th>
-											<th>{{ trans('global.roles.name') }}</th>
-											<th>{{ trans('global.permissions.title') }}</th>
+											<th>{{ trans('global.permissions.name') }}</th>
 											<th>{{ trans('global.createdAt') }}</th>
 											<th>{{ trans('global.action') }}</th>
 										</tr>
@@ -71,13 +69,12 @@
 		'processing': true,
 		'serverSide': true,
 		'ajax': {
-			'url': "{{ route('portal.usermanage.roles.index') }}",
+			'url': "{{ route('portal.usermanage.permissions.index') }}",
 			'type': 'GET'
 		},
 		'columns': [
 			{'data': 'id'},
 			{'data': 'name'},
-			{'data': 'permissions'},
 			{'data': 'created_at'},
 			{'data': 'action'},
 		]

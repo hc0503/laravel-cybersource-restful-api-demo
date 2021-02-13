@@ -11,7 +11,7 @@
 				<a href="{{ route('portal.home') }}">{{ __('global.home.title') }}</a>
 			</li>
 			<li class="breadcrumb-item">
-				<a href="{{ route('portal.usermanage.roles.index') }}">{{ __('global.roles.title') }}</a>
+				<a href="{{ route('portal.usermanage.permissions.index') }}">{{ __('global.permissions.title') }}</a>
 			</li>
 			<li class="breadcrumb-item active">{{ $pageTitle }}</li>
 			</ol>
@@ -24,18 +24,8 @@
 			<div class="card">
 				<div class="card-body">
 					<div class="form-group">
-						<label class="form-label" for="name">{{ __('global.roles.name') }}</label>
-						<input id="name" class="form-control" name="name" value="{{ $role->name }}" disabled>
-					</div>
-
-					<div class="form-group">
-						<label class="form-label" for="permissions">{{ __('global.permissions.title') }}</label>
-						<select id="permissions" name="permissions[]" class="form-control" style="width: 100%" multiple disabled>
-							<option></option>
-							@foreach ($permissions as $permission)
-							<option value="{{ $permission->name }}" {{ in_array($permission->name, $role->permissions->pluck('name')->toArray()) ? 'selected' : '' }}>{{ $permission->name }}</option>
-							@endforeach
-						 </select>
+						<label class="form-label" for="name">{{ __('global.permissions.name') }}</label>
+						<input id="name" class="form-control" name="name" value="{{ $permission->name }}" disabled>
 					</div>
 				</div>
 			</div>
