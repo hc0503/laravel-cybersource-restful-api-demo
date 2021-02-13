@@ -4,6 +4,10 @@ namespace App\Http\Controllers\Portals;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use DataTables;
+use Carbon\Carbon;
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
 
 class RoleController extends Controller
 {
@@ -12,9 +16,42 @@ class RoleController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $pageTitle = __('global.roles.list');
+
+        if ($request->ajax()) {
+            $roles = Role::all();
+
+            return Datatables::of($roles)
+                ->addIndexColumn()
+                ->editColumn('created_at', function ($row) {
+                    return Carbon::parse($row->created_at)->toDateTimeString();
+                })
+                ->addColumn('action', function ($row) {
+                    $btn = '<a href="'. route('portal.usermanage.roles.edit', $row->id) .'" data-id="'.$row->id.'" class="btn btn-primary btn-sm mb-1"><i class="far fa-edit"></i></a>';
+                    $btn .= ' <button onclick="deleteUser('. "'$row->id'" .')" data-id="'.$row->id.'" class="btn btn-danger btn-sm mb-1"><i class="far fa-trash-alt"></i></button>';
+                    $btn .= '<form id="deleteForm'. $row->id .'" action="'. route('portal.usermanage.roles.destroy', $row->id) .'" method="POST" style="display: none">
+                    <input type="hidden" name="_token" value="'. csrf_token() .'">
+                    <input type="hidden" name="_method" value="DELETE">
+                    @method("DELETE")
+                    </form>';
+
+                    return $btn;
+                })
+                ->addColumn('permissions', function ($row) {
+                    $permissions = '';
+                    foreach ($row->permissions as $permission) {
+                        $permissions .= '<span class="badge badge-secondary mr-1">'. $permission->name .'</span>';
+                    }
+
+                    return $permissions;
+                })
+                ->rawColumns(['action', 'permissions'])
+                ->make(true);
+        }
+
+        return view('portals.roles.index', compact('pageTitle'));
     }
 
     /**
@@ -24,7 +61,10 @@ class RoleController extends Controller
      */
     public function create()
     {
-        //
+        $pageTitle = __('global.roles.create');
+        $permissions = Permission::all();
+
+        return view('portals.roles.create', compact('pageTitle', 'permissions'));
     }
 
     /**
@@ -35,7 +75,24 @@ class RoleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'name' => ['required', 'string', 'unique:roles', 'max:255'],
+            'permissions' => ['required'],
+        ]);
+
+        $role = Role::create($validated);
+        $role->givePermissionTo($validated['permissions']);
+        
+        if ($request->exit === 'true')
+            return redirect()
+                ->route('portal.usermanage.roles.index')
+                ->with('status', 'success')
+                ->with('message', __('global.roles.message.saveSuccess'));
+        else
+            return redirect()
+                ->back()
+                ->with('status', 'success')
+                ->with('message', __('global.roles.message.saveSuccess'));
     }
 
     /**

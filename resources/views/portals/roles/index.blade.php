@@ -2,7 +2,7 @@
 @section('content')
 <div class="row page-titles">
 	<div class="col-md-5 align-self-center">
-		<h4 class="text-themecolor"{{ $pageTitle }}</h4>
+		<h4 class="text-themecolor">{{ $pageTitle }}</h4>
 	</div>
 	<div class="col-md-7 align-self-center text-right">
 		<div class="d-flex justify-content-end align-items-center">
@@ -26,22 +26,16 @@
 		<div class="col-12">
 			<div class="card">
 					<div class="card-body">
-						<a href="{{ route('portal.usermanage.users.create') }}" class="btn waves-effect waves-light btn-secondary">
-							<i class="fas fa-plus"></i> {{ trans('global.users.create') }}
+						<a href="{{ route('portal.usermanage.roles.create') }}" class="btn waves-effect waves-light btn-secondary">
+							<i class="fas fa-plus"></i> {{ trans('global.roles.create') }}
 						</a>
 						<div class="table-responsive mt-2">
 							<table id="dataTable" class="datatables-demo table table-striped table-bordered">
 									<thead>
 										<tr>
 											<th>#</th>
-											<th>{{ trans('global.users.name') }}</th>
-											<th>{{ trans('global.users.email') }}</th>
-											<th>{{ trans('global.users.company') }}</th>
-											<th>{{ trans('global.users.website') }}</th>
-											<th>{{ trans('global.users.address') }}</th>
-											<th>{{ trans('global.users.city') }}</th>
-											<th>{{ trans('global.users.zip') }}</th>
-											<th>{{ trans('global.users.country') }}</th>
+											<th>{{ trans('global.roles.name') }}</th>
+											<th>{{ trans('global.roles.permissions') }}</th>
 											<th>{{ trans('global.createdAt') }}</th>
 											<th width="0px;">{{ trans('global.action') }}</th>
 										</tr>
@@ -49,14 +43,8 @@
 									<tfoot>
 										<tr>
 											<th>#</th>
-											<th>{{ trans('global.users.name') }}</th>
-											<th>{{ trans('global.users.email') }}</th>
-											<th>{{ trans('global.users.company') }}</th>
-											<th>{{ trans('global.users.website') }}</th>
-											<th>{{ trans('global.users.address') }}</th>
-											<th>{{ trans('global.users.city') }}</th>
-											<th>{{ trans('global.users.zip') }}</th>
-											<th>{{ trans('global.users.country') }}</th>
+											<th>{{ trans('global.roles.name') }}</th>
+											<th>{{ trans('global.roles.permissions') }}</th>
 											<th>{{ trans('global.createdAt') }}</th>
 											<th>{{ trans('global.action') }}</th>
 										</tr>
@@ -83,19 +71,13 @@
 		'processing': true,
 		'serverSide': true,
 		'ajax': {
-			'url': "{{ route('portal.usermanage.users.index') }}",
+			'url': "{{ route('portal.usermanage.roles.index') }}",
 			'type': 'GET'
 		},
 		'columns': [
 			{'data': 'id'},
 			{'data': 'name'},
-			{'data': 'email'},
-			{'data': 'company'},
-			{'data': 'website'},
-			{'data': 'address'},
-			{'data': 'city'},
-			{'data': 'zip'},
-			{'data': 'country'},
+			{'data': 'permissions'},
 			{'data': 'created_at'},
 			{'data': 'action'},
 		]

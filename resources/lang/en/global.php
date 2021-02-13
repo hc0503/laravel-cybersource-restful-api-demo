@@ -54,7 +54,14 @@ return [
 		'title' => 'Roles',
 		'list' => 'Role List',
 		'create' => 'Create Role',
-		'edit' => 'Edit Role'
+		'edit' => 'Edit Role',
+		'name' => 'Name',
+		'permissions' => 'Permissions',
+		'message' => [
+			'saveSuccess' => 'The role is stored successfully.',
+			'updateSuccess' => 'The role is updated successfully.',
+			'deleteSuccess' => 'The role is deleted successfully.',
+		]
 	],
 	'home' => [
 		'title' => 'Home',
