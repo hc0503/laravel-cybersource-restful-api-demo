@@ -55,6 +55,7 @@ return [
 		'list' => 'Role List',
 		'create' => 'Create Role',
 		'edit' => 'Edit Role',
+		'show' => 'Show Role',
 		'name' => 'Name',
 		'permissions' => 'Permissions',
 		'message' => [

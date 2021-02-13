@@ -29,7 +29,8 @@ class RoleController extends Controller
                     return Carbon::parse($row->created_at)->toDateTimeString();
                 })
                 ->addColumn('action', function ($row) {
-                    $btn = '<a href="'. route('portal.usermanage.roles.edit', $row->id) .'" data-id="'.$row->id.'" class="btn btn-primary btn-sm mb-1"><i class="far fa-edit"></i></a>';
+                    $btn = '<a href="'. route('portal.usermanage.roles.show', $row->id) .'" data-id="'.$row->id.'" class="btn btn-success btn-sm mb-1 mr-1"><i class="far fa-eye"></i></a>';
+                    $btn .= '<a href="'. route('portal.usermanage.roles.edit', $row->id) .'" data-id="'.$row->id.'" class="btn btn-primary btn-sm mb-1"><i class="far fa-edit"></i></a>';
                     $btn .= ' <button onclick="deleteUser('. "'$row->id'" .')" data-id="'.$row->id.'" class="btn btn-danger btn-sm mb-1"><i class="far fa-trash-alt"></i></button>';
                     $btn .= '<form id="deleteForm'. $row->id .'" action="'. route('portal.usermanage.roles.destroy', $row->id) .'" method="POST" style="display: none">
                     <input type="hidden" name="_token" value="'. csrf_token() .'">
@@ -103,7 +104,12 @@ class RoleController extends Controller
      */
     public function show($id)
     {
-        //
+        $role = Role::findOrFail($id);
+
+        $pageTitle = __('global.roles.show');
+        $permissions = Permission::all();
+
+        return view('portals.roles.show', compact('pageTitle', 'role', 'permissions'));
     }
 
     /**
