@@ -147,6 +147,22 @@
                         <input id="password-confirm" type="password" class="form-control" name="password_confirmation" autocomplete="off">
                     </div>
 						</div>
+
+						<div class="form-group @error('roles') is-invalid @enderror">
+							<label class="form-label" for="roles">{{ __('global.roles.title') }} *</label>
+							<select id="roles" name="roles[]" class="form-control" style="width: 100%" multiple>
+								<option></option>
+								@foreach ($roles as $role)
+								<option value="{{ $role->name }}" {{ in_array($role->name, $user->roles->pluck('name')->toArray()) ? 'selected' : '' }}>{{ $role->name }}</option>
+								@endforeach
+							 </select>
+							@error('roles')
+								<span class="invalid-feedback" role="alert" style="display: block !important;">
+									<strong>{{ $message }}</strong>
+								</span>
+							@enderror
+						</div>
+
 						<div class="d-flex justify-content-between align-items-center m-0">
 							<button type="submit" class="btn btn-secondary">{{ __('global.users.saveAndExit') }}</button>
 						</div>
@@ -171,6 +187,13 @@
 		.select2({
 			placeholder: 'Select value',
 			dropdownParent: $('#country').parent()
+		});
+		
+	$('#roles')
+		.wrap('<div class="position-relative"></div>')
+		.select2({
+			placeholder: 'Select value',
+			dropdownParent: $('#roles').parent()
 		});
 </script>
 @endpush

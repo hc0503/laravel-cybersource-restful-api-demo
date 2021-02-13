@@ -34,6 +34,7 @@ return [
 		'list' => 'User List',
 		'create' => 'Create User',
 		'edit' => 'Edit User',
+		'show' => 'Show User',
 		'name' => 'Contact Name',
 		'email' => 'Email',
 		'company' => 'Company',

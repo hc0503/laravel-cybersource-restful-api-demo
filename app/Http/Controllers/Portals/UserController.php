@@ -32,13 +32,22 @@ class UserController extends Controller
                 ->editColumn('website', function ($row) {
                     return "<a href='$row->website' target='_blank'>$row->website</a>";
                 })
+                ->addColumn('roles', function ($row) {
+                    $roles = '';
+                    foreach ($row->roles as $role) {
+                        $roles .= '<span class="badge badge-secondary mr-1">'. $role->name .'</span>';
+                    }
+
+                    return $roles;
+                })
                 ->addColumn('action', function ($row) {
                     if (request()->user()->id === $row->id)
                         $disabled = 'disabled';
                     else
                         $disabled = '';
 
-                    $btn = '<a href="'. route('portal.usermanage.users.edit', $row->guid) .'" data-id="'.$row->guid.'" class="btn btn-primary btn-sm mb-1"><i class="far fa-edit"></i></a>';
+                    $btn = '<a href="'. route('portal.usermanage.users.show', $row->guid) .'" data-id="'.$row->guid.'" class="btn btn-success btn-sm mb-1 mr-1"><i class="far fa-eye"></i></a>';
+                    $btn .= '<a href="'. route('portal.usermanage.users.edit', $row->guid) .'" data-id="'.$row->guid.'" class="btn btn-primary btn-sm mb-1"><i class="far fa-edit"></i></a>';
                     $btn .= ' <button onclick="deleteUser('. "'$row->guid'" .')" data-id="'.$row->guid.'" class="btn btn-danger btn-sm mb-1" '. $disabled .'><i class="far fa-trash-alt"></i></button>';
                     $btn .= '<form id="deleteForm'. $row->guid .'" action="'. route('portal.usermanage.users.destroy', $row->guid) .'" method="POST" style="display: none">
                     <input type="hidden" name="_token" value="'. csrf_token() .'">
@@ -51,7 +60,7 @@ class UserController extends Controller
                 ->editColumn('country', function ($row) {
                     return Countries::where('cca2', $row->country)->first()->name->common;
                 })
-                ->rawColumns(['website', 'action'])
+                ->rawColumns(['website', 'roles', 'action'])
                 ->make(true);
         }
 
@@ -74,7 +83,6 @@ class UserController extends Controller
                 ];
             })
             ->values();
-
         $pageTitle = __('global.users.create');
 
         return view('portals.users.create', compact('roles', 'pageTitle', 'countries'));
@@ -97,10 +105,12 @@ class UserController extends Controller
             'city' => ['required', 'string', 'max:255'],
             'zip' => ['required', 'string', 'max:255'],
             'country' => ['required', 'string', 'max:255'],
-            'password' => ['required', 'string', 'min:8', 'confirmed']
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'roles' => ['required']
         ]);
 
         $user = User::create($validated);
+        $user->assignRole($validated['roles']);
         
         if ($request->exit === 'true')
             return redirect()
@@ -122,7 +132,19 @@ class UserController extends Controller
      */
     public function show($guid)
     {
-        //
+        $user = User::query()->whereGuid($guid)->firstOrFail();
+        $countries = Countries::all()
+            ->map(function ($country) {
+                return [
+                    'code' => $country->cca2,
+                    'name' => $country->name->common
+                ];
+            })
+            ->values();
+        $pageTitle = __('global.users.show');
+        $roles = Role::all();
+
+        return view('portals.users.show', compact('pageTitle', 'user', 'roles', 'countries'));
     }
 
     /**
@@ -134,6 +156,7 @@ class UserController extends Controller
     public function edit($guid)
     {
         $user = User::query()->whereGuid($guid)->first();
+        $roles = Role::query()->orderBy('id', 'desc')->get();
         $countries = Countries::all()
             ->map(function ($country) {
                 return [
@@ -144,7 +167,7 @@ class UserController extends Controller
             ->values();
         $pageTitle = __('global.users.edit');
 
-        return view('portals.users.edit', compact('user', 'pageTitle', 'countries'));
+        return view('portals.users.edit', compact('user', 'pageTitle', 'countries', 'roles'));
     }
 
     /**
@@ -167,10 +190,12 @@ class UserController extends Controller
             'city' => ['required', 'string', 'max:255'],
             'zip' => ['required', 'string', 'max:255'],
             'country' => ['required', 'string', 'max:255'],
-            'password' => ['string', 'min:8', 'confirmed', 'nullable']
+            'password' => ['string', 'min:8', 'confirmed', 'nullable'],
+            'roles' => ['required']
         ]);
 
         $user->update($validated);
+        $user->syncRoles($validated['roles']);
 
         return redirect()
             ->route('portal.usermanage.users.index')

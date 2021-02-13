@@ -42,8 +42,9 @@
 											<th>{{ trans('global.users.city') }}</th>
 											<th>{{ trans('global.users.zip') }}</th>
 											<th>{{ trans('global.users.country') }}</th>
+											<th>{{ trans('global.roles.title') }}</th>
 											<th>{{ trans('global.createdAt') }}</th>
-											<th width="0px;">{{ trans('global.action') }}</th>
+											<th>{{ trans('global.action') }}</th>
 										</tr>
 									</thead>
 									<tfoot>
@@ -57,6 +58,7 @@
 											<th>{{ trans('global.users.city') }}</th>
 											<th>{{ trans('global.users.zip') }}</th>
 											<th>{{ trans('global.users.country') }}</th>
+											<th>{{ trans('global.roles.title') }}</th>
 											<th>{{ trans('global.createdAt') }}</th>
 											<th>{{ trans('global.action') }}</th>
 										</tr>
@@ -96,6 +98,7 @@
 			{'data': 'city'},
 			{'data': 'zip'},
 			{'data': 'country'},
+			{'data': 'roles'},
 			{'data': 'created_at'},
 			{'data': 'action'},
 		]
