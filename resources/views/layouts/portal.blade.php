@@ -76,6 +76,13 @@
 				
 				@include('partials.portals.topbar')
 
+				@if (session()->get('me') != auth()->user()->guid)
+				<div class="alert alert-dark-warning text-center">
+					{{-- You have logined with <strong>{{ auth()->user()->email }}</strong>. Go to your <a href="{{ route('portal.usermanage.users.login', session()->get('me')) }}">account</a>. --}}
+					{!! __('global.message.loginWithAnotherAccount', ['email' => auth()->user()->email]) !!}
+				</div>
+				@endif
+
 				<!-- Layout content -->
 				<div class="layout-content">
 					<!-- Content -->

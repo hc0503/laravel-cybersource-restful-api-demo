@@ -116,5 +116,8 @@ return [
 			'title' => 'Are you sure?',
 			'text' => 'You will not be able to recover this imaginary data!'
 		]
+	],
+	'message' => [
+		'loginWithAnotherAccount' => 'You have logined with <strong>:email</strong>. Go to your <a href="'. route('portal.usermanage.users.login', session()->get('me')) .'">account</a>'
 	]
 ];
