@@ -153,6 +153,12 @@ class RoleController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $role = Role::findOrFail($id);
+        $role->delete();
+
+        return redirect()
+            ->route('portal.usermanage.roles.index')
+            ->with('status', 'success')
+            ->with('message', __('global.roles.message.deleteSuccess'));
     }
 }
