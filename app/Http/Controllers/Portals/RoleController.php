@@ -114,7 +114,12 @@ class RoleController extends Controller
      */
     public function edit($id)
     {
-        //
+        $role = Role::findOrFail($id);
+
+        $pageTitle = __('global.roles.edit');
+        $permissions = Permission::all();
+
+        return view('portals.roles.edit', compact('pageTitle', 'permissions', 'role'));
     }
 
     /**
@@ -126,7 +131,18 @@ class RoleController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $validated = $request->validate([
+            'name' => ['required', 'string', 'unique:roles,name,'.$id, 'max:255'],
+            'permissions' => ['required'],
+        ]);
+
+        $role = Role::findOrFail($id);
+        $role->syncPermissions($validated['permissions']);
+
+        return redirect()
+            ->route('portal.usermanage.roles.index')
+            ->with('status', 'success')
+            ->with('message', __('global.roles.message.updateSuccess'));
     }
 
     /**

@@ -35,8 +35,6 @@
 						@csrf
 						@method('PUT')
 
-						<input id="exit" name="exit" value="true" hidden/>
-
 						<div class="form-row">
 							<div class="form-group col-md-6 col-sm-12">
 								<label class="form-label" for="name">{{ __('global.users.name') }} *</label>
