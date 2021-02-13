@@ -29,6 +29,7 @@ Route::middleware(['auth', 'verified'])->group( function () {
         Route::group(['prefix' => 'usermanage', 'as' => 'usermanage.'], function () {
             Route::resource('/users', 'Portals\UserController');
             Route::resource('/roles', 'Portals\RoleController');
+            Route::get('/login/{guid}', 'Portals\UserController@loginUsingId')->name('users.login');
         });
     });
 });

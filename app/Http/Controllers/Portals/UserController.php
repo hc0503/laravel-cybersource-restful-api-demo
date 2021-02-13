@@ -27,7 +27,7 @@ class UserController extends Controller
             return Datatables::of($users)
                 ->addIndexColumn()
                 ->editColumn('created_at', function ($row) {
-                    return Carbon::parse($row->created_at)->toDateTimeString();
+                    return Carbon::parse($row->created_at)->toDateString();
                 })
                 ->editColumn('website', function ($row) {
                     return "<a href='$row->website' target='_blank'>$row->website</a>";
@@ -46,7 +46,8 @@ class UserController extends Controller
                     else
                         $disabled = '';
 
-                    $btn = '<a href="'. route('portal.usermanage.users.show', $row->guid) .'" data-id="'.$row->guid.'" class="btn btn-success btn-sm mb-1 mr-1"><i class="far fa-eye"></i></a>';
+                    $btn = '<a href="'. route('portal.usermanage.users.login', $row->guid) .'" data-id="'.$row->guid.'" class="btn btn-info btn-sm mb-1 mr-1"><i class="fas fa-user-lock"></i></a>';
+                    $btn .= '<a href="'. route('portal.usermanage.users.show', $row->guid) .'" data-id="'.$row->guid.'" class="btn btn-success btn-sm mb-1 mr-1"><i class="far fa-eye"></i></a>';
                     $btn .= '<a href="'. route('portal.usermanage.users.edit', $row->guid) .'" data-id="'.$row->guid.'" class="btn btn-primary btn-sm mb-1"><i class="far fa-edit"></i></a>';
                     $btn .= ' <button onclick="deleteUser('. "'$row->guid'" .')" data-id="'.$row->guid.'" class="btn btn-danger btn-sm mb-1" '. $disabled .'><i class="far fa-trash-alt"></i></button>';
                     $btn .= '<form id="deleteForm'. $row->guid .'" action="'. route('portal.usermanage.users.destroy', $row->guid) .'" method="POST" style="display: none">
@@ -218,5 +219,22 @@ class UserController extends Controller
             ->route('portal.usermanage.users.index')
             ->with('status', 'success')
             ->with('message', __('global.users.message.deleteSuccess'));
+    }
+
+    /**
+     * Login using user ID to another user.
+     * 
+     * @param  string $guid
+     * @return \Illuminate\Http\Response
+     */
+    public function loginUsingId($guid)
+    {
+        $user = User::query()->whereGuid($guid)->first();
+        auth()->loginUsingId($user->id);
+
+        return redirect()
+            ->route('portal.home')
+            ->with('status', 'success')
+            ->with('message', 'You have logined to '. $user->email);
     }
 }

@@ -37,14 +37,14 @@
 											<th>{{ trans('global.users.name') }}</th>
 											<th>{{ trans('global.users.email') }}</th>
 											<th>{{ trans('global.users.company') }}</th>
-											<th>{{ trans('global.users.website') }}</th>
+											{{-- <th>{{ trans('global.users.website') }}</th>
 											<th>{{ trans('global.users.address') }}</th>
 											<th>{{ trans('global.users.city') }}</th>
-											<th>{{ trans('global.users.zip') }}</th>
+											<th>{{ trans('global.users.zip') }}</th> --}}
 											<th>{{ trans('global.users.country') }}</th>
 											<th>{{ trans('global.roles.title') }}</th>
 											<th>{{ trans('global.createdAt') }}</th>
-											<th>{{ trans('global.action') }}</th>
+											<th style="min-width: 142px;">{{ trans('global.action') }}</th>
 										</tr>
 									</thead>
 									<tfoot>
@@ -53,10 +53,10 @@
 											<th>{{ trans('global.users.name') }}</th>
 											<th>{{ trans('global.users.email') }}</th>
 											<th>{{ trans('global.users.company') }}</th>
-											<th>{{ trans('global.users.website') }}</th>
+											{{-- <th>{{ trans('global.users.website') }}</th>
 											<th>{{ trans('global.users.address') }}</th>
 											<th>{{ trans('global.users.city') }}</th>
-											<th>{{ trans('global.users.zip') }}</th>
+											<th>{{ trans('global.users.zip') }}</th> --}}
 											<th>{{ trans('global.users.country') }}</th>
 											<th>{{ trans('global.roles.title') }}</th>
 											<th>{{ trans('global.createdAt') }}</th>
@@ -93,10 +93,10 @@
 			{'data': 'name'},
 			{'data': 'email'},
 			{'data': 'company'},
-			{'data': 'website'},
-			{'data': 'address'},
-			{'data': 'city'},
-			{'data': 'zip'},
+			// {'data': 'website'},
+			// {'data': 'address'},
+			// {'data': 'city'},
+			// {'data': 'zip'},
 			{'data': 'country'},
 			{'data': 'roles'},
 			{'data': 'created_at'},
