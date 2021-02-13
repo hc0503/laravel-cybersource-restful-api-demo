@@ -92,7 +92,7 @@
             sells back issues for many publishers and offers mailing services and
             bulk deliveries.</p>
 
-          <h5 class="font-weight-bold mt-5 mb-4">TOUCH <span class="text-primary">WITH US</span></h5>
+          <h5 class="font-weight-bold mt-5 mb-4">GET IN TOUCH <span class="text-primary">WITH US</span></h5>
           <p><i class="ion ion-ios-mail ui-w-40 text-center text-lightest text-big align-middle"></i><a href="mailto:#" class="align-middle">bill@magazineheaven.com</a></p>
           <p><i class="ion ion-ios-call ui-w-40 text-center text-lightest text-big align-middle"></i><span class="align-middle">+44 (0) 7712 862 582</span></p>
           <div>
