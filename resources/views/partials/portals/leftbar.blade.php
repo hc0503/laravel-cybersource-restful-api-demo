@@ -13,31 +13,39 @@
 	<!-- Links -->
 	<ul class="sidenav-inner py-1">
 		<!-- Pages -->
+		@canany(['viewpermission', 'viewrole', 'viewuser'])
 		<li class="sidenav-item {{ request()->is('portal/usermanage/*') ? 'active open' : '' }}">
 			<a href="javascript:void(0)" class="sidenav-link sidenav-toggle">
 				<i class="sidenav-icon lnr lnr-users"></i>
 				<div>{{ __('global.userManagement') }}</div>
 			</a>
 			<ul class="sidenav-menu">
+				@can('viewpermission')
 				<li class="sidenav-item {{ request()->is('portal/usermanage/permissions') ? 'active' : '' }}">
 					<a href="{{ route('portal.usermanage.permissions.index') }}" class="sidenav-link">
 						<div>{{ __('global.permissions.title') }}</div>
 					</a>
 				</li>
+				@endcan
 
+				@can('viewrole')
 				<li class="sidenav-item {{ request()->is('portal/usermanage/roles') ? 'active' : '' }}">
 					<a href="{{ route('portal.usermanage.roles.index') }}" class="sidenav-link">
 						<div>{{ __('global.roles.title') }}</div>
 					</a>
 				</li>
+				@endcan
 
+				@can('viewuser')
 				<li class="sidenav-item {{ request()->is('portal/usermanage/users') ? 'active' : '' }}">
 					<a href="{{ route('portal.usermanage.users.index') }}" class="sidenav-link">
 						<div>{{ __('global.users.title') }}</div>
 					</a>
 				</li>
+				@endcan
 			</ul>
 		</li>
+		@endcanany
 	</ul>
 </div>
 <!-- / Layout sidenav -->
