@@ -38,5 +38,7 @@ Route::middleware(['auth', 'verified'])->group( function () {
             Route::resource('/roles', 'Portals\RoleController');
             Route::resource('/permissions', 'Portals\PermissionController');
         });
+
+        Route::resource('/genres', 'Portals\GenreController');
     });
 });

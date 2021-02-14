@@ -23,6 +23,7 @@ class UserController extends Controller
     /**
      * Display a listing of the resource.
      *
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request)
@@ -32,7 +33,7 @@ class UserController extends Controller
         if ($request->ajax()) {
             $users = User::all();
 
-            return Datatables::of($users)
+            return DataTables::of($users)
                 ->addIndexColumn()
                 ->editColumn('created_at', function ($row) {
                     return Carbon::parse($row->created_at)->toDateString();

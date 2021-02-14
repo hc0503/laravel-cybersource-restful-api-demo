@@ -22,6 +22,7 @@ class RoleController extends Controller
     /**
      * Display a listing of the resource.
      *
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request)
@@ -31,7 +32,7 @@ class RoleController extends Controller
         if ($request->ajax()) {
             $roles = Role::all();
 
-            return Datatables::of($roles)
+            return DataTables::of($roles)
                 ->addIndexColumn()
                 ->editColumn('created_at', function ($row) {
                     return Carbon::parse($row->created_at)->toDateString();

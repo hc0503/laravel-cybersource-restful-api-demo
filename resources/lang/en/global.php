@@ -86,6 +86,13 @@ return [
 			'updateSuccess' => 'The profile is updated successfully.'
 		]
 	],
+	'genres' => [
+		'title' => 'Genres',
+		'list' => 'Genre List',
+		'create' => 'Create Genre',
+		'edit' => 'Edit Genre',
+		'name' => 'Name'
+	],
 	'home' => [
 		'title' => 'Home',
 	],

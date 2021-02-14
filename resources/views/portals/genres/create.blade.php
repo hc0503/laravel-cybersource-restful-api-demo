@@ -10,9 +10,6 @@
 			<li class="breadcrumb-item">
 				<a href="{{ route('portal.home') }}">{{ __('global.home.title') }}</a>
 			</li>
-			<li class="breadcrumb-item">
-				<a href="{{ route('portal.usermanage.permissions.index') }}">{{ __('global.permissions.title') }}</a>
-			</li>
 			<li class="breadcrumb-item active">{{ $pageTitle }}</li>
 			</ol>
 		</div>
@@ -30,13 +27,13 @@
 			<div class="card">
 				<div class="card-body">
                 <!-- Form -->
-                <form id="form" method="POST" action="{{ route('portal.usermanage.permissions.store') }}">
+                <form id="form" method="POST" action="{{ route('portal.genres.store') }}">
 						
 						@csrf
 
 						<input id="exit" name="exit" value="true" hidden/>
 						<div class="form-group">
-							<label class="form-label" for="name">{{ __('global.permissions.name') }} *</label>
+							<label class="form-label" for="name">{{ __('global.genres.name') }} *</label>
 							<input id="name" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" autofocus>
 							@error('name')
 								<span class="invalid-feedback" role="alert">

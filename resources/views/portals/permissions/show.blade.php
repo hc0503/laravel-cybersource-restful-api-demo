@@ -33,19 +33,3 @@
 	</div>
 </div>
 @endsection
-
-@push('css')
-<link rel="stylesheet" href="{{ asset('assets/vendor/libs/select2/select2.css') }}">
-@endpush
-
-@push('js')
-<script src="{{ asset('assets/vendor/libs/select2/select2.js') }}"></script>
-<script>
-	$('#permissions')
-		.wrap('<div class="position-relative"></div>')
-		.select2({
-			placeholder: 'Select value',
-			dropdownParent: $('#permissions').parent()
-		});
-</script>
-@endpush

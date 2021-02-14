@@ -30,14 +30,14 @@
 			<div class="card">
 				<div class="card-body">
                 <!-- Form -->
-                <form id="form" method="POST" action="{{ route('portal.usermanage.permissions.store') }}">
+                <form id="form" method="POST" action="{{ route('portal.usermanage.permissions.update', $permission->id) }}">
 						
 						@csrf
+						@method('PUT')
 
-						<input id="exit" name="exit" value="true" hidden/>
 						<div class="form-group">
 							<label class="form-label" for="name">{{ __('global.permissions.name') }} *</label>
-							<input id="name" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" autofocus>
+							<input id="name" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ $permission->name }}" autofocus>
 							@error('name')
 								<span class="invalid-feedback" role="alert">
 									<strong>{{ $message }}</strong>
@@ -46,8 +46,7 @@
 						</div>
 
 						<div class="d-flex justify-content-between align-items-center m-0">
-							<button type="submit" class="btn btn-info" onclick="saveAnother();">{{ __('global.users.saveAndAnother') }}</button>
-							<button type="submit" class="btn btn-secondary" onclick="saveExit();">{{ __('global.users.saveAndExit') }}</button>
+							<button type="submit" class="btn btn-secondary">{{ __('global.users.saveAndExit') }}</button>
 						</div>
 				  </form>
 				  <!-- / Form -->
@@ -58,18 +57,18 @@
 </div>
 @endsection
 
-@push('js')
-<script>
-	function saveAnother() {
-		event.preventDefault();
-		$('#exit').val(false);
-		$('#form').submit();
-	}
+@push('css')
+<link rel="stylesheet" href="{{ asset('assets/vendor/libs/select2/select2.css') }}">
+@endpush
 
-	function saveExit() {
-		event.preventDefault();
-		$('#exit').val(true);
-		$('#form').submit();
-	}
+@push('js')
+<script src="{{ asset('assets/vendor/libs/select2/select2.js') }}"></script>
+<script>
+	$('#permissions')
+		.wrap('<div class="position-relative"></div>')
+		.select2({
+			placeholder: 'Select value',
+			dropdownParent: $('#permissions').parent()
+		});
 </script>
 @endpush

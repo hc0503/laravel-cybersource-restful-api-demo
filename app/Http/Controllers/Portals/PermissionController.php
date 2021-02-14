@@ -21,6 +21,7 @@ class PermissionController extends Controller
     /**
      * Display a listing of the resource.
      *
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request)
@@ -30,7 +31,7 @@ class PermissionController extends Controller
         if ($request->ajax()) {
             $permissions = Permission::all();
 
-            return Datatables::of($permissions)
+            return DataTables::of($permissions)
                 ->addIndexColumn()
                 ->editColumn('created_at', function ($row) {
                     return Carbon::parse($row->created_at)->toDateString();
