@@ -10,6 +10,9 @@
 			<li class="breadcrumb-item">
 				<a href="{{ route('portal.home') }}">{{ __('global.home.title') }}</a>
 			</li>
+			<li class="breadcrumb-item">
+				<a href="{{ route('portal.genres.index') }}">{{ __('global.genres.title') }}</a>
+			</li>
 			<li class="breadcrumb-item active">{{ $pageTitle }}</li>
 			</ol>
 		</div>

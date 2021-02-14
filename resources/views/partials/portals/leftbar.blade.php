@@ -46,6 +46,22 @@
 			</ul>
 		</li>
 		@endcanany
+
+		@can('viewgenre')
+		<li class="sidenav-item {{ request()->is('portal/genres') ? 'active' : '' }}">
+			<a href="{{ route('portal.genres.index') }}" class="sidenav-link">
+				<i class="sidenav-icon lnr lnr-star"></i>
+				<div>{{ __('global.genres.title') }}</div>
+			</a>
+		</li>
+		@endcan
+
+		<li class="sidenav-item {{ request()->is('portal/magazines') ? 'active' : '' }}">
+			<a href="{{ route('portal.magazines.index') }}" class="sidenav-link">
+				<i class="sidenav-icon lnr lnr-star"></i>
+				<div>{{ __('global.magazines.title') }}</div>
+			</a>
+		</li>
 	</ul>
 </div>
 <!-- / Layout sidenav -->

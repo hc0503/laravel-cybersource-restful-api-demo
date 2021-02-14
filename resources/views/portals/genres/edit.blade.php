@@ -11,7 +11,7 @@
 				<a href="{{ route('portal.home') }}">{{ __('global.home.title') }}</a>
 			</li>
 			<li class="breadcrumb-item">
-				<a href="{{ route('portal.usermanage.permissions.index') }}">{{ __('global.permissions.title') }}</a>
+				<a href="{{ route('portal.genres.index') }}">{{ __('global.genres.title') }}</a>
 			</li>
 			<li class="breadcrumb-item active">{{ $pageTitle }}</li>
 			</ol>
@@ -30,14 +30,14 @@
 			<div class="card">
 				<div class="card-body">
                 <!-- Form -->
-                <form id="form" method="POST" action="{{ route('portal.usermanage.permissions.update', $permission->id) }}">
+                <form id="form" method="POST" action="{{ route('portal.genres.update', $genre->guid) }}">
 						
 						@csrf
 						@method('PUT')
 
 						<div class="form-group">
-							<label class="form-label" for="name">{{ __('global.permissions.name') }} *</label>
-							<input id="name" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ $permission->name }}" autofocus>
+							<label class="form-label" for="name">{{ __('global.genres.name') }} *</label>
+							<input id="name" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ $genre->name }}" autofocus>
 							@error('name')
 								<span class="invalid-feedback" role="alert">
 									<strong>{{ $message }}</strong>
@@ -56,19 +56,3 @@
 	</div>
 </div>
 @endsection
-
-@push('css')
-<link rel="stylesheet" href="{{ asset('assets/vendor/libs/select2/select2.css') }}">
-@endpush
-
-@push('js')
-<script src="{{ asset('assets/vendor/libs/select2/select2.js') }}"></script>
-<script>
-	$('#permissions')
-		.wrap('<div class="position-relative"></div>')
-		.select2({
-			placeholder: 'Select value',
-			dropdownParent: $('#permissions').parent()
-		});
-</script>
-@endpush

@@ -91,7 +91,13 @@ return [
 		'list' => 'Genre List',
 		'create' => 'Create Genre',
 		'edit' => 'Edit Genre',
-		'name' => 'Name'
+		'show' => 'Show Genre',
+		'name' => 'Name',
+		'message' => [
+			'saveSuccess' => 'The genre is stored successfully.',
+			'updateSuccess' => 'The genre is updated successfully.',
+			'deleteSuccess' => 'The genre is deleted successfully.',
+		]
 	],
 	'home' => [
 		'title' => 'Home',
