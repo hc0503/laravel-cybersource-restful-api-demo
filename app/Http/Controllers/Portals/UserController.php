@@ -12,6 +12,14 @@ use PragmaRX\Countries\Package\Countries;
 
 class UserController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('permission:createuser', ['only' => ['create']]);
+        $this->middleware('permission:edituser',   ['only' => ['edit']]);
+        $this->middleware('permission:deleteuser',   ['only' => ['destroy']]);
+        $this->middleware('permission:viewuser',   ['only' => ['show', 'index']]);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -156,7 +164,7 @@ class UserController extends Controller
      */
     public function edit($guid)
     {
-        $user = User::query()->whereGuid($guid)->first();
+        $user = User::query()->whereGuid($guid)->firstOrFail();
         $roles = Role::query()->orderBy('id', 'desc')->get();
         $countries = Countries::all()
             ->map(function ($country) {
@@ -180,7 +188,7 @@ class UserController extends Controller
      */
     public function update(Request $request, $guid)
     {
-        $user = User::query()->whereGuid($guid)->first();
+        $user = User::query()->whereGuid($guid)->firstOrFail();
 
         $validated = $request->validate([
             'name' => ['required', 'string', 'max:255'],
@@ -212,7 +220,7 @@ class UserController extends Controller
      */
     public function destroy($guid)
     {
-        $user = User::query()->whereGuid($guid)->first();
+        $user = User::query()->whereGuid($guid)->firstOrFail();
         $user->delete();
 
         return redirect()
@@ -229,7 +237,11 @@ class UserController extends Controller
      */
     public function loginUsingId($guid)
     {
-        $user = User::query()->whereGuid($guid)->first();
+        $me = User::query()->whereGuid(session()->get('me'))->firstOrFail();
+        $user = User::query()->whereGuid($guid)->firstOrFail();
+        if (!$me->hasPermissionTo('managelogin') || !$me->hasRole('SuperAdmin'))
+            abort(403);
+
         auth()->loginUsingId($user->id);
 
         return redirect()

@@ -118,6 +118,6 @@ return [
 		]
 	],
 	'message' => [
-		'loginWithAnotherAccount' => 'You have logined with <strong>:email</strong>. Go to your <a href="'. route('portal.usermanage.users.login', session()->get('me')) .'">account</a>'
+		'loginWithAnotherAccount' => 'You have logined with <strong>:email</strong>. Go to your <a href="'. route('portal.usermanage.users.login', session()->get('me') ?? '') .'">account</a>'
 	]
 ];

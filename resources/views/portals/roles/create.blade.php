@@ -59,6 +59,77 @@
 								</span>
 							@enderror
 						</div>
+						{{-- <div class="row">
+							<div class="form-group col-md-3 col-sm-12">
+								<label class="form-label">Permissions</label>
+								<div class="custom-controls-stacked">
+									<label class="custom-control custom-checkbox">
+										<input type="checkbox" class="custom-control-input" name="createpermission">
+										<span class="custom-control-label">createpermission</span>
+									</label>
+									<label class="custom-control custom-checkbox">
+										<input type="checkbox" class="custom-control-input" name="editpermission">
+										<span class="custom-control-label">editpermission</span>
+									</label>
+									<label class="custom-control custom-checkbox">
+										<input type="checkbox" class="custom-control-input" name="deletepermission">
+										<span class="custom-control-label">deletepermission</span>
+									</label>
+									<label class="custom-control custom-checkbox">
+										<input type="checkbox" class="custom-control-input" name="viewuser">
+										<span class="custom-control-label">viewuser</span>
+									</label>
+								</div>
+							</div>
+	
+							<div class="form-group col-md-3 col-sm-12">
+								<label class="form-label">Roles</label>
+								<div class="custom-controls-stacked">
+									<label class="custom-control custom-checkbox">
+										<input type="checkbox" class="custom-control-input" name="createrole">
+										<span class="custom-control-label">createrole</span>
+									</label>
+									<label class="custom-control custom-checkbox">
+										<input type="checkbox" class="custom-control-input" name="editrole">
+										<span class="custom-control-label">editrole</span>
+									</label>
+									<label class="custom-control custom-checkbox">
+										<input type="checkbox" class="custom-control-input" name="deleterole">
+										<span class="custom-control-label">deleterole</span>
+									</label>
+									<label class="custom-control custom-checkbox">
+										<input type="checkbox" class="custom-control-input" name="viewrole">
+										<span class="custom-control-label">viewrole</span>
+									</label>
+								</div>
+							</div>
+	
+							<div class="form-group col-md-3 col-sm-12">
+								<label class="form-label">Users</label>
+								<div class="custom-controls-stacked">
+									<label class="custom-control custom-checkbox">
+										<input type="checkbox" class="custom-control-input" name="createuser">
+										<span class="custom-control-label">createuser</span>
+									</label>
+									<label class="custom-control custom-checkbox">
+										<input type="checkbox" class="custom-control-input" name="edituser">
+										<span class="custom-control-label">edituser</span>
+									</label>
+									<label class="custom-control custom-checkbox">
+										<input type="checkbox" class="custom-control-input" name="deleteuser">
+										<span class="custom-control-label">deleteuser</span>
+									</label>
+									<label class="custom-control custom-checkbox">
+										<input type="checkbox" class="custom-control-input" name="viewuser">
+										<span class="custom-control-label">viewuser</span>
+									</label>
+									<label class="custom-control custom-checkbox">
+										<input type="checkbox" class="custom-control-input" name="managelogin">
+										<span class="custom-control-label">managelogin</span>
+									</label>
+								</div>
+							</div>
+						</div> --}}
 
 						<div class="d-flex justify-content-between align-items-center m-0">
 							<button type="submit" class="btn btn-info" onclick="saveAnother();">{{ __('global.users.saveAndAnother') }}</button>
