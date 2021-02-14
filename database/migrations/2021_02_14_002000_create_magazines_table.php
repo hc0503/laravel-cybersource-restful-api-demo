@@ -16,11 +16,15 @@ class CreateMagazinesTable extends Migration
         Schema::create('magazines', function (Blueprint $table) {
             $table->id();
             $table->char('guid', 36)->unique()->nullable();
-            $table->string('title');
-            $table->text('description');
             $table->foreignId('genre_id')
                 ->constrained()
                 ->onDelete('cascade');
+            $table->foreignId('frequency_id')
+                ->constrained()
+                ->onDelete('cascade');
+            $table->string('title');
+            $table->text('description');
+            $table->string('cover_image');
             $table->timestamps();
         });
     }

@@ -80,7 +80,7 @@
 		]
 	});
 
-	function deleteUser(userId) {
+	function deleteData(dataId) {
 		Swal.fire({
 			title: "{{ __('global.swal.delete.title') }}", 
 			text: "{{ __('global.swal.delete.text') }}",
@@ -92,7 +92,7 @@
 			}
 		}).then(function (result) {
 			if (result.value) {
-				$('#deleteForm'+userId).submit();
+				$('#deleteForm'+dataId).submit();
 			}
 		})
     }
