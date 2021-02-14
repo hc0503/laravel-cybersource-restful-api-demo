@@ -35,14 +35,16 @@ return [
 		'create' => 'Create User',
 		'edit' => 'Edit User',
 		'show' => 'Show User',
-		'name' => 'Contact Name',
-		'email' => 'Email',
-		'company' => 'Company',
-		'website' => 'Website',
-		'address' => 'Address',
-		'city' => 'Town / City',
-		'zip' => 'ZIP / Postal Code',
-		'country' => 'Country',
+		'field' => [
+			'name' => 'Contact Name',
+			'email' => 'Email',
+			'company' => 'Company',
+			'website' => 'Website',
+			'address' => 'Address',
+			'city' => 'Town / City',
+			'zip' => 'ZIP / Postal Code',
+			'country' => 'Country'
+		],
 		'saveAndAnother' => 'Save & Another',
 		'saveAndExit' => 'Save & Exit',
 		'message' => [
@@ -97,6 +99,19 @@ return [
 			'saveSuccess' => 'The genre is stored successfully.',
 			'updateSuccess' => 'The genre is updated successfully.',
 			'deleteSuccess' => 'The genre is deleted successfully.',
+		]
+	],
+	'magazines' => [
+		'title' => 'Magazines',
+		'list' => 'Magazine List',
+		'create' => 'Create Magazine',
+		'edit' => 'Edit Magazine',
+		'show' => 'Show Magazine',
+		'field' => [
+			'title' => 'Magazine Title',
+			'description' => 'Magazine Description',
+			'coverImage' => 'Cover Image'
+
 		]
 	],
 	'home' => [

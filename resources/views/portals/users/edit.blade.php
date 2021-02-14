@@ -37,7 +37,7 @@
 
 						<div class="form-row">
 							<div class="form-group col-md-6 col-sm-12">
-								<label class="form-label" for="name">{{ __('global.users.name') }} *</label>
+								<label class="form-label" for="name">{{ __('global.users.field.name') }} *</label>
 								<input id="name" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ $user->name }}" autofocus>
 								@error('name')
 									<span class="invalid-feedback" role="alert">
@@ -47,7 +47,7 @@
 							</div>
 	
 							<div class="form-group col-md-6 col-sm-12">
-								<label class="form-label" for="email">{{ __('global.users.email') }} *</label>
+								<label class="form-label" for="email">{{ __('global.users.field.email') }} *</label>
 								<input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ $user->email }}" autocomplete="off">
 								@error('email')
 									<span class="invalid-feedback" role="alert">
@@ -59,7 +59,7 @@
 
 						<div class="form-row">
 							<div class="form-group col-md-6 col-sm-12">
-								<label class="form-label" for="company">{{ __('global.users.company') }}</label>
+								<label class="form-label" for="company">{{ __('global.users.field.company') }}</label>
 								<input id="company" class="form-control @error('company') is-invalid @enderror" name="company" value="{{ $user->company }}">
 								@error('company')
 									<span class="invalid-feedback" role="alert">
@@ -69,7 +69,7 @@
 							</div>
 	
 							<div class="form-group col-md-6 col-sm-12">
-								<label class="form-label" for="website">{{ __('global.users.website') }}</label>
+								<label class="form-label" for="website">{{ __('global.users.field.website') }}</label>
 								<input id="website" class="form-control @error('website') is-invalid @enderror" name="website" value="{{ $user->website }}">
 								@error('website')
 									<span class="invalid-feedback" role="alert">
@@ -81,7 +81,7 @@
 
 						<div class="form-row">
 							<div class="form-group col-md-6 col-sm-12">
-								<label class="form-label" for="address">{{ __('global.users.address') }} *</label>
+								<label class="form-label" for="address">{{ __('global.users.field.address') }} *</label>
 								<input id="address" class="form-control @error('address') is-invalid @enderror" name="address" value="{{ $user->address }}">
 								@error('address')
 									<span class="invalid-feedback" role="alert">
@@ -91,7 +91,7 @@
 							</div>
 	
 							<div class="form-group col-md-6 col-sm-12">
-								<label class="form-label" for="city">{{ __('global.users.city') }} *</label>
+								<label class="form-label" for="city">{{ __('global.users.field.city') }} *</label>
 								<input id="city" class="form-control @error('city') is-invalid @enderror" name="city" value="{{ $user->city }}">
 								@error('city')
 									<span class="invalid-feedback" role="alert">
@@ -103,7 +103,7 @@
 
 						<div class="form-row">
 							<div class="form-group col-md-6 col-sm-12">
-								<label class="form-label" for="zip">{{ __('global.users.zip') }} *</label>
+								<label class="form-label" for="zip">{{ __('global.users.field.zip') }} *</label>
 								<input id="zip" class="form-control @error('zip') is-invalid @enderror" name="zip" value="{{ $user->zip }}">
 								@error('zip')
 									<span class="invalid-feedback" role="alert">
@@ -113,7 +113,7 @@
 							</div>
 	
 							<div class="form-group col-md-6 col-sm-12 @error('country') is-invalid @enderror">
-								<label class="form-label" for="country">{{ __('global.users.country') }} *</label>
+								<label class="form-label" for="country">{{ __('global.users.field.country') }} *</label>
 								<select id="country" name="country" class="form-control" style="width: 100%">
 									<option></option>
 									@foreach ($countries as $country)

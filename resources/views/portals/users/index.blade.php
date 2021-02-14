@@ -34,14 +34,14 @@
 									<thead>
 										<tr>
 											<th>#</th>
-											<th>{{ trans('global.users.name') }}</th>
-											<th>{{ trans('global.users.email') }}</th>
-											<th>{{ trans('global.users.company') }}</th>
-											{{-- <th>{{ trans('global.users.website') }}</th>
-											<th>{{ trans('global.users.address') }}</th>
-											<th>{{ trans('global.users.city') }}</th>
-											<th>{{ trans('global.users.zip') }}</th> --}}
-											<th>{{ trans('global.users.country') }}</th>
+											<th>{{ trans('global.users.field.name') }}</th>
+											<th>{{ trans('global.users.field.email') }}</th>
+											<th>{{ trans('global.users.field.company') }}</th>
+											{{-- <th>{{ trans('global.users.field.website') }}</th>
+											<th>{{ trans('global.users.field.address') }}</th>
+											<th>{{ trans('global.users.field.city') }}</th>
+											<th>{{ trans('global.users.field.zip') }}</th> --}}
+											<th>{{ trans('global.users.field.country') }}</th>
 											<th>{{ trans('global.roles.title') }}</th>
 											<th>{{ trans('global.createdAt') }}</th>
 											<th style="min-width: 142px;">{{ trans('global.action') }}</th>
@@ -50,14 +50,14 @@
 									<tfoot>
 										<tr>
 											<th>#</th>
-											<th>{{ trans('global.users.name') }}</th>
-											<th>{{ trans('global.users.email') }}</th>
-											<th>{{ trans('global.users.company') }}</th>
-											{{-- <th>{{ trans('global.users.website') }}</th>
-											<th>{{ trans('global.users.address') }}</th>
-											<th>{{ trans('global.users.city') }}</th>
-											<th>{{ trans('global.users.zip') }}</th> --}}
-											<th>{{ trans('global.users.country') }}</th>
+											<th>{{ trans('global.users.field.name') }}</th>
+											<th>{{ trans('global.users.field.email') }}</th>
+											<th>{{ trans('global.users.field.company') }}</th>
+											{{-- <th>{{ trans('global.users.field.website') }}</th>
+											<th>{{ trans('global.users.field.address') }}</th>
+											<th>{{ trans('global.users.field.city') }}</th>
+											<th>{{ trans('global.users.field.zip') }}</th> --}}
+											<th>{{ trans('global.users.field.country') }}</th>
 											<th>{{ trans('global.roles.title') }}</th>
 											<th>{{ trans('global.createdAt') }}</th>
 											<th>{{ trans('global.action') }}</th>
