@@ -24,7 +24,7 @@ class CreateMagazinesTable extends Migration
                 ->onDelete('cascade');
             $table->string('title');
             $table->text('description');
-            $table->string('cover_image');
+            $table->string('cover_image')->nullable();
             $table->timestamps();
         });
     }

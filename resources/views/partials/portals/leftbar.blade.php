@@ -58,6 +58,13 @@
 
 		<li class="sidenav-item {{ request()->is('portal/magazines') ? 'active' : '' }}">
 			<a href="{{ route('portal.magazines.index') }}" class="sidenav-link">
+				<i class="sidenav-icon lnr lnr-book"></i>
+				<div>{{ __('global.magazines.title') }}</div>
+			</a>
+		</li>
+
+		<li class="sidenav-item {{ request()->is('portal/emails') ? 'active' : '' }}">
+			<a href="{{ route('portal.magazines.index') }}" class="sidenav-link">
 				<i class="sidenav-icon lnr lnr-star"></i>
 				<div>{{ __('global.magazines.title') }}</div>
 			</a>

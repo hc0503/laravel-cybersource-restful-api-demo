@@ -14,6 +14,8 @@ class User extends Authenticatable
 {
     use Notifiable, HasGuidTrait, HasRoles;
 
+    protected $table = 'users';
+    
     /**
      * The attributes that are mass assignable.
      *

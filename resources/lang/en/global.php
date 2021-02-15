@@ -90,6 +90,7 @@ return [
 	],
 	'genres' => [
 		'title' => 'Genres',
+		'sTitle' => 'Genre',
 		'list' => 'Genre List',
 		'create' => 'Create Genre',
 		'edit' => 'Edit Genre',
@@ -100,6 +101,10 @@ return [
 			'updateSuccess' => 'The genre is updated successfully.',
 			'deleteSuccess' => 'The genre is deleted successfully.',
 		]
+	],
+	'frequencies' => [
+		'title' => 'Frequencies',
+		'sTitle' => 'Frequency'
 	],
 	'magazines' => [
 		'title' => 'Magazines',
@@ -112,6 +117,11 @@ return [
 			'description' => 'Magazine Description',
 			'coverImage' => 'Cover Image'
 
+		],
+		'message' => [
+			'saveSuccess' => 'The magazine is stored successfully.',
+			'updateSuccess' => 'The magazine is updated successfully.',
+			'deleteSuccess' => 'The magazine is deleted successfully.',
 		]
 	],
 	'home' => [
