@@ -25,6 +25,12 @@
 		<button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">×</span> </button>
 	</div>
 	@endif
+	@error('cover_image')
+	<div class="alert alert-danger }}">
+		<i class="ti-user"></i> {{ $message }}
+		<button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">×</span> </button>
+	</div>
+	@enderror
 	<div class="row">
 		<div class="col-12">
 			<div class="card">
@@ -35,27 +41,29 @@
 						@csrf
 						@method('PUT')
 
-						<div class="media align-items-center">
-							<img src="{{ asset('storage') . $magazine->cover_image }}" alt="{{ $magazine->title }}" class="d-block ui-w-100" id="previewImage">
-							<div class="media-body ml-4">
-								<label class="btn btn-outline-primary mt-1">
-									{{ __('global.magazines.upload') }}
-									<input type="file" class="account-settings-fileinput" name="cover_image" id="cover_image" onchange="previewPhoto();">
-									<input type="number" id="reset" name="reset" value="0" hidden>
-								</label> &nbsp;
-								<button type="button" class="btn btn-default md-btn-flat mt-1" onclick="resetPhoto();">{{ __('global.magazines.reset') }}</button>
-								<div class="text-light small mt-1">{{ __('global.magazines.allowDescription') }}</div>
+						<div class="row">
+							<div class="media align-items-center col-md-6 col-sm-12">
+								<img src="{{ asset('storage') . $magazine->cover_image }}" alt="{{ $magazine->title }}" class="d-block ui-w-100" id="previewImage">
+								<div class="media-body ml-4">
+									<label class="btn btn-outline-primary mt-1">
+										{{ __('global.magazines.upload') }}
+										<input type="file" class="account-settings-fileinput" name="cover_image" id="cover_image" onchange="previewPhoto();" accept=".jpg, .jpeg, .png">
+										<input type="number" id="reset" name="reset" value="0" hidden>
+									</label> &nbsp;
+									<button type="button" class="btn btn-default md-btn-flat mt-1" onclick="resetPhoto();">{{ __('global.magazines.reset') }}</button>
+									<div class="text-light small mt-1">{{ __('global.magazines.allowDescription') }}</div>
+								</div>
 							</div>
-						</div>
-						
-						<div class="form-group">
-							<label class="form-label" for="title">{{ __('global.magazines.field.title') }} *</label>
-							<input id="title" class="form-control @error('title') is-invalid @enderror" name="title" value="{{ $magazine->title }}" autofocus>
-							@error('title')
-								<span class="invalid-feedback" role="alert">
-									<strong>{{ $message }}</strong>
-								</span>
-							@enderror
+							
+							<div class="form-group col-md-6 col-sm-12">
+								<label class="form-label" for="title">{{ __('global.magazines.field.title') }} *</label>
+								<input id="title" class="form-control @error('title') is-invalid @enderror" name="title" value="{{ $magazine->title }}" autofocus>
+								@error('title')
+									<span class="invalid-feedback" role="alert">
+										<strong>{{ $message }}</strong>
+									</span>
+								@enderror
+							</div>
 						</div>
 						
 						<div class="form-group">

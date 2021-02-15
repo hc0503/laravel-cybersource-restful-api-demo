@@ -25,6 +25,12 @@
 		<button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">×</span> </button>
 	</div>
 	@endif
+	@error('cover_image')
+	<div class="alert alert-danger }}">
+		<i class="ti-user"></i> {{ $message }}
+		<button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">×</span> </button>
+	</div>
+	@enderror
 	<div class="row">
 		<div class="col-12">
 			<div class="card">
@@ -36,21 +42,25 @@
 
 						<input id="exit" name="exit" value="true" hidden/>
 
+
 						<div class="row">
+							<div class="media align-items-center col-md-6 col-sm-12">
+								<img src="" alt="" class="d-block ui-w-100" id="previewImage">
+								<div class="media-body ml-4">
+									<label class="btn btn-outline-primary mt-1">
+										{{ __('global.magazines.upload') }}
+										<input type="file" class="account-settings-fileinput" name="cover_image" id="cover_image" onchange="previewPhoto();">
+										<input type="number" id="reset" name="reset" value="0" hidden>
+									</label> &nbsp;
+									<button type="button" class="btn btn-default md-btn-flat mt-1" onclick="resetPhoto();">{{ __('global.magazines.reset') }}</button>
+									<div class="text-light small mt-1">{{ __('global.magazines.allowDescription') }}</div>
+								</div>
+							</div>
+
 							<div class="form-group col-md-6 col-sm-12">
 								<label class="form-label" for="title">{{ __('global.magazines.field.title') }} *</label>
 								<input id="title" class="form-control @error('title') is-invalid @enderror" name="title" value="{{ old('title') }}" autofocus>
 								@error('title')
-									<span class="invalid-feedback" role="alert">
-										<strong>{{ $message }}</strong>
-									</span>
-								@enderror
-							</div>
-
-							<div class="form-group col-md-6 col-sm-12">
-								<label class="form-label" for="title">{{ __('global.magazines.field.coverImage') }}</label>
-								<input id="cover_image" type="file" class="form-control @error('cover_image') is-invalid @enderror" name="cover_image" value="{{ old('cover_image') }}" accept=".jpg, .jpeg, .png" />
-								@error('cover_image')
 									<span class="invalid-feedback" role="alert">
 										<strong>{{ $message }}</strong>
 									</span>
@@ -115,11 +125,22 @@
 
 @push('css')
 <link rel="stylesheet" href="{{ asset('assets/vendor/libs/select2/select2.css') }}">
+<style>
+	.account-settings-fileinput{
+		position: absolute;
+		visibility: hidden;
+		width: 1px;
+		height: 1px;
+		opacity: 0
+	}
+</style>
 @endpush
 
 @push('js')
 <script src="{{ asset('assets/vendor/libs/select2/select2.js') }}"></script>
 <script>
+	var defaultPhoto = "";
+
 	$('#genre')
 		.wrap('<div class="position-relative"></div>')
 		.select2({
@@ -144,6 +165,21 @@
 		event.preventDefault();
 		$('#exit').val(true);
 		$('#form').submit();
+	}
+	
+	function previewPhoto() {
+      var file = $('#cover_image')[0].files[0];
+		if (file) {
+			$("#previewImage").attr("src", URL.createObjectURL(file));
+			$("#reset").val(0);
+		} else {
+			$("#previewImage").attr("src", defaultPhoto);
+		}
+	}
+
+	function resetPhoto() {
+      $("#previewImage").attr("src", defaultPhoto);
+      $("#reset").val(1);
 	}
 </script>
 @endpush

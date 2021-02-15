@@ -197,11 +197,21 @@ class MagazineController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int  $guid
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($guid)
     {
-        //
+        $magazine = Magazine::query()->whereGuid($guid)->firstOrFail();
+        $imagePath = public_path("/storage/$magazine->cover_image"); // get previous image from folder
+        if (File::exists($imagePath) && $magazine->cover_image != null) { // unlink or remove previous image from folder
+            unlink($imagePath);
+        }
+        $magazine->delete();
+
+        return redirect()
+            ->route('portal.magazines.index')
+            ->with('status', 'success')
+            ->with('message', __('global.magazines.message.deleteSuccess'));
     }
 }
