@@ -117,12 +117,17 @@ class MagazineController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int  $guid
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($guid)
     {
-        //
+        $magazine = Magazine::query()->whereGuid($guid)->firstOrFail();
+        $genres = Genre::all();
+        $frequencies = Frequency::all();
+        $pageTitle = __('global.magazines.show');
+
+        return view('portals.magazines.show', compact('pageTitle', 'magazine', 'frequencies', 'genres'));
     }
 
     /**

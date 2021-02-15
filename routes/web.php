@@ -40,6 +40,6 @@ Route::middleware(['auth', 'verified'])->group( function () {
         });
 
         Route::resource('genres', 'Portals\GenreController');
-        Route::resource('magazines', 'Portals\GenreController');
+        Route::resource('magazines', 'Portals\MagazineController');
     });
 });

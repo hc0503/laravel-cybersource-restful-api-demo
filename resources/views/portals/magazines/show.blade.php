@@ -11,7 +11,7 @@
 				<a href="{{ route('portal.home') }}">{{ __('global.home.title') }}</a>
 			</li>
 			<li class="breadcrumb-item">
-				<a href="{{ route('portal.usermanage.roles.index') }}">{{ __('global.roles.title') }}</a>
+				<a href="{{ route('portal.magazines.index') }}">{{ __('global.magazines.title') }}</a>
 			</li>
 			<li class="breadcrumb-item active">{{ $pageTitle }}</li>
 			</ol>
@@ -23,19 +23,45 @@
 		<div class="col-12">
 			<div class="card">
 				<div class="card-body">
+					<div class="row">
+						<div class="form-group col-md-6 col-sm-12 text-center">
+							<img src="{{ asset('storage') . $magazine->cover_image }}" alt="{{ $magazine->title }}" height="250">
+						</div>
+
+						<div class="col-md-6 col-sm-12">
+							<div class="form-group">
+								<label class="form-label" for="title">{{ __('global.magazines.field.title') }}</label>
+								<input id="title" class="form-control" name="title" value="{{ $magazine->title }}" disabled>
+							</div>
+						
+							<div class="form-group">
+								<label class="form-label" for="genre">{{ __('global.genres.title') }}</label>
+								<select id="genre" name="genre" class="form-control" style="width: 100%" disabled>
+									<option></option>
+									@foreach ($genres as $genre)
+									<option value="{{ $genre->id }}" {{ $magazine->genre->id == $genre->id ? 'selected' : '' }}>{{ $genre->name }}</option>
+									@endforeach
+								 </select>
+							</div>
+	
+							<div class="form-group">
+								<label class="form-label" for="frequency">{{ __('global.frequencies.title') }}</label>
+								<select id="frequency" name="frequency" class="form-control" style="width: 100%" disabled>
+									<option></option>
+									@foreach ($frequencies as $frequency)
+									<option value="{{ $frequency->id }}" {{ $magazine->frequency->id == $frequency->id ? 'selected' : '' }}>{{ $frequency->name }}</option>
+									@endforeach
+								 </select>
+							</div>
+						</div>
+					</div>
+					
 					<div class="form-group">
-						<label class="form-label" for="name">{{ __('global.roles.name') }}</label>
-						<input id="name" class="form-control" name="name" value="{{ $role->name }}" disabled>
+						<label class="form-label" for="description">{{ __('global.magazines.field.description') }}</label>
+						<textarea id="description" class="form-control" name="description" rows="5" disabled>{{ $magazine->description }}</textarea>
 					</div>
 
-					<div class="form-group">
-						<label class="form-label" for="permissions">{{ __('global.permissions.title') }}</label>
-						<select id="permissions" name="permissions[]" class="form-control" style="width: 100%" multiple disabled>
-							<option></option>
-							@foreach ($permissions as $permission)
-							<option value="{{ $permission->name }}" {{ in_array($permission->name, $role->permissions->pluck('name')->toArray()) ? 'selected' : '' }}>{{ $permission->name }}</option>
-							@endforeach
-						 </select>
+					<div class="row">
 					</div>
 				</div>
 			</div>
@@ -51,11 +77,18 @@
 @push('js')
 <script src="{{ asset('assets/vendor/libs/select2/select2.js') }}"></script>
 <script>
-	$('#permissions')
+	$('#genre')
 		.wrap('<div class="position-relative"></div>')
 		.select2({
 			placeholder: 'Select value',
-			dropdownParent: $('#permissions').parent()
+			dropdownParent: $('#genre').parent()
+		});
+
+	$('#frequency')
+		.wrap('<div class="position-relative"></div>')
+		.select2({
+			placeholder: 'Select value',
+			dropdownParent: $('#frequency').parent()
 		});
 </script>
 @endpush
