@@ -12,6 +12,7 @@ use App\Models\Frequency;
 use Illuminate\Support\Facades\Storage;
 use Image;
 use Illuminate\Support\Str;
+use File;
 
 class MagazineController extends Controller
 {
@@ -93,7 +94,7 @@ class MagazineController extends Controller
 
         $validated['genre_id'] = $validated['genre'];
         $validated['frequency_id'] = $validated['frequency'];
-        if ($request->file('cover_image')) {
+        if ($request->hasFile('cover_image')) {
             $resizeImage = Image::make($validated['cover_image']->getRealPath())->fit(400, 560);
             $imagePath = '/magazines/covers'. Str::random(50) .'.'. $validated['cover_image']->getClientOriginalExtension();
             $resizeImage->save(public_path('storage') . $imagePath);
@@ -133,24 +134,64 @@ class MagazineController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  int  $guid
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($guid)
     {
-        //
+        $pageTitle = __('global.magazines.edit');
+        $genres = Genre::all();
+        $frequencies = Frequency::all();
+        $magazine = Magazine::query()->whereGuid($guid)->firstOrFail();
+
+        return view('portals.magazines.edit', compact('pageTitle', 'genres', 'frequencies', 'magazine'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  int  $guid
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $guid)
     {
-        //
+        $validated = $request->validate([
+            'title' => ['required', 'string', 'max:255'],
+            'description' => ['required'],
+            'genre' => ['required', 'int'],
+            'frequency' => ['required', 'int'],
+            'cover_image' => ['mimes:jpeg,jpg,png', 'max:2048', 'image']
+        ]);
+
+        $magazine = Magazine::query()->whereGuid($guid)->firstOrFail();
+
+        if ($request->hasFile('cover_image')) {
+            $imagePath = public_path("/storage/$magazine->cover_image"); // get previous image from folder
+            if (File::exists($imagePath) && $magazine->cover_image != null) { // unlink or remove previous image from folder
+                unlink($imagePath);
+            }
+
+            $resizeImage = Image::make($validated['cover_image']->getRealPath())->fit(400, 560);
+            $imagePath = '/magazines/covers'. Str::random(50) .'.'. $validated['cover_image']->getClientOriginalExtension();
+            $resizeImage->save(public_path('storage') . $imagePath);
+            $validated['cover_image'] = $imagePath;
+        } else {
+            if ($request->reset == '1') {
+                $imagePath = public_path("/storage/$magazine->cover_image"); // get previous image from folder
+                if (File::exists($imagePath) && $magazine->cover_image != null) { // unlink or remove previous image from folder
+                    unlink($imagePath);
+                }
+
+                $validated['cover_image'] = null;
+            }
+        }
+        $magazine->update($validated);
+
+        return redirect()
+            ->route('portal.magazines.index')
+            ->with('status', 'success')
+            ->with('message', __('global.magazines.message.updateSuccess'));
     }
 
     /**

@@ -112,6 +112,9 @@ return [
 		'create' => 'Create Magazine',
 		'edit' => 'Edit Magazine',
 		'show' => 'Show Magazine',
+		'upload' => 'Upload new cover',
+		'reset' => 'Reset',
+		'allowDescription' => 'Allowed JPG, GIF or PNG. Max size of 800K',
 		'field' => [
 			'title' => 'Magazine Title',
 			'description' => 'Magazine Description',
