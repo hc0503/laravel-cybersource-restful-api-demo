@@ -34,48 +34,48 @@
 
 					<div class="form-row">
 						<div class="form-group col-md-6 col-sm-12">
-							<label class="form-label" for="name">{{ __('global.users.name') }}</label>
+							<label class="form-label" for="name">{{ __('global.users.field.name') }}</label>
 							<input id="name" class="form-control" name="name" value="{{ $user->name }}" disabled>
 						</div>
 
 						<div class="form-group col-md-6 col-sm-12">
-							<label class="form-label" for="email">{{ __('global.users.email') }}</label>
+							<label class="form-label" for="email">{{ __('global.users.field.email') }}</label>
 							<input id="email" type="email" class="form-control" name="email" value="{{ $user->email }}" disabled>
 						</div>
 					</div>
 
 					<div class="form-row">
 						<div class="form-group col-md-6 col-sm-12">
-							<label class="form-label" for="company">{{ __('global.users.company') }}</label>
+							<label class="form-label" for="company">{{ __('global.users.field.company') }}</label>
 							<input id="company" class="form-control" name="company" value="{{ $user->company }}" disabled>
 						</div>
 
 						<div class="form-group col-md-6 col-sm-12">
-							<label class="form-label" for="website">{{ __('global.users.website') }}</label>
+							<label class="form-label" for="website">{{ __('global.users.field.website') }}</label>
 							<a href="{{ $user->website }}" class="form-control" target="_blank">{{ $user->website }}</a>
 						</div>
 					</div>
 
 					<div class="form-row">
 						<div class="form-group col-md-6 col-sm-12">
-							<label class="form-label" for="address">{{ __('global.users.address') }}</label>
+							<label class="form-label" for="address">{{ __('global.users.field.address') }}</label>
 							<input id="address" class="form-control" name="address" value="{{ $user->address }}" disabled>
 						</div>
 
 						<div class="form-group col-md-6 col-sm-12">
-							<label class="form-label" for="city">{{ __('global.users.city') }}</label>
+							<label class="form-label" for="city">{{ __('global.users.field.city') }}</label>
 							<input id="city" class="form-control" name="city" value="{{ $user->city }}" disabled>
 						</div>
 					</div>
 
 					<div class="form-row">
 						<div class="form-group col-md-6 col-sm-12">
-							<label class="form-label" for="zip">{{ __('global.users.zip') }}</label>
+							<label class="form-label" for="zip">{{ __('global.users.field.zip') }}</label>
 							<input id="zip" class="form-control" name="zip" value="{{ $user->zip }}" disabled>
 						</div>
 
 						<div class="form-group col-md-6 col-sm-12">
-							<label class="form-label" for="country">{{ __('global.users.country') }}</label>
+							<label class="form-label" for="country">{{ __('global.users.field.country') }}</label>
 							<select id="country" name="country" class="form-control" style="width: 100%" disabled>
 								<option></option>
 								@foreach ($countries as $country)
