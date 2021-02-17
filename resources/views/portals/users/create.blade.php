@@ -59,6 +59,72 @@
 
 						<div class="form-row">
 							<div class="form-group col-md-6 col-sm-12">
+								<label class="form-label" for="name1">{{ __('global.users.field.name') }} 1</label>
+								<input id="name1" class="form-control @error('name1') is-invalid @enderror" name="name1" value="{{ old('name1') }}">
+								@error('name1')
+									<span class="invalid-feedback" role="alert">
+										<strong>{{ $message }}</strong>
+									</span>
+								@enderror
+							</div>
+	
+							<div class="form-group col-md-6 col-sm-12">
+								<label class="form-label" for="email1">{{ __('global.users.field.email') }} 1</label>
+								<input id="email1" type="email" class="form-control @error('email1') is-invalid @enderror" name="email1" value="{{ old('email1') }}" autocomplete="off">
+								@error('email1')
+									<span class="invalid-feedback" role="alert">
+										<strong>{{ $message }}</strong>
+									</span>
+								@enderror
+							</div>
+						</div>
+						
+						<div class="form-row">
+							<div class="form-group col-md-6 col-sm-12">
+								<label class="form-label" for="name2">{{ __('global.users.field.name') }} 2</label>
+								<input id="name2" class="form-control @error('name2') is-invalid @enderror" name="name2" value="{{ old('name2') }}">
+								@error('name2')
+									<span class="invalid-feedback" role="alert">
+										<strong>{{ $message }}</strong>
+									</span>
+								@enderror
+							</div>
+	
+							<div class="form-group col-md-6 col-sm-12">
+								<label class="form-label" for="email2">{{ __('global.users.field.email') }} 2</label>
+								<input id="email2" type="email" class="form-control @error('email2') is-invalid @enderror" name="email2" value="{{ old('email2') }}" autocomplete="off">
+								@error('email2')
+									<span class="invalid-feedback" role="alert">
+										<strong>{{ $message }}</strong>
+									</span>
+								@enderror
+							</div>
+						</div>
+						
+						<div class="form-row">
+							<div class="form-group col-md-6 col-sm-12">
+								<label class="form-label" for="name3">{{ __('global.users.field.name') }} 3</label>
+								<input id="name3" class="form-control @error('name3') is-invalid @enderror" name="name3" value="{{ old('name3') }}">
+								@error('name3')
+									<span class="invalid-feedback" role="alert">
+										<strong>{{ $message }}</strong>
+									</span>
+								@enderror
+							</div>
+	
+							<div class="form-group col-md-6 col-sm-12">
+								<label class="form-label" for="email3">{{ __('global.users.field.email') }} 3</label>
+								<input id="email3" type="email" class="form-control @error('email3') is-invalid @enderror" name="email3" value="{{ old('email3') }}" autocomplete="off">
+								@error('email3')
+									<span class="invalid-feedback" role="alert">
+										<strong>{{ $message }}</strong>
+									</span>
+								@enderror
+							</div>
+						</div>
+
+						<div class="form-row">
+							<div class="form-group col-md-6 col-sm-12">
 								<label class="form-label" for="company">{{ __('global.users.field.company') }}</label>
 								<input id="company" class="form-control @error('company') is-invalid @enderror" name="company" value="{{ old('company') }}">
 								@error('company')
@@ -128,6 +194,21 @@
 							</div>
 						</div>
 
+						<div class="form-group @error('roles') is-invalid @enderror">
+							<label class="form-label" for="roles">{{ __('global.roles.title') }} *</label>
+							<select id="roles" name="roles[]" class="form-control" style="width: 100%" multiple>
+								<option></option>
+								@foreach ($roles as $role)
+								<option value="{{ $role->name }}" {{ old('roles') == $role->name ? 'selected' : '' }}>{{ $role->name }}</option>
+								@endforeach
+							 </select>
+							@error('roles')
+								<span class="invalid-feedback" role="alert" style="display: block !important;">
+									<strong>{{ $message }}</strong>
+								</span>
+							@enderror
+						</div>
+
 						<div class="form-row">
 							<div class="form-group col-md-6 col-sm-12">
 								<label class="form-label d-flex justify-content-between align-items-end" for="password">
@@ -145,21 +226,6 @@
                         <label class="form-label" for="password-confirm">{{ __('global.register.confirmPassword') }}</label>
                         <input id="password-confirm" type="password" class="form-control" name="password_confirmation" autocomplete="off">
                     </div>
-						</div>
-
-						<div class="form-group @error('roles') is-invalid @enderror">
-							<label class="form-label" for="roles">{{ __('global.roles.title') }} *</label>
-							<select id="roles" name="roles[]" class="form-control" style="width: 100%" multiple>
-								<option></option>
-								@foreach ($roles as $role)
-								<option value="{{ $role->name }}" {{ old('roles') == $role->name ? 'selected' : '' }}>{{ $role->name }}</option>
-								@endforeach
-							 </select>
-							@error('roles')
-								<span class="invalid-feedback" role="alert" style="display: block !important;">
-									<strong>{{ $message }}</strong>
-								</span>
-							@enderror
 						</div>
 
 						<div class="d-flex justify-content-between align-items-center m-0">

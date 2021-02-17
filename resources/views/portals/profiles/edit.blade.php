@@ -20,8 +20,8 @@
 		<div class="col-12">
 			<div class="card">
 				<div class="card-body">
-                <!-- Form -->
-                <form id="form" method="POST" action="{{ route('portal.profiles.update', $user->guid) }}">
+					<!-- Form -->
+					<form id="form" method="POST" action="{{ route('portal.profiles.update', $user->guid) }}">
 						
 						@csrf
 
@@ -46,6 +46,72 @@
 								<label class="form-label" for="email">{{ __('global.users.field.email') }} *</label>
 								<input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ $user->email }}" autocomplete="off">
 								@error('email')
+									<span class="invalid-feedback" role="alert">
+										<strong>{{ $message }}</strong>
+									</span>
+								@enderror
+							</div>
+						</div>
+
+						<div class="form-row">
+							<div class="form-group col-md-6 col-sm-12">
+								<label class="form-label" for="name1">{{ __('global.users.field.name') }} 1</label>
+								<input id="name1" class="form-control @error('name1') is-invalid @enderror" name="name1" value="{{ $user->name1 }}">
+								@error('name1')
+									<span class="invalid-feedback" role="alert">
+										<strong>{{ $message }}</strong>
+									</span>
+								@enderror
+							</div>
+	
+							<div class="form-group col-md-6 col-sm-12">
+								<label class="form-label" for="email1">{{ __('global.users.field.email') }} 1</label>
+								<input id="email1" type="email" class="form-control @error('email1') is-invalid @enderror" name="email1" value="{{ $user->email1 }}" autocomplete="off">
+								@error('email1')
+									<span class="invalid-feedback" role="alert">
+										<strong>{{ $message }}</strong>
+									</span>
+								@enderror
+							</div>
+						</div>
+						
+						<div class="form-row">
+							<div class="form-group col-md-6 col-sm-12">
+								<label class="form-label" for="name2">{{ __('global.users.field.name') }} 2</label>
+								<input id="name2" class="form-control @error('name2') is-invalid @enderror" name="name2" value="{{ $user->name2 }}">
+								@error('name2')
+									<span class="invalid-feedback" role="alert">
+										<strong>{{ $message }}</strong>
+									</span>
+								@enderror
+							</div>
+	
+							<div class="form-group col-md-6 col-sm-12">
+								<label class="form-label" for="email2">{{ __('global.users.field.email') }} 2</label>
+								<input id="email2" type="email" class="form-control @error('email2') is-invalid @enderror" name="email2" value="{{ $user->email2 }}" autocomplete="off">
+								@error('email2')
+									<span class="invalid-feedback" role="alert">
+										<strong>{{ $message }}</strong>
+									</span>
+								@enderror
+							</div>
+						</div>
+						
+						<div class="form-row">
+							<div class="form-group col-md-6 col-sm-12">
+								<label class="form-label" for="name3">{{ __('global.users.field.name') }} 3</label>
+								<input id="name3" class="form-control @error('name3') is-invalid @enderror" name="name3" value="{{ $user->name3 }}">
+								@error('name3')
+									<span class="invalid-feedback" role="alert">
+										<strong>{{ $message }}</strong>
+									</span>
+								@enderror
+							</div>
+	
+							<div class="form-group col-md-6 col-sm-12">
+								<label class="form-label" for="email3">{{ __('global.users.field.email') }} 3</label>
+								<input id="email3" type="email" class="form-control @error('email3') is-invalid @enderror" name="email3" value="{{ $user->email3 }}" autocomplete="off">
+								@error('email3')
 									<span class="invalid-feedback" role="alert">
 										<strong>{{ $message }}</strong>
 									</span>
@@ -126,9 +192,7 @@
 
 						<div class="form-row">
 							<div class="form-group col-md-6 col-sm-12">
-								<label class="form-label d-flex justify-content-between align-items-end" for="password">
-								<div>{{ __('global.login.password') }}</div>
-								</label>
+								<label class="form-label d-flex justify-content-between align-items-end" for="password">{{ __('global.login.password') }}</label>
 								<input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" autocomplete="off">
 	
 								@error('password')
@@ -137,7 +201,7 @@
 									</span>
 								@enderror
 							</div>
-							
+
 							<div class="form-group col-md-6 col-sm-12">
                         <label class="form-label" for="password-confirm">{{ __('global.register.confirmPassword') }}</label>
                         <input id="password-confirm" type="password" class="form-control" name="password_confirmation" autocomplete="off">

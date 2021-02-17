@@ -59,6 +59,72 @@
 
 						<div class="form-row">
 							<div class="form-group col-md-6 col-sm-12">
+								<label class="form-label" for="name1">{{ __('global.users.field.name') }} 1</label>
+								<input id="name1" class="form-control @error('name1') is-invalid @enderror" name="name1" value="{{ $user->name1 }}">
+								@error('name1')
+									<span class="invalid-feedback" role="alert">
+										<strong>{{ $message }}</strong>
+									</span>
+								@enderror
+							</div>
+	
+							<div class="form-group col-md-6 col-sm-12">
+								<label class="form-label" for="email1">{{ __('global.users.field.email') }} 1</label>
+								<input id="email1" type="email" class="form-control @error('email1') is-invalid @enderror" name="email1" value="{{ $user->email1 }}" autocomplete="off">
+								@error('email1')
+									<span class="invalid-feedback" role="alert">
+										<strong>{{ $message }}</strong>
+									</span>
+								@enderror
+							</div>
+						</div>
+						
+						<div class="form-row">
+							<div class="form-group col-md-6 col-sm-12">
+								<label class="form-label" for="name2">{{ __('global.users.field.name') }} 2</label>
+								<input id="name2" class="form-control @error('name2') is-invalid @enderror" name="name2" value="{{ $user->name2 }}">
+								@error('name2')
+									<span class="invalid-feedback" role="alert">
+										<strong>{{ $message }}</strong>
+									</span>
+								@enderror
+							</div>
+	
+							<div class="form-group col-md-6 col-sm-12">
+								<label class="form-label" for="email2">{{ __('global.users.field.email') }} 2</label>
+								<input id="email2" type="email" class="form-control @error('email2') is-invalid @enderror" name="email2" value="{{ $user->email2 }}" autocomplete="off">
+								@error('email2')
+									<span class="invalid-feedback" role="alert">
+										<strong>{{ $message }}</strong>
+									</span>
+								@enderror
+							</div>
+						</div>
+						
+						<div class="form-row">
+							<div class="form-group col-md-6 col-sm-12">
+								<label class="form-label" for="name3">{{ __('global.users.field.name') }} 3</label>
+								<input id="name3" class="form-control @error('name3') is-invalid @enderror" name="name3" value="{{ $user->name3 }}">
+								@error('name3')
+									<span class="invalid-feedback" role="alert">
+										<strong>{{ $message }}</strong>
+									</span>
+								@enderror
+							</div>
+	
+							<div class="form-group col-md-6 col-sm-12">
+								<label class="form-label" for="email3">{{ __('global.users.field.email') }} 3</label>
+								<input id="email3" type="email" class="form-control @error('email3') is-invalid @enderror" name="email3" value="{{ $user->email3 }}" autocomplete="off">
+								@error('email3')
+									<span class="invalid-feedback" role="alert">
+										<strong>{{ $message }}</strong>
+									</span>
+								@enderror
+							</div>
+						</div>
+
+						<div class="form-row">
+							<div class="form-group col-md-6 col-sm-12">
 								<label class="form-label" for="company">{{ __('global.users.field.company') }}</label>
 								<input id="company" class="form-control @error('company') is-invalid @enderror" name="company" value="{{ $user->company }}">
 								@error('company')

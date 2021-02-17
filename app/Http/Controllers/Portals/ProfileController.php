@@ -57,6 +57,12 @@ class ProfileController extends Controller
         $validated = $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'unique:users,email,'.$user->id, 'max:255'],
+            'name1' => [],
+            'email1' => ['email', 'string', 'max:255', 'nullable'],
+            'name2' => [],
+            'email2' => ['email', 'string', 'max:255', 'nullable'],
+            'name3' => [],
+            'email3' => ['email', 'string', 'max:255', 'nullable'],
             'company' => [],
             'website' => [],
             'address' => ['required', 'string', 'max:255'],
@@ -65,7 +71,7 @@ class ProfileController extends Controller
             'country' => ['required', 'string', 'max:255'],
             'password' => ['string', 'min:8', 'confirmed', 'nullable'],
         ]);
-
+        
         $user->update($validated);
 
         return redirect()
