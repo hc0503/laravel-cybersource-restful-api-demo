@@ -79,30 +79,30 @@
 						</div>
 
 						<div class="row">
-							<div class="form-group @error('genre') is-invalid @enderror col-md-6 col-sm-12">
+							<div class="form-group @error('genre_id') is-invalid @enderror col-md-6 col-sm-12">
 								<label class="form-label" for="genre">{{ __('global.genres.title') }} *</label>
-								<select id="genre" name="genre" class="form-control" style="width: 100%">
+								<select id="genre" name="genre_id" class="form-control" style="width: 100%">
 									<option></option>
 									@foreach ($genres as $genre)
 									<option value="{{ $genre->id }}" {{ old('genre') == $genre->id ? 'selected' : '' }}>{{ $genre->name }}</option>
 									@endforeach
 								 </select>
-								@error('genre')
+								@error('genre_id')
 									<span class="invalid-feedback" role="alert" style="display: block !important;">
 										<strong>{{ $message }}</strong>
 									</span>
 								@enderror
 							</div>
 
-							<div class="form-group @error('frequency') is-invalid @enderror col-md-6 col-sm-12">
+							<div class="form-group @error('frequency_id') is-invalid @enderror col-md-6 col-sm-12">
 								<label class="form-label" for="frequency">{{ __('global.frequencies.title') }} *</label>
-								<select id="frequency" name="frequency" class="form-control" style="width: 100%">
+								<select id="frequency" name="frequency_id" class="form-control" style="width: 100%">
 									<option></option>
 									@foreach ($frequencies as $frequency)
 									<option value="{{ $frequency->id }}" {{ old('frequency') == $frequency->id ? 'selected' : '' }}>{{ $frequency->name }}</option>
 									@endforeach
 								 </select>
-								@error('frequency')
+								@error('frequency_id')
 									<span class="invalid-feedback" role="alert" style="display: block !important;">
 										<strong>{{ $message }}</strong>
 									</span>
