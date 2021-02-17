@@ -94,7 +94,7 @@
 
                 <!-- Logo -->
                 <div class="d-flex justify-content-center align-items-center">
-                    <img src="{{ asset('assets/img/logo.png') }}" alt="Logo" height="180px">
+                    <img src="{{ asset('assets/img/logo.png') }}" alt="Logo" height="130px">
                 </div>
                 <!-- / Logo -->
 
