@@ -17,6 +17,7 @@ class Magazine extends Model
      * @var array
      */
     protected $fillable = [
+        'user_id',
         'genre_id',
         'frequency_id',
         'title',

@@ -16,6 +16,9 @@ class CreateMagazinesTable extends Migration
         Schema::create('magazines', function (Blueprint $table) {
             $table->id();
             $table->char('guid', 36)->unique()->nullable();
+            $table->foreignId('user_id')
+                ->constrained()
+                ->onDelete('cascade');
             $table->foreignId('genre_id')
                 ->constrained()
                 ->onDelete('cascade');

@@ -27,7 +27,7 @@ class MagazineController extends Controller
         $pageTitle = __('global.magazines.list');
 
         if ($request->ajax()) {
-            $magazines = Magazine::all();
+            $magazines = auth()->user()->magazines();
 
             return DataTables::of($magazines)
                 ->addIndexColumn()

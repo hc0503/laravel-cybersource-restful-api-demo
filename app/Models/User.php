@@ -60,4 +60,12 @@ class User extends Authenticatable
         if ($input)
             $this->attributes['password'] = app('hash')->needsRehash($input) ? Hash::make($input) : $input;
     }
+
+    /**
+     * Get the magazines by user
+     */
+    public function magazines()
+    {
+        return $this->hasMany(Magazine::class, 'user_id', 'id');
+    }
 }
