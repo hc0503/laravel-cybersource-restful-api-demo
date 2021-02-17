@@ -87,21 +87,24 @@ class MagazineController extends Controller
         $validated = $request->validate([
             'title' => ['required', 'string', 'max:255'],
             'description' => ['required'],
-            'genre' => ['required', 'int'],
-            'frequency' => ['required', 'int'],
+            'genre_id' => ['required', 'int'],
+            'frequency_id' => ['required', 'int'],
             'cover_image' => ['mimes:jpeg,jpg,png', 'max:2048', 'image']
         ]);
 
-        $validated['genre_id'] = $validated['genre'];
-        $validated['frequency_id'] = $validated['frequency'];
         if ($request->hasFile('cover_image')) {
             $resizeImage = Image::make($validated['cover_image']->getRealPath())->fit(400, 560);
-            $imagePath = '/magazines/covers'. Str::random(50) .'.'. $validated['cover_image']->getClientOriginalExtension();
+            $imagePath = '/magazines/covers/'. Str::random(50) .'.'. $validated['cover_image']->getClientOriginalExtension();
+            
+            if(!is_dir(public_path('storage/magazines/covers'))) {
+                mkdir(public_path('storage/magazines/covers'), 0755, true);
+            }
+
             $resizeImage->save(public_path('storage') . $imagePath);
             $validated['cover_image'] = $imagePath;
         }
 
-        $magazine = Magazine::create($validated);
+        $magazine = auth()->user()->magazines()->create($validated);
         
         if ($request->exit === 'true')
             return redirect()
@@ -159,21 +162,26 @@ class MagazineController extends Controller
         $validated = $request->validate([
             'title' => ['required', 'string', 'max:255'],
             'description' => ['required'],
-            'genre' => ['required', 'int'],
-            'frequency' => ['required', 'int'],
+            'genre_id' => ['required', 'int'],
+            'frequency_id' => ['required', 'int'],
             'cover_image' => ['mimes:jpeg,jpg,png', 'max:2048', 'image']
         ]);
-
+        
         $magazine = Magazine::query()->whereGuid($guid)->firstOrFail();
 
         if ($request->hasFile('cover_image')) {
             $imagePath = public_path("/storage/$magazine->cover_image"); // get previous image from folder
+            
+            if(!is_dir(public_path('storage/magazines/covers'))) {
+                mkdir(public_path('storage/magazines/covers'), 0755, true);
+            }
+
             if (File::exists($imagePath) && $magazine->cover_image != null) { // unlink or remove previous image from folder
                 unlink($imagePath);
             }
 
             $resizeImage = Image::make($validated['cover_image']->getRealPath())->fit(400, 560);
-            $imagePath = '/magazines/covers'. Str::random(50) .'.'. $validated['cover_image']->getClientOriginalExtension();
+            $imagePath = '/magazines/covers/'. Str::random(50) .'.'. $validated['cover_image']->getClientOriginalExtension();
             $resizeImage->save(public_path('storage') . $imagePath);
             $validated['cover_image'] = $imagePath;
         } else {
@@ -186,7 +194,7 @@ class MagazineController extends Controller
                 $validated['cover_image'] = null;
             }
         }
-        $magazine->update($validated);
+        auth()->user()->magazines()->update($validated);
 
         return redirect()
             ->route('portal.magazines.index')
