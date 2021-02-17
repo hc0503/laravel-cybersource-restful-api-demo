@@ -127,6 +127,11 @@ return [
 			'deleteSuccess' => 'The magazine is deleted successfully.',
 		]
 	],
+	'emails' => [
+		'emailUs' => 'Email Us',
+		'subject' => 'Subject',
+		'send' => 'Send'
+	],
 	'home' => [
 		'title' => 'Home',
 	],

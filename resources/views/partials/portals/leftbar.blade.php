@@ -16,7 +16,7 @@
 		@canany(['viewpermission', 'viewrole', 'viewuser'])
 		<li class="sidenav-item {{ request()->is('portal/usermanage/*') ? 'active open' : '' }}">
 			<a href="javascript:void(0)" class="sidenav-link sidenav-toggle">
-				<i class="sidenav-icon lnr lnr-users"></i>
+				<i class="sidenav-icon ion ion-md-people"></i>
 				<div>{{ __('global.userManagement') }}</div>
 			</a>
 			<ul class="sidenav-menu">
@@ -50,7 +50,7 @@
 		@can('viewgenre')
 		<li class="sidenav-item {{ request()->is('portal/genres') ? 'active' : '' }}">
 			<a href="{{ route('portal.genres.index') }}" class="sidenav-link">
-				<i class="sidenav-icon lnr lnr-star"></i>
+				<i class="sidenav-icon ion ion-md-cube"></i>
 				<div>{{ __('global.genres.title') }}</div>
 			</a>
 		</li>
@@ -58,15 +58,15 @@
 
 		<li class="sidenav-item {{ request()->is('portal/magazines') ? 'active' : '' }}">
 			<a href="{{ route('portal.magazines.index') }}" class="sidenav-link">
-				<i class="sidenav-icon lnr lnr-book"></i>
+				<i class="sidenav-icon ion ion-md-paper"></i>
 				<div>{{ __('global.magazines.title') }}</div>
 			</a>
 		</li>
 
 		<li class="sidenav-item {{ request()->is('portal/emails') ? 'active' : '' }}">
-			<a href="{{ route('portal.magazines.index') }}" class="sidenav-link">
-				<i class="sidenav-icon lnr lnr-star"></i>
-				<div>{{ __('global.magazines.title') }}</div>
+			<a href="{{ route('portal.emails.compose') }}" class="sidenav-link">
+				<i class="sidenav-icon ion ion-md-mail"></i>
+				<div>{{ __('global.emails.emailUs') }}</div>
 			</a>
 		</li>
 	</ul>

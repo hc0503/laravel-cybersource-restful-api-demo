@@ -41,5 +41,10 @@ Route::middleware(['auth', 'verified'])->group( function () {
 
         Route::resource('genres', 'Portals\GenreController');
         Route::resource('magazines', 'Portals\MagazineController');
+
+        Route::group(['prefix' => 'emails', 'as' => 'emails.'], function () {
+            Route::get('compose', 'Portals\MailController@viewCompose')->name('compose');
+            Route::post('send', 'Portals\MailController@sendEmail')->name('send');
+        });
     });
 });
