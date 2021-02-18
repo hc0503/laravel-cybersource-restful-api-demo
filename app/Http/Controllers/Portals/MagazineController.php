@@ -53,11 +53,14 @@ class MagazineController extends Controller
 
                     return $btn;
                 })
+                ->addColumn('auth', function ($row) {
+                    return '<a href="'. route('portal.profiles.show', $row->user->guid) .'" target="_blank"><span class="badge badge-secondary">'. $row->user->email .'</span></a>';
+                })
                 ->addColumn('status', function ($row) {
                     if ($row->status === 1) {
-                        return '<span class="badge badge-primary mr-1">'. __('global.magazines.field.active') .'</span>';
+                        return '<span class="badge badge-primary">'. __('global.magazines.field.active') .'</span>';
                     } else {
-                        return '<span class="badge badge-warning mr-1">'. __('global.magazines.field.inactive') .'</span>';
+                        return '<span class="badge badge-warning">'. __('global.magazines.field.inactive') .'</span>';
                     }
                 })
                 ->editColumn('genre', function ($row) {
@@ -69,7 +72,7 @@ class MagazineController extends Controller
                 ->editColumn('buy_online', function ($row) {
                     return "<a href='$row->buy_online' target='_blank'>$row->buy_online</a>";
                 })
-                ->rawColumns(['action', 'cover_image', 'status', 'buy_online'])
+                ->rawColumns(['action', 'cover_image', 'status', 'buy_online', 'auth'])
                 ->make(true);
         }
 

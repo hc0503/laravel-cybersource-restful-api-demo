@@ -52,7 +52,7 @@
 									@foreach ($genres as $genre)
 									<option value="{{ $genre->id }}" {{ $magazine->genre->id == $genre->id ? 'selected' : '' }}>{{ $genre->name }}</option>
 									@endforeach
-								 </select>
+								</select>
 							</div>
 	
 							<div class="form-group">
@@ -82,11 +82,8 @@
 
 						<div class="form-group col-md-10 col-sm-12">
 							<label class="form-label" for="buy_online">{{ __('global.magazines.field.buyOnline') }}</label>
-							<input id="buy_online" class="form-control @error('buy_online') is-invalid @enderror" name="buy_online" value="{{ $magazine->buy_online }}" disabled>
+							<a href="{{ $magazine->buy_online }}" class="form-control" target="_blank">{{ $magazine->buy_online }}</a>
 						</div>
-					</div>
-
-					<div class="row">
 					</div>
 				</div>
 			</div>

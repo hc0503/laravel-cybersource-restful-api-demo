@@ -54,7 +54,7 @@ class DocumentController extends Controller
                 ->addColumn('users', function ($row) {
                     $users = '';
                     foreach ($row->users as $user) {
-                        $users .= '<a href="'. route('portal.usermanage.users.show', $user->guid) .'" target="_blank"><span class="badge badge-secondary mr-1">'. $user->email .'</span></a>';
+                        $users .= '<a href="'. route('portal.profiles.show', $user->guid) .'" target="_blank"><span class="badge badge-secondary mr-1">'. $user->email .'</span></a>';
                     }
 
                     return $users;

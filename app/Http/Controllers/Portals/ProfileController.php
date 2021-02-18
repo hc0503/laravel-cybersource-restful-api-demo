@@ -34,6 +34,10 @@ class ProfileController extends Controller
     public function edit($guid)
     {
         $user = User::query()->whereGuid($guid)->firstOrFail();
+
+        if (!(auth()->user()->hasRole('SuperAdmin') || auth()->user()->id == $user->id))
+            abort(403);
+
         $pageTitle = __('global.profiles.edit');
         $countries = Countries::all()
         ->map(function ($country) {

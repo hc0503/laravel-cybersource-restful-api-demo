@@ -40,6 +40,7 @@
 											<th>{{ trans('global.magazines.field.title') }}</th>
 											<th>{{ trans('global.magazines.field.description') }}</th>
 											<th>{{ trans('global.magazines.field.buyOnline') }}</th>
+											<th>{{ trans('global.magazines.field.authEmail') }}</th>
 											<th>{{ trans('global.magazines.field.status') }}</th>
 											<th>{{ trans('global.createdAt') }}</th>
 											<th width="125px;">{{ trans('global.action') }}</th>
@@ -54,6 +55,7 @@
 											<th>{{ trans('global.magazines.field.title') }}</th>
 											<th>{{ trans('global.magazines.field.description') }}</th>
 											<th>{{ trans('global.magazines.field.buyOnline') }}</th>
+											<th>{{ trans('global.magazines.field.authEmail') }}</th>
 											<th>{{ trans('global.magazines.field.status') }}</th>
 											<th>{{ trans('global.createdAt') }}</th>
 											<th>{{ trans('global.action') }}</th>
@@ -92,6 +94,7 @@
 			{'data': 'title'},
 			{'data': 'description'},
 			{'data': 'buy_online'},
+			{'data': 'auth'},
 			{'data': 'status'},
 			{'data': 'created_at'},
 			{'data': 'action'},

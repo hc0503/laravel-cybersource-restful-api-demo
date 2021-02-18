@@ -26,11 +26,13 @@
 		<div class="col-12">
 			<div class="card">
 				<div class="card-body">
+					@if (auth()->user()->hasRole('SuperAdmin') || auth()->user()->id == $user->id)
 					<div class="text-right">
 						<a href="{{ route('portal.profiles.edit', $user->guid) }}" class="btn waves-effect waves-light btn-secondary">
 							<i class="fas fa-edit"></i> {{ __('global.profiles.edit') }}
 						</a>
 					</div>
+					@endif
 
 					<div class="form-row">
 						<div class="form-group col-md-6 col-sm-12">
