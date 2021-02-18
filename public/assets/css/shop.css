@@ -1,0 +1,223 @@
+/*
+ * Base
+*/
+
+body {
+  background: #fff !important;
+  font-family: "Ubuntu", -apple-system, BlinkMacSystemFont, "Segoe UI", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+}
+
+.navbar .dropdown-menu {
+  -webkit-animation: shopDropdownAnimation .25s !important;
+          animation: shopDropdownAnimation .25s !important;
+}
+
+.navbar {
+  z-index: 15;
+}
+
+/*
+ * Cart dropdown
+*/
+
+@media (min-width: 992px) {
+  .shop-cart-dropdown .dropdown-menu {
+    width: 340px;
+  }
+}
+
+/*
+ * Special deals
+*/
+
+.shop-special-deal-label {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+}
+[dir=rtl] .shop-special-deal-label {
+  right: auto;
+  left: 1.5rem;
+}
+
+/*
+ * Hero slider
+*/
+
+.shop-hero-container {
+  min-height: 500px;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: center;
+      justify-content: center;
+  -ms-flex-align: center;
+      align-items: center;
+}
+
+/* IE 10-11 fix */
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+  .shop-hero-container:after {
+    content: '';
+    display: block;
+    -ms-flex-preferred-size: 0;
+        flex-basis: 0;
+    min-height: inherit;
+    width: 0;
+    font-size: 0;
+  }
+}
+
+
+/* Hide arrows, show on hover */
+#shop-hero-slider .swiper-button-prev,
+#shop-hero-slider .swiper-button-next {
+  opacity: 0;
+  transition: .4s;
+}
+#shop-hero-slider:hover .swiper-button-prev,
+#shop-hero-slider:hover .swiper-button-next {
+  opacity: 1;
+}
+
+/* Hero slider animations */
+.shop-hero-slider-animated {
+  opacity: 0;
+}
+.shop-hero-slider-animating .shop-hero-slider-animated {
+  -webkit-animation: shopHeroSliderAnimation .5s forwards;
+          animation: shopHeroSliderAnimation .5s forwards;
+}
+.shop-hero-slider-delay-1 {
+  -webkit-animation-delay: .2s !important;
+          animation-delay: .2s !important;
+}
+.shop-hero-slider-delay-2 {
+  -webkit-animation-delay: .4s !important;
+          animation-delay: .4s !important;
+}
+.shop-hero-slider-delay-3 {
+  -webkit-animation-delay: .6s !important;
+          animation-delay: .6s !important;
+}
+.shop-hero-slider-delay-4 {
+  -webkit-animation-delay: .8s !important;
+          animation-delay: .8s !important;
+}
+
+/*
+ * Popular categories
+*/
+
+.shop-popular-categories .img-thumbnail:hover,
+.shop-popular-categories .img-thumbnail:focus {
+  z-index: 10;
+}
+.shop-popular-categories .img-thumbnail .ui-bg-overlay {
+  transition: .3s;
+}
+.shop-popular-categories .img-thumbnail:hover .ui-bg-overlay,
+.shop-popular-categories .img-thumbnail:focus .ui-bg-overlay {
+  opacity: 0 !important;
+}
+
+/*
+ * Filters
+*/
+
+.shop-filters-slider .noUi-tooltip {
+  opacity: 0;
+  transition: all .3s;
+}
+.shop-filters-slider:hover .noUi-tooltip,
+.shop-filters-slider.noUi-state-drag .noUi-tooltip {
+  opacity: 1;
+}
+
+/*
+ * Product grid
+*/
+
+@media (max-width: 767px) {
+  .shop-list-row > *[class]::before,
+  .shop-list-row > *[class]::after {
+    display: none !important;
+  }
+}
+.shop-list-content[class]::after {
+  display: none !important;
+}
+
+/*
+ * Checkout
+*/
+
+@media (min-width: 768px) {
+  #shop-checkout-wizard {
+    max-width: 750px !important;
+  }
+}
+
+#shop-checkout-wizard .sw-btn-next.disabled,
+#shop-checkout-wizard .sw-btn-prev.disabled {
+  display: none;
+}
+#shop-checkout-wizard .sw-btn-finish {
+  display: none;
+}
+#shop-checkout-wizard .sw-btn-next.disabled ~ .sw-btn-finish {
+  display: inline-block;
+}
+
+/*
+ * Animations
+*/
+
+@-webkit-keyframes shopDropdownAnimation {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(-40px);
+            transform: translateY(-40px);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+}
+@keyframes shopDropdownAnimation {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(-40px);
+            transform: translateY(-40px);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+}
+
+@-webkit-keyframes shopHeroSliderAnimation {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(-40px);
+            transform: translateY(-40px);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+}
+@keyframes shopHeroSliderAnimation {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(-40px);
+            transform: translateY(-40px);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+}
