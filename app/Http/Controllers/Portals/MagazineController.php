@@ -25,13 +25,13 @@ class MagazineController extends Controller
     public function index(Request $request)
     {
         $pageTitle = __('global.magazines.list');
-        if (auth()->user()->hasRole('SuperAdmin') || auth()->user()->hasPermissionTo('activemagazine')) {
-            $magazines = Magazine::query()->orderBy('id', 'desc')->get();
-        } else {
-            $magazines = auth()->user()->magazines()->orderBy('id', 'desc')->get();
-        }
 
         if ($request->ajax()) {
+            if (auth()->user()->hasRole('SuperAdmin') || auth()->user()->hasPermissionTo('activemagazine')) {
+                $magazines = Magazine::query()->orderBy('id', 'desc')->get();
+            } else {
+                $magazines = auth()->user()->magazines()->orderBy('id', 'desc')->get();
+            }
 
             return DataTables::of($magazines)
                 ->addIndexColumn()
