@@ -13,6 +13,7 @@ class PermissionsTableSeeder extends Seeder
     public function run()
     {
         Permission::truncate();
+        Artisan::call('cache:forget spatie.permission.cache');
 
         $permissions = [
             'createpermission',
@@ -31,6 +32,8 @@ class PermissionsTableSeeder extends Seeder
             'viewuser',
 
             'managelogin',
+
+            'activemagazine',
 
             'creategenre',
             'editgenre',
