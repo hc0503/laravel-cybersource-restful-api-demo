@@ -177,7 +177,6 @@
 							<div class="form-group col-md-6 col-sm-12 @error('country') is-invalid @enderror">
 								<label class="form-label" for="country">{{ __('global.users.field.country') }} *</label>
 								<select id="country" name="country" class="form-control" style="width: 100%">
-									<option></option>
 									@foreach ($countries as $country)
 									<option value="{{ $country->code }}" {{ $user->country == $country->code ? 'selected' : '' }}>{{ $country->name }}</option>
 									@endforeach

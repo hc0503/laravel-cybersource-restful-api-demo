@@ -69,7 +69,6 @@
 								<div class="form-group @error('genre_id') is-invalid @enderror">
 									<label class="form-label" for="genre">{{ __('global.genres.title') }} *</label>
 									<select id="genre" name="genre_id" class="form-control" style="width: 100%">
-										<option></option>
 										@foreach ($genres as $genre)
 										<option value="{{ $genre->id }}" {{ $magazine->genre->id == $genre->id ? 'selected' : '' }}>{{ $genre->name }}</option>
 										@endforeach
@@ -84,7 +83,6 @@
 								<div class="form-group @error('frequency_id') is-invalid @enderror">
 									<label class="form-label" for="frequency">{{ __('global.frequencies.title') }} *</label>
 									<select id="frequency" name="frequency_id" class="form-control" style="width: 100%">
-										<option></option>
 										@foreach ($frequencies as $frequency)
 										<option value="{{ $frequency->id }}" {{ $magazine->frequency->id == $frequency->id ? 'selected' : '' }}>{{ $frequency->name }}</option>
 										@endforeach

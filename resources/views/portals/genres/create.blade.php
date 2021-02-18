@@ -35,6 +35,7 @@
 						@csrf
 
 						<input id="exit" name="exit" value="true" hidden/>
+						
 						<div class="form-group">
 							<label class="form-label" for="name">{{ __('global.genres.name') }} *</label>
 							<input id="name" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" autofocus>

@@ -104,7 +104,6 @@
 						<div class="form-group col-md-6 col-sm-12">
 							<label class="form-label" for="country">{{ __('global.users.field.country') }}</label>
 							<select id="country" name="country" class="form-control" style="width: 100%" disabled>
-								<option></option>
 								@foreach ($countries as $country)
 								<option value="{{ $country->code }}" {{ $user->country == $country->code ? 'selected' : '' }}>{{ $country->name }}</option>
 								@endforeach
@@ -115,7 +114,6 @@
 					<div class="form-group @error('roles') is-invalid @enderror">
 						<label class="form-label" for="roles">{{ __('global.roles.title') }}</label>
 						<select id="roles" name="roles[]" class="form-control" style="width: 100%" multiple disabled>
-							<option></option>
 							@foreach ($roles as $role)
 							<option value="{{ $role->name }}" {{ in_array($role->name, $user->roles->pluck('name')->toArray()) ? 'selected' : '' }}>{{ $role->name }}</option>
 							@endforeach
