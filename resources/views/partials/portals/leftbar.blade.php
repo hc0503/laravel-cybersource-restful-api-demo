@@ -13,7 +13,7 @@
 	<!-- Links -->
 	<ul class="sidenav-inner py-1">
 		<!-- Pages -->
-		@canany(['viewpermission', 'viewrole', 'viewuser'])
+		@if (auth()->user()->hasRole('SuperAdmin') || auth()->user()->hasAnyPermission(['viewpermission', 'viewrole', 'viewuser']))
 		<li class="sidenav-item {{ request()->is('portal/usermanage/*') ? 'active open' : '' }}">
 			<a href="javascript:void(0)" class="sidenav-link sidenav-toggle">
 				<i class="sidenav-icon ion ion-md-people"></i>
@@ -45,16 +45,16 @@
 				@endcan
 			</ul>
 		</li>
-		@endcanany
+		@endif
 
-		@can('viewgenre')
+		@if (auth()->user()->hasRole('SuperAdmin') || auth()->user()->hasPermissionTo('viewgenre'))
 		<li class="sidenav-item {{ request()->is('portal/genres') ? 'active' : '' }}">
 			<a href="{{ route('portal.genres.index') }}" class="sidenav-link">
 				<i class="sidenav-icon ion ion-md-cube"></i>
 				<div>{{ __('global.genres.title') }}</div>
 			</a>
 		</li>
-		@endcan
+		@endif
 
 		<li class="sidenav-item {{ request()->is('portal/magazines') ? 'active' : '' }}">
 			<a href="{{ route('portal.magazines.index') }}" class="sidenav-link">
