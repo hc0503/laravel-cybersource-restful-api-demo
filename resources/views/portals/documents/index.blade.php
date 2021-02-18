@@ -26,9 +26,11 @@
 		<div class="col-12">
 			<div class="card">
 					<div class="card-body">
+						@if (auth()->user()->hasRole('SuperAdmin') || auth()->user()->hasPermissionTo('createdocument'))
 						<a href="{{ route('portal.documents.create') }}" class="btn waves-effect waves-light btn-secondary">
 							<i class="fas fa-plus"></i> {{ trans('global.documents.create') }}
 						</a>
+						@endif
 						<div class="table-responsive mt-2">
 							<table id="dataTable" class="datatables-demo table table-striped table-bordered">
 									<thead>

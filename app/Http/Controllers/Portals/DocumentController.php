@@ -15,9 +15,9 @@ class DocumentController extends Controller
 {
     public function __construct()
     {
-        // $this->middleware('permission:createdocument', ['only' => ['create']]);
-        // $this->middleware('permission:editdocument',   ['only' => ['edit']]);
-        // $this->middleware('permission:deletedocument',   ['only' => ['destroy']]);
+        $this->middleware('permission:createdocument', ['only' => ['create']]);
+        $this->middleware('permission:editdocument',   ['only' => ['edit']]);
+        $this->middleware('permission:deletedocument',   ['only' => ['destroy']]);
         // $this->middleware('permission:viewdocument',   ['only' => ['show', 'index']]);
     }
 
@@ -31,7 +31,11 @@ class DocumentController extends Controller
         $pageTitle = __('global.documents.list');
 
         if ($request->ajax()) {
-            $documents = Document::all();
+            if (auth()->user()->hasRole('SuperAdmin') || auth()->user()->hasPermissionTo('activemagazine')) {
+                $documents = Document::query()->orderBy('id', 'desc')->get();
+            } else {
+                $documents = auth()->user()->documents()->orderBy('id', 'desc')->get();
+            }
 
             return DataTables::of($documents)
                 ->addIndexColumn()
@@ -41,13 +45,17 @@ class DocumentController extends Controller
                 ->addColumn('action', function ($row) {
                     $btn = '<a href="'. route('portal.documents.show', $row->guid) .'" data-id="'.$row->guid.'" class="btn btn-success btn-sm mb-1 mr-1"><i class="far fa-eye"></i></a>';
                     $btn .= '<a href="'. asset('storage') . $row->path .'" class="btn btn-info btn-sm mb-1 mr-1" target="__blank"><i class="fas fa-download"></i></a>';
-                    $btn .= '<a href="'. route('portal.documents.edit', $row->guid) .'" data-id="'.$row->guid.'" class="btn btn-primary btn-sm mb-1"><i class="far fa-edit"></i></a>';
-                    $btn .= ' <button onclick="deleteData('. "'$row->guid'" .')" data-id="'.$row->guid.'" class="btn btn-danger btn-sm mb-1"><i class="far fa-trash-alt"></i></button>';
-                    $btn .= '<form id="deleteForm'. $row->guid .'" action="'. route('portal.documents.destroy', $row->guid) .'" method="POST" style="display: none">
-                    <input type="hidden" name="_token" value="'. csrf_token() .'">
-                    <input type="hidden" name="_method" value="DELETE">
-                    @method("DELETE")
-                    </form>';
+                    if (auth()->user()->hasRole('SuperAdmin') || auth()->user()->hasPermissionTo('editdocument')) {
+                        $btn .= '<a href="'. route('portal.documents.edit', $row->guid) .'" data-id="'.$row->guid.'" class="btn btn-primary btn-sm mb-1"><i class="far fa-edit"></i></a>';
+                    }
+                    if (auth()->user()->hasRole('SuperAdmin') || auth()->user()->hasPermissionTo('deletedocument')) {
+                        $btn .= ' <button onclick="deleteData('. "'$row->guid'" .')" data-id="'.$row->guid.'" class="btn btn-danger btn-sm mb-1"><i class="far fa-trash-alt"></i></button>';
+                        $btn .= '<form id="deleteForm'. $row->guid .'" action="'. route('portal.documents.destroy', $row->guid) .'" method="POST" style="display: none">
+                        <input type="hidden" name="_token" value="'. csrf_token() .'">
+                        <input type="hidden" name="_method" value="DELETE">
+                        @method("DELETE")
+                        </form>';
+                    }
 
                     return $btn;
                 })

@@ -42,7 +42,12 @@ class PermissionsTableSeeder extends Seeder
             'creategenre',
             'editgenre',
             'deletegenre',
-            'viewgenre'
+            'viewgenre',
+
+            'createdocument',
+            'editdocument',
+            'deletedocument',
+            'viewdocument'
         ];
 
         foreach ($permissions as $permission) {
