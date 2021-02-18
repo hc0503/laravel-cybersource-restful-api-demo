@@ -74,4 +74,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Magazine::class, 'user_id', 'id');
     }
+
+    public function documents()
+    {
+        return $this->belongsToMany(Document::class, 'user_documents');
+    }
 }

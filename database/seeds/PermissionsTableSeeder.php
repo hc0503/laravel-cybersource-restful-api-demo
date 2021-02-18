@@ -12,7 +12,11 @@ class PermissionsTableSeeder extends Seeder
      */
     public function run()
     {
+        DB::table('model_has_permissions')->truncate();
+        DB::table('model_has_roles')->truncate();
+        DB::table('role_has_permissions')->truncate();
         Permission::truncate();
+        
         Artisan::call('cache:forget spatie.permission.cache');
 
         $permissions = [

@@ -132,6 +132,24 @@ return [
 			'deleteSuccess' => 'The magazine is deleted successfully.',
 		]
 	],
+	'documents' => [
+		'title' => 'Documents',
+		'list' => 'Document List',
+		'create' => 'Create Document',
+		'edit' => 'Edit Document',
+		'show' => 'Show Document',
+		'download' => 'Download Document',
+		'field' => [
+			'name' => 'Name',
+			'upload' => 'Upload Document',
+			'selectAll' => 'Select All'
+		],
+		'message' => [
+			'saveSuccess' => 'The document is stored successfully.',
+			'updateSuccess' => 'The document is updated successfully.',
+			'deleteSuccess' => 'The document is deleted successfully.',
+		]
+	],
 	'emails' => [
 		'emailUs' => 'Email Us',
 		'subject' => 'Subject',

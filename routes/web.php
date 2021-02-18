@@ -41,6 +41,7 @@ Route::middleware(['auth', 'verified'])->group( function () {
 
         Route::resource('genres', 'Portals\GenreController');
         Route::resource('magazines', 'Portals\MagazineController');
+        Route::resource('documents', 'Portals\DocumentController');
 
         Route::group(['prefix' => 'emails', 'as' => 'emails.'], function () {
             Route::get('compose', 'Portals\MailController@viewCompose')->name('compose');

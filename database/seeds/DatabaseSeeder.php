@@ -14,10 +14,6 @@ class DatabaseSeeder extends Seeder
     {
         // Artisan::call('passport:install');
         Schema::disableForeignKeyConstraints();
-
-        DB::table('model_has_permissions')->truncate();
-        DB::table('model_has_roles')->truncate();
-        DB::table('role_has_permissions')->truncate();
         
         $this->call(PermissionsTableSeeder::class);
         $this->call(RolesTableSeeder::class);
@@ -25,6 +21,7 @@ class DatabaseSeeder extends Seeder
         $this->call(GenresTableSeeder::class);
         $this->call(FrequenciesTableSeeder::class);
         $this->call(MagazinesTableSeeder::class);
+        $this->call(DocumentsTableSeeder::class);
 
         Schema::enableForeignKeyConstraints();
     }
