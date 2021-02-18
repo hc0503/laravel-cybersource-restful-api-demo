@@ -25,9 +25,13 @@ class MagazineController extends Controller
     public function index(Request $request)
     {
         $pageTitle = __('global.magazines.list');
+        if (auth()->user()->hasRole('SuperAdmin') || auth()->user()->hasPermissionTo('activemagazine')) {
+            $magazines = Magazine::query()->orderBy('id', 'desc')->get();
+        } else {
+            $magazines = auth()->user()->magazines()->orderBy('id', 'desc')->get();
+        }
 
         if ($request->ajax()) {
-            $magazines = auth()->user()->magazines();
 
             return DataTables::of($magazines)
                 ->addIndexColumn()
@@ -49,13 +53,23 @@ class MagazineController extends Controller
 
                     return $btn;
                 })
+                ->addColumn('status', function ($row) {
+                    if ($row->status === 1) {
+                        return '<span class="badge badge-primary mr-1">'. __('global.magazines.field.active') .'</span>';
+                    } else {
+                        return '<span class="badge badge-warning mr-1">'. __('global.magazines.field.inactive') .'</span>';
+                    }
+                })
                 ->editColumn('genre', function ($row) {
                     return $row->genre->name;
                 })
                 ->editColumn('frequency', function ($row) {
                     return $row->frequency->name;
                 })
-                ->rawColumns(['action', 'cover_image'])
+                ->editColumn('buy_online', function ($row) {
+                    return "<a href='$row->buy_online' target='_blank'>$row->buy_online</a>";
+                })
+                ->rawColumns(['action', 'cover_image', 'status', 'buy_online'])
                 ->make(true);
         }
 
@@ -89,7 +103,9 @@ class MagazineController extends Controller
             'description' => ['required'],
             'genre_id' => ['required', 'int'],
             'frequency_id' => ['required', 'int'],
-            'cover_image' => ['mimes:jpeg,jpg,png', 'max:2048', 'image']
+            'cover_image' => ['mimes:jpeg,jpg,png', 'max:2048', 'image'],
+            'status' => [],
+            'buy_online' => []
         ]);
 
         if ($request->hasFile('cover_image')) {
@@ -164,7 +180,9 @@ class MagazineController extends Controller
             'description' => ['required'],
             'genre_id' => ['required', 'int'],
             'frequency_id' => ['required', 'int'],
-            'cover_image' => ['mimes:jpeg,jpg,png', 'max:2048', 'image']
+            'cover_image' => ['mimes:jpeg,jpg,png', 'max:2048', 'image'],
+            'status' => [],
+            'buy_online' => []
         ]);
         
         $magazine = Magazine::query()->whereGuid($guid)->firstOrFail();
@@ -194,7 +212,7 @@ class MagazineController extends Controller
                 $validated['cover_image'] = null;
             }
         }
-        auth()->user()->magazines()->update($validated);
+        $magazine->update($validated);
 
         return redirect()
             ->route('portal.magazines.index')

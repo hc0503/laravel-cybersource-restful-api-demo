@@ -39,8 +39,10 @@
 											<th>{{ trans('global.frequencies.sTitle') }}</th>
 											<th>{{ trans('global.magazines.field.title') }}</th>
 											<th>{{ trans('global.magazines.field.description') }}</th>
+											<th>{{ trans('global.magazines.field.buyOnline') }}</th>
+											<th>{{ trans('global.magazines.field.status') }}</th>
 											<th>{{ trans('global.createdAt') }}</th>
-											<th width="105px;">{{ trans('global.action') }}</th>
+											<th width="125px;">{{ trans('global.action') }}</th>
 										</tr>
 									</thead>
 									<tfoot>
@@ -51,8 +53,10 @@
 											<th>{{ trans('global.frequencies.sTitle') }}</th>
 											<th>{{ trans('global.magazines.field.title') }}</th>
 											<th>{{ trans('global.magazines.field.description') }}</th>
+											<th>{{ trans('global.magazines.field.buyOnline') }}</th>
+											<th>{{ trans('global.magazines.field.status') }}</th>
 											<th>{{ trans('global.createdAt') }}</th>
-											<th width="0px;">{{ trans('global.action') }}</th>
+											<th>{{ trans('global.action') }}</th>
 										</tr>
 									</tfoot>
 							</table>
@@ -87,6 +91,8 @@
 			{'data': 'frequency'},
 			{'data': 'title'},
 			{'data': 'description'},
+			{'data': 'buy_online'},
+			{'data': 'status'},
 			{'data': 'created_at'},
 			{'data': 'action'},
 		]

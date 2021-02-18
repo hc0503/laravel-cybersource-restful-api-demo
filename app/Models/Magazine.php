@@ -23,6 +23,8 @@ class Magazine extends Model
         'title',
         'description',
         'cover_image',
+        'status',
+        'buy_online'
     ];
 
     public function genre()
@@ -33,5 +35,10 @@ class Magazine extends Model
     public function frequency()
     {
         return $this->belongsTo(Frequency::class, 'frequency_id', 'id');
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id', 'id');
     }
 }

@@ -118,8 +118,13 @@ return [
 		'field' => [
 			'title' => 'Magazine Title',
 			'description' => 'Magazine Description',
-			'coverImage' => 'Cover Image'
-
+			'coverImage' => 'Cover Image',
+			'status' => 'Status',
+			'active' => 'Active',
+			'inactive' => 'Inactive',
+			'buyOnline' => 'Buy Online',
+			'authName' => 'Auth Name',
+			'authEmail' => 'Auth Email'
 		],
 		'message' => [
 			'saveSuccess' => 'The magazine is stored successfully.',

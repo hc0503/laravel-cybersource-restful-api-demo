@@ -42,8 +42,8 @@
 						@method('PUT')
 
 						<div class="row">
-							<div class="media align-items-center col-md-6 col-sm-12">
-								<img src="{{ asset('storage') . $magazine->cover_image }}" alt="{{ $magazine->title }}" class="d-block ui-w-100" id="previewImage">
+							<div class="media align-items-center col-md-4 col-sm-12">
+								<img src="{{ asset('storage') . $magazine->cover_image }}" alt="{{ $magazine->title }}" class="d-block ui-w-140" id="previewImage">
 								<div class="media-body ml-4">
 									<label class="btn btn-outline-primary mt-1">
 										{{ __('global.magazines.upload') }}
@@ -55,14 +55,46 @@
 								</div>
 							</div>
 							
-							<div class="form-group col-md-6 col-sm-12">
-								<label class="form-label" for="title">{{ __('global.magazines.field.title') }} *</label>
-								<input id="title" class="form-control @error('title') is-invalid @enderror" name="title" value="{{ $magazine->title }}" autofocus>
-								@error('title')
-									<span class="invalid-feedback" role="alert">
-										<strong>{{ $message }}</strong>
-									</span>
-								@enderror
+							<div class="col-md-8 col-sm-12">
+								<div class="form-group">
+									<label class="form-label" for="title">{{ __('global.magazines.field.title') }} *</label>
+									<input id="title" class="form-control @error('title') is-invalid @enderror" name="title" value="{{ $magazine->title }}" autofocus>
+									@error('title')
+										<span class="invalid-feedback" role="alert">
+											<strong>{{ $message }}</strong>
+										</span>
+									@enderror
+								</div>
+								
+								<div class="form-group @error('genre_id') is-invalid @enderror">
+									<label class="form-label" for="genre">{{ __('global.genres.title') }} *</label>
+									<select id="genre" name="genre_id" class="form-control" style="width: 100%">
+										<option></option>
+										@foreach ($genres as $genre)
+										<option value="{{ $genre->id }}" {{ $magazine->genre->id == $genre->id ? 'selected' : '' }}>{{ $genre->name }}</option>
+										@endforeach
+									 </select>
+									@error('genre_id')
+										<span class="invalid-feedback" role="alert" style="display: block !important;">
+											<strong>{{ $message }}</strong>
+										</span>
+									@enderror
+								</div>
+	
+								<div class="form-group @error('frequency_id') is-invalid @enderror">
+									<label class="form-label" for="frequency">{{ __('global.frequencies.title') }} *</label>
+									<select id="frequency" name="frequency_id" class="form-control" style="width: 100%">
+										<option></option>
+										@foreach ($frequencies as $frequency)
+										<option value="{{ $frequency->id }}" {{ $magazine->frequency->id == $frequency->id ? 'selected' : '' }}>{{ $frequency->name }}</option>
+										@endforeach
+									 </select>
+									@error('frequency_id')
+										<span class="invalid-feedback" role="alert" style="display: block !important;">
+											<strong>{{ $message }}</strong>
+										</span>
+									@enderror
+								</div>
 							</div>
 						</div>
 						
@@ -76,37 +108,32 @@
 							@enderror
 						</div>
 
+						@if (auth()->user()->hasRole('SuperAdmin') || auth()->user()->hasPermissionTo('activemagazine'))
 						<div class="row">
-							<div class="form-group @error('genre_id') is-invalid @enderror col-md-6 col-sm-12">
-								<label class="form-label" for="genre">{{ __('global.genres.title') }} *</label>
-								<select id="genre" name="genre_id" class="form-control" style="width: 100%">
-									<option></option>
-									@foreach ($genres as $genre)
-									<option value="{{ $genre->id }}" {{ $magazine->genre->id == $genre->id ? 'selected' : '' }}>{{ $genre->name }}</option>
-									@endforeach
-								 </select>
-								@error('genre_id')
-									<span class="invalid-feedback" role="alert" style="display: block !important;">
+							<div class="form-group col-md-2 col-sm-12">
+								<label class="form-label" for="status">{{ __('global.magazines.field.status') }}</label>
+								<select id="status" name="status" class="form-control" style="width: 100%">
+									<option value="1" {{ $magazine->status == '1' ? 'selected' : '' }}>{{ __('global.magazines.field.active') }}</option>
+									<option value="0" {{ $magazine->status == '0' ? 'selected' : '' }}>{{ __('global.magazines.field.inactive') }}</option>
+								</select>
+								@error('status')
+									<span class="invalid-feedback" role="alert">
 										<strong>{{ $message }}</strong>
 									</span>
 								@enderror
 							</div>
 
-							<div class="form-group @error('frequency_id') is-invalid @enderror col-md-6 col-sm-12">
-								<label class="form-label" for="frequency">{{ __('global.frequencies.title') }} *</label>
-								<select id="frequency" name="frequency_id" class="form-control" style="width: 100%">
-									<option></option>
-									@foreach ($frequencies as $frequency)
-									<option value="{{ $frequency->id }}" {{ $magazine->frequency->id == $frequency->id ? 'selected' : '' }}>{{ $frequency->name }}</option>
-									@endforeach
-								 </select>
-								@error('frequency_id')
-									<span class="invalid-feedback" role="alert" style="display: block !important;">
+							<div class="form-group col-md-10 col-sm-12">
+								<label class="form-label" for="buy_online">{{ __('global.magazines.field.buyOnline') }}</label>
+								<input id="buy_online" class="form-control @error('buy_online') is-invalid @enderror" name="buy_online" value="{{ $magazine->buy_online }}">
+								@error('buy_online')
+									<span class="invalid-feedback" role="alert">
 										<strong>{{ $message }}</strong>
 									</span>
 								@enderror
 							</div>
 						</div>
+						@endif
 
 						<div class="d-flex justify-content-between align-items-center m-0">
 							<button type="submit" class="btn btn-secondary" onclick="saveExit();">{{ __('global.users.saveAndExit') }}</button>

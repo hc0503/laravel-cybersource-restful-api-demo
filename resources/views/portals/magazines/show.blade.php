@@ -24,8 +24,20 @@
 			<div class="card">
 				<div class="card-body">
 					<div class="row">
-						<div class="form-group col-md-6 col-sm-12 text-center">
-							<img src="{{ asset('storage') . $magazine->cover_image }}" alt="{{ $magazine->title }}" height="250">
+						<div class="form-group col-md-3 col-sm-12 text-center">
+							<img src="{{ asset('storage') . $magazine->cover_image }}" alt="{{ $magazine->title }}" height="240">
+						</div>
+
+						<div class="col-md-3 col-sm-12">
+							<div class="form-group">
+								<label class="form-label" for="auth_name">{{ __('global.magazines.field.authName') }}</label>
+								<input id="auth_name" class="form-control" name="auth_name" value="{{ $magazine->user->name }}" disabled>
+							</div>
+
+							<div class="form-group">
+								<label class="form-label" for="auth_email">{{ __('global.magazines.field.authEmail') }}</label>
+								<input id="auth_email" class="form-control" name="auth_email" value="{{ $magazine->user->email }}" disabled>
+							</div>
 						</div>
 
 						<div class="col-md-6 col-sm-12">
@@ -59,6 +71,21 @@
 					<div class="form-group">
 						<label class="form-label" for="description">{{ __('global.magazines.field.description') }}</label>
 						<textarea id="description" class="form-control" name="description" rows="5" disabled>{{ $magazine->description }}</textarea>
+					</div>
+					
+					<div class="row">
+						<div class="form-group col-md-2 col-sm-12">
+							<label class="form-label" for="status">{{ __('global.magazines.field.status') }}</label>
+							<select id="status" name="status" class="form-control" style="width: 100%" disabled>
+								<option value="1" {{ $magazine->status == '1' ? 'selected' : '' }}>{{ __('global.magazines.field.active') }}</option>
+								<option value="0" {{ $magazine->status == '0' ? 'selected' : '' }}>{{ __('global.magazines.field.inactive') }}</option>
+							</select>
+						</div>
+
+						<div class="form-group col-md-10 col-sm-12">
+							<label class="form-label" for="buy_online">{{ __('global.magazines.field.buyOnline') }}</label>
+							<input id="buy_online" class="form-control @error('buy_online') is-invalid @enderror" name="buy_online" value="{{ $magazine->buy_online }}" disabled>
+						</div>
 					</div>
 
 					<div class="row">

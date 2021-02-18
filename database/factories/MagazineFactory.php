@@ -16,6 +16,8 @@ $factory->define(Magazine::class, function (Faker $faker) {
         'frequency_id' => Frequency::all(['id'])->random(),
         'title' => $faker->sentence,
         'description' => $faker->text,
-        'cover_image' => Str::random(10) . '.jpg'
+        'cover_image' => Str::random(10) . '.jpg',
+        'status' => $faker->boolean,
+        'buy_online' => $faker->url,
     ];
 });
