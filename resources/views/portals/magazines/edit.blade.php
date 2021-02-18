@@ -134,7 +134,7 @@
 						@endif
 
 						<div class="d-flex justify-content-between align-items-center m-0">
-							<button type="submit" class="btn btn-secondary" onclick="saveExit();">{{ __('global.users.saveAndExit') }}</button>
+							<button type="submit" class="btn btn-secondary">{{ __('global.users.saveAndExit') }}</button>
 						</div>
 				  </form>
 				  <!-- / Form -->
@@ -177,18 +177,6 @@
 			dropdownParent: $('#frequency').parent()
 		});
 		
-	function saveAnother() {
-		event.preventDefault();
-		$('#exit').val(false);
-		$('#form').submit();
-	}
-
-	function saveExit() {
-		event.preventDefault();
-		$('#exit').val(true);
-		$('#form').submit();
-	}
-
 	function previewPhoto() {
       var file = $('#cover_image')[0].files[0];
 		if (file) {
