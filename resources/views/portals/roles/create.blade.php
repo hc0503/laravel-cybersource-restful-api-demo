@@ -49,7 +49,7 @@
 							<label class="form-label" for="permissions">{{ __('global.permissions.title') }} *</label>
 							<select id="permissions" name="permissions[]" class="form-control" style="width: 100%" multiple>
 								@foreach ($permissions as $permission)
-								<option value="{{ $permission->name }}" {{ old('permissions') == $permission->name ? 'selected' : '' }}>{{ $permission->name }}</option>
+								<option value="{{ $permission->name }}" {{ collect(old('permissions'))->contains($permission->name) == $permission->name ? 'selected' : '' }}>{{ $permission->name }}</option>
 								@endforeach
 							 </select>
 							@error('permissions')

@@ -197,7 +197,7 @@
 							<label class="form-label" for="roles">{{ __('global.roles.title') }} *</label>
 							<select id="roles" name="roles[]" class="form-control" style="width: 100%" multiple>
 								@foreach ($roles as $role)
-								<option value="{{ $role->name }}" {{ old('roles') == $role->name ? 'selected' : '' }}>{{ $role->name }}</option>
+								<option value="{{ $role->name }}" {{ collect(old('roles'))->contains($role->name) ? 'selected' : '' }}>{{ $role->name }}</option>
 								@endforeach
 							 </select>
 							@error('roles')

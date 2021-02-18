@@ -49,7 +49,7 @@
 								<div class="media-body ml-4">
 									<label class="btn btn-outline-primary mt-1">
 										{{ __('global.magazines.upload') }}
-										<input type="file" class="account-settings-fileinput" name="cover_image" id="cover_image" onchange="previewPhoto();">
+										<input type="file" class="account-settings-fileinput" name="cover_image" id="cover_image" onchange="previewPhoto();" accept=".jpg, .jpeg, .png">
 										<input type="number" id="reset" name="reset" value="0" hidden>
 									</label> &nbsp;
 									<button type="button" class="btn btn-default md-btn-flat mt-1" onclick="resetPhoto();">{{ __('global.magazines.reset') }}</button>
@@ -71,7 +71,6 @@
 								<div class="form-group @error('genre_id') is-invalid @enderror">
 									<label class="form-label" for="genre">{{ __('global.genres.title') }} *</label>
 									<select id="genre" name="genre_id" class="form-control" style="width: 100%">
-										<option></option>
 										@foreach ($genres as $genre)
 										<option value="{{ $genre->id }}" {{ old('genre') == $genre->id ? 'selected' : '' }}>{{ $genre->name }}</option>
 										@endforeach
@@ -86,7 +85,6 @@
 								<div class="form-group @error('frequency_id') is-invalid @enderror">
 									<label class="form-label" for="frequency">{{ __('global.frequencies.title') }} *</label>
 									<select id="frequency" name="frequency_id" class="form-control" style="width: 100%">
-										<option></option>
 										@foreach ($frequencies as $frequency)
 										<option value="{{ $frequency->id }}" {{ old('frequency') == $frequency->id ? 'selected' : '' }}>{{ $frequency->name }}</option>
 										@endforeach
