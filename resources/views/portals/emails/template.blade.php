@@ -4,7 +4,9 @@
 <head>
     <meta name="viewport" content="width=device-width"/>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <title>{{ trans('panel.site_title') }}</title>
+    <title>{{ config('app.name') }}</title>
+
+	<link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
 </head>
 
 <body itemscope itemtype="http://schema.org/EmailMessage" style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; -webkit-font-smoothing: antialiased; -webkit-text-size-adjust: none; width: 100% !important; height: 100%; line-height: 1.6em; background-color: #f6f6f6; margin: 0;"
@@ -28,7 +30,7 @@ bgcolor="#f6f6f6">
                     <td class=""
                         style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 16px; vertical-align: top; color: #fff; font-weight: 500; text-align: center; border-radius: 3px 3px 0 0; background-color: #38414a; margin: 0; padding: 20px;"
                         align="center" bgcolor="#71b6f9" valign="top">
-                        <a href="#"> <img src="{{ asset('image/spscloud_logo_wite.png') }}" height="30" alt="logo"/></a> <br/>
+                        <a href="#"> <img src="{{ asset('assets/img/logo.png') }}" height="30" alt="logo"/></a> <br/>
                     </td>
                 </tr>
                 <tr style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; margin: 0;">
@@ -55,8 +57,8 @@ bgcolor="#f6f6f6">
                     <tr style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; margin: 0;">
                         <td class="aligncenter content-block"
                             style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 12px; vertical-align: top; color: #999; text-align: center; margin: 0; padding: 0 0 20px;"
-                            align="center" valign="top"> © 2020-{{ date('Y') }}<a href="{{ config('app.homepage_url') }}"
-                                                        style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 12px; color: #999; text-decoration: underline; margin: 0;"> SPSCloud.io</a>
+                            align="center" valign="top"> © 2021 - {{ date('Y') }}<a href="{{ config('app.url') }}"
+                                                        style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 12px; color: #999; text-decoration: underline; margin: 0;"> {{ config('app.name') }}</a>
                         </td>
                     </tr>
                 </table>
