@@ -12,9 +12,9 @@ class MailController extends Controller
 
     public function __construct()
     {
-        $this->fromEmail = 'root@localhost.com';
+        $this->fromEmail = config('mail.from.address');
         $this->fromName = config('mail.from.name');
-        $this->receiveEmail = 'root@localhost.com';
+        $this->receiveEmail = config('mail.to');
     }
 
     /**
