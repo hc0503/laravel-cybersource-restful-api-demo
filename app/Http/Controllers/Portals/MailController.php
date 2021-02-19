@@ -52,14 +52,14 @@ class MailController extends Controller
                     ->subject($subject);
             });
         } catch (Exception $exception) {
-            return redirect()->route('portals.emails.compose')
+            return redirect()->route('portal.emails.compose')
                 ->with('status', 'danger')
                 ->with('message', $exception->getMessage());
 
         }
 
-        return redirect()->route('portals.emails.compose')
+        return redirect()->route('portal.emails.compose')
             ->with('status', 'success')
-            ->with('message', __('global.emails.message.saveSuccess'));
+            ->with('message', __('global.emails.message.sendSuccess'));
     }
 }
