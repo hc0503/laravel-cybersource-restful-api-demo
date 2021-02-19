@@ -153,7 +153,10 @@ return [
 	'emails' => [
 		'emailUs' => 'Email Us',
 		'subject' => 'Subject',
-		'send' => 'Send'
+		'send' => 'Send',
+		'message' => [
+			'sendSuccess' => 'The email is sent successfully.'
+		]
 	],
 	'home' => [
 		'title' => 'Home',
