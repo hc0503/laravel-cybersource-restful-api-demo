@@ -181,6 +181,7 @@
 							<div class="form-group col-md-6 col-sm-12 @error('country') is-invalid @enderror">
 								<label class="form-label" for="country">{{ __('global.users.field.country') }} *</label>
 								<select id="country" name="country" class="form-control" style="width: 100%">
+									<option></option>
 									@foreach ($countries as $country)
 									<option value="{{ $country->code }}" {{ old('country') == $country->code ? 'selected' : '' }}>{{ $country->name }}</option>
 									@endforeach
@@ -196,6 +197,7 @@
 						<div class="form-group @error('roles') is-invalid @enderror">
 							<label class="form-label" for="roles">{{ __('global.roles.title') }} *</label>
 							<select id="roles" name="roles[]" class="form-control" style="width: 100%" multiple>
+								<option></option>
 								@foreach ($roles as $role)
 								<option value="{{ $role->name }}" {{ collect(old('roles'))->contains($role->name) ? 'selected' : '' }}>{{ $role->name }}</option>
 								@endforeach

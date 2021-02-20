@@ -48,6 +48,7 @@
 						<div class="form-group @error('permissions') is-invalid @enderror">
 							<label class="form-label" for="permissions">{{ __('global.permissions.title') }} *</label>
 							<select id="permissions" name="permissions[]" class="form-control" style="width: 100%" multiple>
+								<option></option>
 								@foreach ($permissions as $permission)
 								<option value="{{ $permission->name }}" {{ in_array($permission->name, $role->permissions->pluck('name')->toArray()) ? 'selected' : '' }}>{{ $permission->name }}</option>
 								@endforeach

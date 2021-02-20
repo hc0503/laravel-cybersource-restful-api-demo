@@ -49,6 +49,7 @@
 						<div class="form-group @error('users') is-invalid @enderror">
 							<label class="form-label" for="users">{{ __('global.users.title') }} *</label>
 							<select id="users" name="users[]" class="form-control" style="width: 100%" multiple>
+								<option></option>
 								@foreach ($users as $user)
 								<option value="{{ $user->id }}" {{ collect(old('users'))->contains($user->id) == $user->id ? 'selected' : '' }}>{{ $user->email }}</option>
 								@endforeach
