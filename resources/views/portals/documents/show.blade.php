@@ -37,7 +37,7 @@
 						</select>
 					</div>
 
-					<div class="d-flex justify-content-between align-items-center m-0">
+					<div class="text-right m-0">
 						<a href="{{ asset('storage') . $document->path }}" class="btn btn-secondary" target="__blank"><i class="fas fa-download"> {{ __('global.documents.download') }}</i></a>
 					</div>
 				</div>

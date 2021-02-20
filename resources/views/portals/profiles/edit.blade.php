@@ -192,7 +192,7 @@
 
 						<div class="form-row">
 							<div class="form-group col-md-6 col-sm-12">
-								<label class="form-label d-flex justify-content-between align-items-end" for="password">{{ __('global.login.password') }}</label>
+								<label class="form-label" for="password">{{ __('global.login.password') }}</label>
 								<input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" autocomplete="off">
 	
 								@error('password')

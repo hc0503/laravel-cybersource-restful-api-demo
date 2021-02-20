@@ -135,7 +135,7 @@
 						</div>
 						@endif
 
-						<div class="d-flex justify-content-between align-items-center m-0">
+						<div class="text-right m-0">
 							<button type="submit" class="btn btn-secondary">{{ __('global.users.saveAndExit') }}</button>
 						</div>
 				  </form>
