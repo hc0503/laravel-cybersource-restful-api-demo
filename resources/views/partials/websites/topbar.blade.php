@@ -22,7 +22,7 @@
 			<li class="nav-item {{ request()->is('home') ? 'active' : '' }}"><a class="nav-link px-lg-3" href="{{ route('home') }}">{{ __('global.home.title') }}</a></li>
 			<li class="nav-item {{ request()->is('about-us') ? 'active' : '' }}"><a class="nav-link px-lg-3" href="{{ route('about-us') }}">{{ __('global.aboutUs.footTitle') }}</a></li>
 			<li class="nav-item {{ request()->is('gallery') ? 'active' : '' }}"><a class="nav-link px-lg-3" href="{{ route('gallery') }}">{{ __('global.magazineGallery.title') }}</a></li>
-			<li class="nav-item {{ request()->is('contact-us') ? 'active' : '' }}"><a class="nav-link px-lg-3" href="{{ url('contact-us') }}">{{ __('global.contactUs.title') }}</a></li>
+			<li class="nav-item {{ request()->is('contact-us') ? 'active' : '' }}"><a class="nav-link px-lg-3" href="{{ route('contact-us.view') }}">{{ __('global.contactUs.title') }}</a></li>
 		</ul>
 		<div class="shop-header navbar-collapse collapse">
 			<div class="navbar-nav align-items-lg-center ml-auto">
