@@ -46,7 +46,7 @@ class MailController extends Controller
         $subject = $validated['subject'];
 
         try {
-            Mail::send('portals.emails.template', ['content' => $validated['summernote']], function($message) use ($email, $subject){
+            Mail::send('portals.emails.template', ['content' => $validated['summernote']], function ($message) use ($email, $subject) {
                 $message->from($this->fromEmail, $this->fromName)
                     ->bcc($email)
                     ->subject($subject);

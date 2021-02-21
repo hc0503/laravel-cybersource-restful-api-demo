@@ -13,18 +13,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    $pageTitle = __('global.comingSoon.title');
-
-    return view('coming-soon', compact('pageTitle'));
-});
-
 Auth::routes();
 
 Route::middleware(['auth', 'verified'])->group( function () {
     // Route::group(['middleware' => 'role:Admin', 'prefix' => 'portal', 'as'=>'portal.'], function () {
     Route::group(['prefix' => 'portal', 'as' => 'portal.'], function () {
-        Route::get('home', 'HomeController@index')->name('home');
+        Route::get('/', function () {
+            return redirect()->route('portal.home');
+        });
+        Route::get('home', 'Portals\HomeController@index')->name('home');
 
         Route::group(['prefix' => 'profiles', 'as' => 'profiles.'], function () {
             Route::get('show/{guid}', 'Portals\ProfileController@show')->name('show');
@@ -48,4 +45,20 @@ Route::middleware(['auth', 'verified'])->group( function () {
             Route::post('send', 'Portals\MailController@sendEmail')->name('send');
         });
     });
+});
+
+Route::get('/', function () {
+    return redirect('home');
+});
+Route::get('home', 'HomeController@index')->name('home');
+Route::get('about-us', 'AboutUsController@index')->name('about-us');
+Route::group(['prefix' => 'contact-us', 'as' => 'contact-us.'], function () {
+    Route::get('/', 'ContactUsController@getContactUs')->name('view');
+    Route::post('send', 'ContactUsController@postContactUs')->name('send');
+});
+Route::get('gallery', 'GalleryController@index')->name('gallery');
+Route::get('coming-soon', function () {
+    $pageTitle = __('global.comingSoon.title');
+
+    return view('coming-soon', compact('pageTitle'));
 });
