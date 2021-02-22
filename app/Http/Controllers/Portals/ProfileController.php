@@ -68,7 +68,7 @@ class ProfileController extends Controller
             'name3' => [],
             'email3' => ['email', 'string', 'max:255', 'nullable'],
             'company' => [],
-            'website' => [],
+            'website' => ['url'],
             'address' => ['required', 'string', 'max:255'],
             'city' => ['required', 'string', 'max:255'],
             'zip' => ['required', 'string', 'max:255'],

@@ -56,7 +56,7 @@ class MagazineController extends Controller
                 ->addColumn('auth', function ($row) {
                     return '<a href="'. route('portal.profiles.show', $row->user->guid) .'" target="_blank"><span class="badge badge-secondary">'. $row->user->email .'</span></a>';
                 })
-                ->addColumn('status', function ($row) {
+                ->editColumn('status', function ($row) {
                     if ($row->status === 1) {
                         return '<span class="badge badge-primary">'. __('global.magazines.field.active') .'</span>';
                     } else {
@@ -108,7 +108,7 @@ class MagazineController extends Controller
             'frequency_id' => ['required', 'int'],
             'cover_image' => ['mimes:jpeg,jpg,png', 'max:2048', 'image'],
             'status' => [],
-            'buy_online' => []
+            'buy_online' => ['url']
         ]);
 
         if ($request->hasFile('cover_image')) {
@@ -185,7 +185,7 @@ class MagazineController extends Controller
             'frequency_id' => ['required', 'int'],
             'cover_image' => ['mimes:jpeg,jpg,png', 'max:2048', 'image'],
             'status' => [],
-            'buy_online' => []
+            'buy_online' => ['url']
         ]);
         
         $magazine = Magazine::query()->whereGuid($guid)->firstOrFail();
