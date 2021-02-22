@@ -53,7 +53,7 @@
 										<input type="number" id="reset" name="reset" value="0" hidden>
 									</label> &nbsp;
 									<button type="button" class="btn btn-default md-btn-flat mt-1" onclick="resetPhoto();">{{ __('global.sliders.reset') }}</button>
-									<div class="text-light small mt-1">{{ __('global.sliders.allowDescription') }}</div>
+									<div class="text-light small mt-1">{!! __('global.sliders.allowDescription') !!}</div>
 								</div>
 							</div>
 

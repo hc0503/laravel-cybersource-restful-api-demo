@@ -169,7 +169,7 @@ return [
 		'show' => 'Show Slider',
 		'upload' => 'Upload new image',
 		'reset' => 'Reset',
-		'allowDescription' => 'Allowed JPG, GIF or PNG. Max size of 800K',
+		'allowDescription' => 'Allowed JPG, GIF or PNG(1920 x 1280).<br>Max size of 800K.',
 		'field' => [
 			'title' => 'Title',
 			'image' => 'Image',
