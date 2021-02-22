@@ -42,14 +42,12 @@ class MailController extends Controller
             'subject' => ['required', 'string', 'max:255'],
             'enquiry' => ['required']
         ]);
-        
-        $receiveEmail = $this->receiveEmail;
-        $subject = $validated['subject'];
+
         $data = [
             'subject' => $validated['subject'],
             'name' => $request->user()->name,
             'company' => $request->user()->company,
-            'country' => Countries::where('cca2', $request->user()->email)->first()->name->common,
+            'country' => Countries::where('cca2', $request->user()->country)->first()->name->common,
             'website' => $request->user()->website,
             'email' => $request->user()->email,
             'enquiry' => $validated['enquiry'],
