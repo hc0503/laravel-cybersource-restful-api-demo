@@ -20,13 +20,13 @@
 				<div>{{ __('global.userManagement') }}</div>
 			</a>
 			<ul class="sidenav-menu">
-				@can('viewpermission')
+				{{-- @can('viewpermission')
 				<li class="sidenav-item {{ request()->is('portal/usermanage/permissions') ? 'active' : '' }}">
 					<a href="{{ route('portal.usermanage.permissions.index') }}" class="sidenav-link">
 						<div>{{ __('global.permissions.title') }}</div>
 					</a>
 				</li>
-				@endcan
+				@endcan --}}
 
 				@can('viewrole')
 				<li class="sidenav-item {{ request()->is('portal/usermanage/roles') ? 'active' : '' }}">
