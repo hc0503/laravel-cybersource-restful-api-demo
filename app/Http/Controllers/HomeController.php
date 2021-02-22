@@ -30,10 +30,10 @@ class HomeController extends Controller
         if ($request->genre && $request->genre != 'all') {
             $currentGenre = $request->genre; 
             $genre = Genre::query()->whereGuid($request->genre)->firstOrFail();
-            $magazines = $genre->magazines()->paginate(5);
+            $magazines = $genre->magazines()->where('status', 1)->paginate(20);
         } else {
             $currentGenre = 'all';
-            $magazines = Magazine::paginate(5);
+            $magazines = Magazine::query()->where('status', 1)->paginate(20);
         }
         $pageTitle = __('global.home.title');
         $genres = Genre::all();
