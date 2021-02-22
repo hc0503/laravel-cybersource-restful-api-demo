@@ -184,6 +184,21 @@ return [
 			'deleteSuccess' => 'The slider is deleted successfully.'
 		]
 	],
+	'contactEmails' => [
+		'title' => 'Contact Emails',
+		'list' => 'Contact Email List',
+		'create' => 'Create Contact Email',
+		'edit' => 'Edit Contact Email',
+		'field' => [
+			'name' => 'Name',
+			'email' => 'Contact Email'
+		],
+		'message' => [
+			'saveSuccess' => 'The contact email is stored successfully.',
+			'updateSuccess' => 'The contact email is updated successfully.',
+			'deleteSuccess' => 'The contact email is deleted successfully.'
+		]
+	],
 	'home' => [
 		'title' => 'Home',
 		'magazineDetails' => 'Magazine Details',

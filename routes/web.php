@@ -38,6 +38,7 @@ Route::middleware(['auth', 'verified'])->group( function () {
 
         Route::resource('sliders', 'Portals\SliderController');
         Route::resource('genres', 'Portals\GenreController');
+        Route::resource('contact-emails', 'Portals\ContactEmailController');
         Route::resource('magazines', 'Portals\MagazineController');
         Route::resource('documents', 'Portals\DocumentController');
 
