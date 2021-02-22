@@ -52,7 +52,12 @@ class PermissionsTableSeeder extends Seeder
             'createslider',
             'editslider',
             'deleteslider',
-            'viewslider'
+            'viewslider',
+
+            'createcontactemail',
+            'editcontactemail',
+            'deletecontactemail',
+            'viewcontactemail'
         ];
 
         foreach ($permissions as $permission) {
