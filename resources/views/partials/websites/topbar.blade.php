@@ -29,7 +29,7 @@
 			@if (Auth::check())
 			<li class="nav-item dropdown">
 				<a class="nav-link dropdown-toggle hide-arrow ml-lg-2" href="#" data-toggle="dropdown">
-					<img src="assets/img/avatars/1.png" alt class="ui-w-30 rounded-circle align-middle">
+					<img src="assets/img/avatars/default.jpg" alt class="ui-w-30 rounded-circle align-middle">
 					<span class="d-lg-none align-middle">&nbsp; Mike Greene</span>
 				</a>
 				<div class="dropdown-menu dropdown-menu-right">

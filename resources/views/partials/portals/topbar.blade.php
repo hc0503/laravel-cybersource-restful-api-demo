@@ -22,91 +22,91 @@
 	 
 	<div class="navbar-collapse collapse" id="layout-navbar-collapse">
 		<!-- Divider -->
-		<hr class="d-lg-none w-100 my-2">
+		{{-- <hr class="d-lg-none w-100 my-2">
 
 		<div class="navbar-nav align-items-lg-center">
-		<!-- Search -->
-		<label class="nav-item navbar-text navbar-search-box p-0 active">
-			<i class="ion ion-ios-search navbar-icon align-middle"></i>
-			<span class="navbar-search-input pl-2">
-				<input type="text" class="form-control navbar-text mx-2" placeholder="Search..." style="width:200px">
-			</span>
-		</label>
-		</div>
+			<!-- Search -->
+			<label class="nav-item navbar-text navbar-search-box p-0 active">
+				<i class="ion ion-ios-search navbar-icon align-middle"></i>
+				<span class="navbar-search-input pl-2">
+					<input type="text" class="form-control navbar-text mx-2" placeholder="Search..." style="width:200px">
+				</span>
+			</label>
+		</div> --}}
 
 		<div class="navbar-nav align-items-lg-center ml-auto">
-		<div class="demo-navbar-notifications nav-item dropdown mr-lg-3">
-			<a class="nav-link dropdown-toggle hide-arrow" href="#" data-toggle="dropdown">
-				<i class="ion ion-md-notifications-outline navbar-icon align-middle"></i>
-				<span class="badge badge-primary badge-dot indicator"></span>
-			</a>
-			<div class="dropdown-menu dropdown-menu-right">
-				<div class="bg-primary text-center text-white font-weight-bold p-3">
-				1 New Notifications
-				</div>
-				<div class="list-group list-group-flush">
-					<a href="javascript:void(0)" class="list-group-item list-group-item-action media d-flex align-items-center">
-						<div class="ui-icon ui-icon-sm ion ion-md-home bg-secondary border-0 text-white"></div>
-						<div class="media-body line-height-condenced ml-3">
-							<div class="text-body">Login from 192.168.1.1</div>
-							<div class="text-light small mt-1">
-							Aliquam ex eros, imperdiet vulputate hendrerit et.
-							</div>
-							<div class="text-light small mt-1">12h ago</div>
-						</div>
-					</a>
-				</div>
-
-				<a href="javascript:void(0)" class="d-block text-center text-light small p-2 my-1">Show all notifications</a>
-			</div>
-		</div>
-
-		<div class="demo-navbar-messages nav-item dropdown mr-lg-3">
-			<a class="nav-link dropdown-toggle hide-arrow" href="#" data-toggle="dropdown">
-				<i class="ion ion-ios-mail navbar-icon align-middle"></i>
-				<span class="badge badge-primary badge-dot indicator"></span>
-			</a>
-			<div class="dropdown-menu dropdown-menu-right">
-				<div class="bg-primary text-center text-white font-weight-bold p-3">
-				1 New Messages
-				</div>
-				<div class="list-group list-group-flush">
-					<a href="javascript:void(0)" class="list-group-item list-group-item-action media d-flex align-items-center">
-						<img src="{{ asset('assets/img/avatars/6-small.png') }}" class="d-block ui-w-40 rounded-circle" alt>
-						<div class="media-body ml-3">
-							<div class="text-body line-height-condenced">Sit meis deleniti eu, pri vidit meliore docendi ut.</div>
-							<div class="text-light small mt-1">
-							Mae Gibson &nbsp;·&nbsp; 58m ago
-							</div>
-						</div>
-					</a>
-				</div>
-
-				<a href="javascript:void(0)" class="d-block text-center text-light small p-2 my-1">Show all messages</a>
-			</div>
-		</div>
-
-		<!-- Divider -->
-		<div class="nav-item d-none d-lg-block text-big font-weight-light line-height-1 opacity-25 mr-3 ml-1">|</div>
-
-		<div class="demo-navbar-user nav-item dropdown">
-			<a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">
-				<span class="d-inline-flex flex-lg-row-reverse align-items-center align-middle">
-				<img src="{{ asset('assets/img/avatars/1.png') }}" alt class="d-block ui-w-30 rounded-circle">
-				<span class="px-1 mr-lg-2 ml-2 ml-lg-0">{{ Auth::user()->name }}</span>
-				</span>
-			</a>
-			<div class="dropdown-menu dropdown-menu-right">
-				<a href="{{ route('portal.profiles.show', auth()->user()->guid) }}" class="dropdown-item"><i class="ion ion-ios-person text-lightest"></i> &nbsp; {{ __('global.profiles.myProfile') }}</a>
-				<div class="dropdown-divider"></div>
-				<form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-					@csrf
-			  	</form>
-				<a href="{{ route('logout') }}" class="dropdown-item" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-					<i class="ion ion-ios-log-out text-danger"></i> &nbsp; {{ __('global.logOut') }}
+			{{-- <div class="demo-navbar-notifications nav-item dropdown mr-lg-3">
+				<a class="nav-link dropdown-toggle hide-arrow" href="#" data-toggle="dropdown">
+					<i class="ion ion-md-notifications-outline navbar-icon align-middle"></i>
+					<span class="badge badge-primary badge-dot indicator"></span>
 				</a>
+				<div class="dropdown-menu dropdown-menu-right">
+					<div class="bg-primary text-center text-white font-weight-bold p-3">
+					1 New Notifications
+					</div>
+					<div class="list-group list-group-flush">
+						<a href="javascript:void(0)" class="list-group-item list-group-item-action media d-flex align-items-center">
+							<div class="ui-icon ui-icon-sm ion ion-md-home bg-secondary border-0 text-white"></div>
+							<div class="media-body line-height-condenced ml-3">
+								<div class="text-body">Login from 192.168.1.1</div>
+								<div class="text-light small mt-1">
+								Aliquam ex eros, imperdiet vulputate hendrerit et.
+								</div>
+								<div class="text-light small mt-1">12h ago</div>
+							</div>
+						</a>
+					</div>
+
+					<a href="javascript:void(0)" class="d-block text-center text-light small p-2 my-1">Show all notifications</a>
+				</div>
+			</div> --}}
+
+			{{-- <div class="demo-navbar-messages nav-item dropdown mr-lg-3">
+				<a class="nav-link dropdown-toggle hide-arrow" href="#" data-toggle="dropdown">
+					<i class="ion ion-ios-mail navbar-icon align-middle"></i>
+					<span class="badge badge-primary badge-dot indicator"></span>
+				</a>
+				<div class="dropdown-menu dropdown-menu-right">
+					<div class="bg-primary text-center text-white font-weight-bold p-3">
+					1 New Messages
+					</div>
+					<div class="list-group list-group-flush">
+						<a href="javascript:void(0)" class="list-group-item list-group-item-action media d-flex align-items-center">
+							<img src="{{ asset('assets/img/avatars/6-small.png') }}" class="d-block ui-w-40 rounded-circle" alt>
+							<div class="media-body ml-3">
+								<div class="text-body line-height-condenced">Sit meis deleniti eu, pri vidit meliore docendi ut.</div>
+								<div class="text-light small mt-1">
+								Mae Gibson &nbsp;·&nbsp; 58m ago
+								</div>
+							</div>
+						</a>
+					</div>
+
+					<a href="javascript:void(0)" class="d-block text-center text-light small p-2 my-1">Show all messages</a>
+				</div>
+			</div> --}}
+
+			<!-- Divider -->
+			<div class="nav-item d-none d-lg-block text-big font-weight-light line-height-1 opacity-25 mr-3 ml-1">|</div>
+
+			<div class="demo-navbar-user nav-item dropdown">
+				<a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">
+					<span class="d-inline-flex flex-lg-row-reverse align-items-center align-middle">
+					<img src="{{ asset('assets/img/avatars/default.jpg') }}" alt class="d-block ui-w-30 rounded-circle">
+					<span class="px-1 mr-lg-2 ml-2 ml-lg-0">{{ Auth::user()->name }}</span>
+					</span>
+				</a>
+				<div class="dropdown-menu dropdown-menu-right">
+					<a href="{{ route('portal.profiles.show', auth()->user()->guid) }}" class="dropdown-item"><i class="ion ion-ios-person text-lightest"></i> &nbsp; {{ __('global.profiles.myProfile') }}</a>
+					<div class="dropdown-divider"></div>
+					<form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+						@csrf
+					</form>
+					<a href="{{ route('logout') }}" class="dropdown-item" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+						<i class="ion ion-ios-log-out text-danger"></i> &nbsp; {{ __('global.logOut') }}
+					</a>
+				</div>
 			</div>
-		</div>
 		</div>
 	</div>
 </nav>
