@@ -62,6 +62,7 @@ Route::group(['prefix' => 'magazines', 'as' => 'magazines.'], function () {
     Route::get('details/{guid}', 'HomeController@getDetails')->name('details');
 });
 Route::get('privacy', 'PrivacyController@getPrivacy');
+Route::get('disclaimer', 'DisclaimerController@getDisclaimer');
 
 Route::get('coming-soon', function () {
     $pageTitle = __('global.comingSoon.title');

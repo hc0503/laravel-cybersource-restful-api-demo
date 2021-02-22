@@ -212,7 +212,7 @@ return [
 		]
 	],
 	'termsAndConditions' => [
-		'title' => 'Terms & Conditions'
+		'title' => 'Disclaimer & Copyright'
 	],
 	'privacyPolicy' => [
 		'title' => 'Privacy Policy'
