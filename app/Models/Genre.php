@@ -19,4 +19,9 @@ class Genre extends Model
     protected $fillable = [
         'name',
     ];
+
+    public function magazines()
+    {
+        return $this->hasMany(Magazine::class, 'genre_id', 'id');
+    }
 }

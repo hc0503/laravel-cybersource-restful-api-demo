@@ -58,6 +58,10 @@ Route::group(['prefix' => 'contact-us', 'as' => 'contact-us.'], function () {
     Route::post('send', 'ContactUsController@postContactUs')->name('send');
 });
 Route::get('gallery', 'GalleryController@index')->name('gallery');
+Route::group(['prefix' => 'magazines', 'as' => 'magazines.'], function () {
+    Route::get('details/{guid}', 'HomeController@getDetails')->name('details');
+});
+
 Route::get('coming-soon', function () {
     $pageTitle = __('global.comingSoon.title');
 

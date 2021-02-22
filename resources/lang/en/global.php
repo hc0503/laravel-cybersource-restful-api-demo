@@ -6,6 +6,7 @@ return [
 	'action' => 'Action',
 	'userManagement' => 'User Management',
 	'goToPortal' => 'Go to portal',
+	'price' => 'Price',
 	'login' => [
 		'title' => 'Login',
 		'formDescription' => 'Login to Your Account',
@@ -185,6 +186,8 @@ return [
 	],
 	'home' => [
 		'title' => 'Home',
+		'magazineDetails' => 'Magazine Details',
+		'all' => 'All',
 	],
 	'aboutUs' => [
 		'title' => 'About Us',
