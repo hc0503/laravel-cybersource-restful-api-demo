@@ -53,21 +53,12 @@ class MagazineController extends Controller
 
                     return $btn;
                 })
-                ->addColumn('auth', function ($row) {
-                    return '<a href="'. route('portal.profiles.show', $row->user->guid) .'" target="_blank"><span class="badge badge-secondary">'. $row->user->email .'</span></a>';
-                })
                 ->editColumn('status', function ($row) {
                     if ($row->status === 1) {
                         return '<span class="badge badge-primary">'. __('global.magazines.field.active') .'</span>';
                     } else {
                         return '<span class="badge badge-warning">'. __('global.magazines.field.inactive') .'</span>';
                     }
-                })
-                ->editColumn('genre', function ($row) {
-                    return $row->genre->name;
-                })
-                ->editColumn('frequency', function ($row) {
-                    return $row->frequency->name;
                 })
                 ->editColumn('buy_online', function ($row) {
                     return "<a href='$row->buy_online' target='_blank'>$row->buy_online</a>";
