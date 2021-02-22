@@ -22,7 +22,7 @@
 		<button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">×</span> </button>
 	</div>
 	@endif
-	@error('summernote')
+	@error('enquiry')
 	<div class="alert alert-danger">
 		<i class="ti-user"></i> {{ $message }}
 		<button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">×</span> </button>
@@ -47,7 +47,7 @@
 						</div>
 
 						<div class="form-group">
-							<textarea id="summernote" class="summernote" name="summernote"></textarea>
+							<textarea id="enquiry" name="enquiry"></textarea>
 						</div>
 
 						<div class="text-right mt-4">
@@ -68,7 +68,7 @@
 @push('js')
 <script src="{{ asset('assets/libs/summernote/summernote-bs4.min.js') }}"></script>
 <script>
-	$('#summernote').summernote({
+	$('#enquiry').summernote({
 		height: 360,                 // set editor height
 		minHeight: null,             // set minimum height of editor
 		maxHeight: null,             // set maximum height of editor

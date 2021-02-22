@@ -8,11 +8,13 @@ use Illuminate\Support\Facades\Mail;
 
 class MailController extends Controller
 {
-    protected $receiveEmail;
+    protected $receiveEmail, $fromEmail, $fromName;
 
     public function __construct()
     {
         $this->receiveEmail = config('mail.to');
+        $this->fromEmail = config('mail.from.address');
+        $this->fromName = config('app.name');
     }
 
     /**
@@ -37,19 +39,29 @@ class MailController extends Controller
     {
         $validated = $request->validate([
             'subject' => ['required', 'string', 'max:255'],
-            'summernote' => ['required']
+            'enquiry' => ['required']
         ]);
         
         $receiveEmail = $this->receiveEmail;
         $subject = $validated['subject'];
-        $fromEmail = $request->user()->email;
-        $fromName = $request->user()->name;
+        $data = [
+            'subject' => $validated['subject'],
+            'name' => $request->user()->name,
+            'company' => $request->user()->company,
+            'country' => Countries::where('cca2', $request->user()->email)->first()->name->common,
+            'website' => $request->user()->website,
+            'email' => $request->user()->email,
+            'enquiry' => $validated['enquiry'],
+            'fromEmail' => $this->fromEmail,
+            'fromName' => $this->fromName,
+            'receiveEmail' => $this->receiveEmail
+        ];
 
         try {
-            Mail::send('portals.emails.template', ['content' => $validated['summernote']], function ($message) use ($receiveEmail, $subject, $fromEmail, $fromName) {
-                $message->from($fromEmail, $fromName)
-                    ->bcc($receiveEmail)
-                    ->subject($subject);
+            Mail::send('portals.emails.template', $data, function ($message) use ($data) {
+                $message->from($data['fromEmail'], $data['fromName'])
+                    ->bcc($data['receiveEmail'])
+                    ->subject($data['subject']);
             });
         } catch (Exception $exception) {
             return redirect()->route('portal.emails.compose')

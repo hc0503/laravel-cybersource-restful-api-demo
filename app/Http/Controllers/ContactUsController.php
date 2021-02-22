@@ -44,20 +44,20 @@ class ContactUsController extends Controller
             'enquiry' => ['required'],
             'g-recaptcha-response' => ['required', 'captcha'],
         ]);
-
-        $receiveEmail = $this->receiveEmail;
-        $fromEmail = $this->fromEmail;
-        $fromName = $this->fromName;
-        $subject = 'Contact Us of ' . config('app.name');
+        
+        $validated['receiveEmail'] = $this->receiveEmail;
+        $validated['fromEmail'] = $this->fromEmail;
+        $validated['fromName'] = $this->fromName;
+        $validated['subject'] = 'Contact Us of ' . config('app.name');
         $validated['country'] = Countries::where('cca2', $validated['country'])->first()->name->common;
 
         try {
             Mail::send('contact-us.template',
                 $validated,
-                function ($message) use ($receiveEmail, $subject, $fromEmail, $fromName) {
-                    $message->from($fromEmail, $fromName)
-                        ->bcc($receiveEmail)
-                        ->subject($subject);
+                function ($message) use ($validated) {
+                    $message->from($validated['fromEmail'], $validated['fromName'])
+                        ->bcc($validated['receiveEmail'])
+                        ->subject($validated['subject']);
                 }
             );
         } catch (Exception $exception) {
