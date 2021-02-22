@@ -49,6 +49,7 @@ class ContactUsController extends Controller
         $fromEmail = $this->fromEmail;
         $fromName = $this->fromName;
         $subject = 'Contact Us of ' . config('app.name');
+        $validated['country'] = Countries::where('cca2', $validated['country'])->first()->name->common;
 
         try {
             Mail::send('contact-us.template',
