@@ -54,12 +54,9 @@
 						<a href="{{ route('magazines.details', $item->guid) }}" class="text-body">{{ $item->title }}</a>
 					</h6>
 					<div class="d-flex justify-content-center">
-						<div class="font-weight-semibold">{{ $item->price ?? '' }}</div>
-						<div class="ml-4">
-							<a href="{{ $item->buy_online }}" class="btn btn-outline-primary btn-sm text-expanded" target="__blank">
-								{{ __('global.magazines.field.buyOnline') }}
-							</a>
-						</div>
+						<a href="{{ $item->buy_online }}" class="btn btn-outline-primary btn-sm text-expanded" target="__blank">
+							{{ __('global.magazines.field.buyOnline') }}
+						</a>
 					</div>
 				</div>
 				@endforeach
