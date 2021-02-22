@@ -57,13 +57,17 @@ class UserController extends Controller
 
                     $btn = '<a href="'. route('portal.usermanage.users.login', $row->guid) .'" data-id="'.$row->guid.'" class="btn btn-info btn-sm mb-1 mr-1"><i class="fas fa-user-lock"></i></a>';
                     $btn .= '<a href="'. route('portal.usermanage.users.show', $row->guid) .'" data-id="'.$row->guid.'" class="btn btn-success btn-sm mb-1 mr-1"><i class="far fa-eye"></i></a>';
-                    $btn .= '<a href="'. route('portal.usermanage.users.edit', $row->guid) .'" data-id="'.$row->guid.'" class="btn btn-primary btn-sm mb-1"><i class="far fa-edit"></i></a>';
-                    $btn .= ' <button onclick="deleteUser('. "'$row->guid'" .')" data-id="'.$row->guid.'" class="btn btn-danger btn-sm mb-1" '. $disabled .'><i class="far fa-trash-alt"></i></button>';
-                    $btn .= '<form id="deleteForm'. $row->guid .'" action="'. route('portal.usermanage.users.destroy', $row->guid) .'" method="POST" style="display: none">
-                    <input type="hidden" name="_token" value="'. csrf_token() .'">
-                    <input type="hidden" name="_method" value="DELETE">
-                    @method("DELETE")
-                    </form>';
+                    if (auth()->user()->hasRole('SuperAdmin') || auth()->user()->hasPermissionTo('edituser')) {
+                        $btn .= '<a href="'. route('portal.usermanage.users.edit', $row->guid) .'" data-id="'.$row->guid.'" class="btn btn-primary btn-sm mb-1"><i class="far fa-edit"></i></a>';
+                    }
+                    if (auth()->user()->hasRole('SuperAdmin') || auth()->user()->hasPermissionTo('deleteuser')) {
+                        $btn .= ' <button onclick="deleteUser('. "'$row->guid'" .')" data-id="'.$row->guid.'" class="btn btn-danger btn-sm mb-1" '. $disabled .'><i class="far fa-trash-alt"></i></button>';
+                        $btn .= '<form id="deleteForm'. $row->guid .'" action="'. route('portal.usermanage.users.destroy', $row->guid) .'" method="POST" style="display: none">
+                        <input type="hidden" name="_token" value="'. csrf_token() .'">
+                        <input type="hidden" name="_method" value="DELETE">
+                        @method("DELETE")
+                        </form>';
+                    }
 
                     return $btn;
                 })
