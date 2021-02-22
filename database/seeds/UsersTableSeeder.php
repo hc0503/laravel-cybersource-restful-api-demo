@@ -26,6 +26,6 @@ class UsersTableSeeder extends Seeder
         ]);
         $user->assignRole('User');
 
-        factory(User::class, 15)->create();
+        // factory(User::class, 15)->create();
     }
 }
