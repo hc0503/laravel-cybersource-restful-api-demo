@@ -15,7 +15,7 @@
 			<table class="table my-4">
 				<tbody>
 					<tr>
-						<td class="border-0 text-muted align-middle" style="width: 110px">{{ __('global.frequencies.title') }} :</td>
+						<td class="border-0 text-muted align-middle" style="width: 110px">{{ __('global.frequencies.sTitle') }} :</td>
 						<td class="border-0">
 							{{ $magazine->frequency->name }}
 						</td>
