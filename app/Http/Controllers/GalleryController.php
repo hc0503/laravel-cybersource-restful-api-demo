@@ -8,7 +8,7 @@ class GalleryController extends Controller
 {
     public function index()
     {
-        $pageTitle = __('aboutUs');
+        $pageTitle = __('global.magazineGallery.title');
         
         return view('gallery', compact('pageTitle'));
     }

@@ -8,7 +8,7 @@ class AboutUsController extends Controller
 {
     public function index()
     {
-        $pageTitle = __('aboutUs');
+        $pageTitle = __('global.aboutUs.title');
         
         return view('about-us', compact('pageTitle'));
     }

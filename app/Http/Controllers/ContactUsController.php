@@ -19,7 +19,7 @@ class ContactUsController extends Controller
 
     public function getContactUs()
     {
-        $pageTitle = __('aboutUs');
+        $pageTitle = __('global.contactUs.title');
         $countries = Countries::all()
             ->map(function ($country) {
                 return [
