@@ -34,7 +34,7 @@
 	<div class="row">
 		<div class="col-md-3">
 			<form action="{{ route('home') }}">
-				<select id="genre" name="genre" class="form-control" style="width: 100%" onchange="this.form.submit()">
+				<select id="genres" name="genre" class="form-control" style="width: 100%" onchange="this.form.submit()">
 					<option value="all" {{ $currentGenre == 'all' ? 'selected' : '' }}>{{ __('global.home.all') }}</option>
 					@foreach ($genres as $genre)
 					<option value="{{ $genre->guid }}" {{ $currentGenre == $genre->guid ? 'selected' : '' }}>{{ $genre->name }}</option>
@@ -81,8 +81,5 @@
 <script src="{{ asset('assets/vendor/libs/select2/select2.js') }}"></script>
 <script>
 	$('#genres').select2();
-	$('#genre').change(function () {
-
-	});
 </script>
 @endpush
