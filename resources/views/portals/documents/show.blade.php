@@ -38,7 +38,7 @@
 					</div>
 
 					<div class="text-right m-0">
-						<a href="{{ asset('storage') . $document->path }}" class="btn btn-secondary" target="__blank"><i class="fas fa-download"> {{ __('global.documents.download') }}</i></a>
+						<a href="{{ asset('storage') . $document->path }}" class="btn btn-secondary" download><i class="fas fa-download"> {{ __('global.documents.download') }}</i></a>
 					</div>
 				</div>
 			</div>

@@ -44,7 +44,7 @@ class DocumentController extends Controller
                 })
                 ->addColumn('action', function ($row) {
                     $btn = '<a href="'. route('portal.documents.show', $row->guid) .'" data-id="'.$row->guid.'" class="btn btn-success btn-sm mb-1 mr-1"><i class="far fa-eye"></i></a>';
-                    $btn .= '<a href="'. asset('storage') . $row->path .'" class="btn btn-info btn-sm mb-1 mr-1" target="__blank"><i class="fas fa-download"></i></a>';
+                    $btn .= '<a href="'. asset('storage') . $row->path .'" class="btn btn-info btn-sm mb-1 mr-1" download><i class="fas fa-download"></i></a>';
                     if (auth()->user()->hasRole('SuperAdmin') || auth()->user()->hasPermissionTo('editdocument')) {
                         $btn .= '<a href="'. route('portal.documents.edit', $row->guid) .'" data-id="'.$row->guid.'" class="btn btn-primary btn-sm mb-1"><i class="far fa-edit"></i></a>';
                     }
