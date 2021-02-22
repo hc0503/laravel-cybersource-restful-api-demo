@@ -48,18 +48,10 @@ class ContactUsController extends Controller
 
         try {
             Mail::send('contact-us.template',
-                [
-                    'name' => $validated['name'],
-                    'company' => $validated['company'],
-                    'country' => $validated['country'],
-                    'telephone' => $validated['telephone'],
-                    'website' => $validated['website'],
-                    'email' => $validated['email'],
-                    'enquiry' => $validated['enquiry']
-                ],
-                function ($message) use ($receiveEmail, $subject) {
+                $validated,
+                function ($message) use ($receiveEmail, $subject, $validated) {
                     $message->from($validated['email'], $validated['name'])
-                        ->bcc($email)
+                        ->bcc($receiveEmail)
                         ->subject($subject);
                 }
             );
