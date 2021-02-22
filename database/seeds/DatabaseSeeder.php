@@ -22,6 +22,7 @@ class DatabaseSeeder extends Seeder
         $this->call(FrequenciesTableSeeder::class);
         $this->call(MagazinesTableSeeder::class);
         $this->call(DocumentsTableSeeder::class);
+        $this->call(SlidersTableSeeder::class);
 
         Schema::enableForeignKeyConstraints();
     }

@@ -47,7 +47,12 @@ class PermissionsTableSeeder extends Seeder
             'createdocument',
             'editdocument',
             'deletedocument',
-            'viewdocument'
+            'viewdocument',
+
+            'createslider',
+            'editslider',
+            'deleteslider',
+            'viewslider'
         ];
 
         foreach ($permissions as $permission) {

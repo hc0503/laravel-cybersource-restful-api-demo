@@ -56,6 +56,15 @@
 		</li>
 		@endif
 
+		@if (auth()->user()->hasRole('SuperAdmin') || auth()->user()->hasPermissionTo('viewslider'))
+		<li class="sidenav-item {{ request()->is('portal/sliders') ? 'active' : '' }}">
+			<a href="{{ route('portal.sliders.index') }}" class="sidenav-link">
+				<i class="sidenav-icon ion ion-logo-buffer"></i>
+				<div>{{ __('global.sliders.title') }}</div>
+			</a>
+		</li>
+		@endif
+
 		<li class="sidenav-item {{ request()->is('portal/documents') ? 'active' : '' }}">
 			<a href="{{ route('portal.documents.index') }}" class="sidenav-link">
 				<i class="sidenav-icon ion ion-md-document"></i>

@@ -160,6 +160,29 @@ return [
 			'sendSuccess' => 'The email is sent successfully.'
 		]
 	],
+	'sliders' => [
+		'title' => 'Sliders',
+		'list' => 'Slider List',
+		'create' => 'Create Slider',
+		'edit' => 'Edit Slider',
+		'show' => 'Show Slider',
+		'upload' => 'Upload new image',
+		'reset' => 'Reset',
+		'allowDescription' => 'Allowed JPG, GIF or PNG. Max size of 800K',
+		'field' => [
+			'title' => 'Title',
+			'image' => 'Image',
+			'url' => 'URL',
+			'status' => 'Status',
+			'active' => 'Active',
+			'inactive' => 'Inactive'
+		],
+		'message' => [
+			'saveSuccess' => 'The slider is stored successfully.',
+			'updateSuccess' => 'The slider is updated successfully.',
+			'deleteSuccess' => 'The slider is deleted successfully.'
+		]
+	],
 	'home' => [
 		'title' => 'Home',
 	],
