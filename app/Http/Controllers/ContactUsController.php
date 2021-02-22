@@ -8,11 +8,13 @@ use Illuminate\Support\Facades\Mail;
 
 class ContactUsController extends Controller
 {
-    protected $receiveEmail;
+    protected $receiveEmail, $fromEmail, $fromName;
 
     public function __construct()
     {
         $this->receiveEmail = config('mail.to');
+        $this->fromEmail = config('mail.from.address');
+        $this->fromName = config('app.name');
     }
 
     public function getContactUs()
@@ -44,13 +46,15 @@ class ContactUsController extends Controller
         ]);
 
         $receiveEmail = $this->receiveEmail;
+        $fromEmail = $this->fromEmail;
+        $fromName = $this->fromName;
         $subject = 'Contact Us of ' . config('app.name');
 
         try {
             Mail::send('contact-us.template',
                 $validated,
-                function ($message) use ($receiveEmail, $subject, $validated) {
-                    $message->from($validated['email'], $validated['name'])
+                function ($message) use ($receiveEmail, $subject, $fromEmail, $fromName) {
+                    $message->from($fromEmail, $fromName)
                         ->bcc($receiveEmail)
                         ->subject($subject);
                 }

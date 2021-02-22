@@ -2,6 +2,12 @@
 
 @section('content')
 <div class="container">
+	@if (session()->get('status'))
+	<div class="alert alert-{{ session()->get('status') }}">
+		<i class="ti-user"></i> {{ session()->get('message') }}
+		<button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">×</span> </button>
+	</div>
+	@endif
 	<div class="row">
 		<div class="col-md-6 col-sm-12">
 			<h5>Magazine Heaven Direct Limited</h5>
