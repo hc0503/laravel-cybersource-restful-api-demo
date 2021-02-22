@@ -8,12 +8,10 @@ use Illuminate\Support\Facades\Mail;
 
 class ContactUsController extends Controller
 {
-    protected $fromEmail, $fromTitle, $fromName, $receiveEmail;
+    protected $receiveEmail;
 
     public function __construct()
     {
-        $this->fromEmail = config('mail.from.address');
-        $this->fromName = config('mail.from.name');
         $this->receiveEmail = config('mail.to');
     }
 
@@ -45,10 +43,8 @@ class ContactUsController extends Controller
             'g-recaptcha-response' => ['required', 'captcha'],
         ]);
 
-        dd('OK');
-
-        $email = $this->receiveEmail;
-        $subject = $validated['subject'];
+        $receiveEmail = $this->receiveEmail;
+        $subject = 'Contact Us of ' . config('app.name');
 
         try {
             Mail::send('contact-us.template',
@@ -61,8 +57,8 @@ class ContactUsController extends Controller
                     'email' => $validated['email'],
                     'enquiry' => $validated['enquiry']
                 ],
-                function ($message) use ($email, $subject) {
-                    $message->from($this->fromEmail, $this->fromName)
+                function ($message) use ($receiveEmail, $subject) {
+                    $message->from($validated['email'], $validated['name'])
                         ->bcc($email)
                         ->subject($subject);
                 }

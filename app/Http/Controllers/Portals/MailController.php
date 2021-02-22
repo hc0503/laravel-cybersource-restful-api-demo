@@ -8,12 +8,10 @@ use Illuminate\Support\Facades\Mail;
 
 class MailController extends Controller
 {
-    protected $fromEmail, $fromTitle, $fromName, $receiveEmail;
+    protected $receiveEmail;
 
     public function __construct()
     {
-        $this->fromEmail = config('mail.from.address');
-        $this->fromName = config('mail.from.name');
         $this->receiveEmail = config('mail.to');
     }
 
@@ -42,13 +40,15 @@ class MailController extends Controller
             'summernote' => ['required']
         ]);
         
-        $email = $this->receiveEmail;
+        $receiveEmail = $this->receiveEmail;
         $subject = $validated['subject'];
+        $fromEmail = $request->user()->email;
+        $fromName = $request->user()->name;
 
         try {
             Mail::send('portals.emails.template', ['content' => $validated['summernote']], function ($message) use ($email, $subject) {
-                $message->from($this->fromEmail, $this->fromName)
-                    ->bcc($email)
+                $message->from($fromEmail, $fromName)
+                    ->bcc($receiveEmail)
                     ->subject($subject);
             });
         } catch (Exception $exception) {
