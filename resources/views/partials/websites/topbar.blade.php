@@ -1,15 +1,15 @@
 <!-- Logo -->
 <div class="d-flex justify-content-center align-items-center mt-2">
 	<img src="{{ asset('assets/img/logo.png') }}" alt="Logo" height="130px">
- </div>
- <!-- / Logo -->
+</div>
+<!-- / Logo -->
 
- <div class="d-flex justify-content-center align-items-center mt-2">
-	<img src="{{ asset('assets/img/strip.png') }}" alt="Logo" height="130px" style="border-radius: 50%;">
- </div>
+<div id="strip" class="d-flex justify-content-center container mt-2">
+	<img src="{{ asset('assets/img/strip.png') }}" alt="Logo" width="100%" style="border-radius: 50%;">
+</div>
 
- <!-- Navbar -->
- <nav class="navbar navbar-expand-lg bg-white px-0">
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg bg-white px-0">
 	<div class="container flex-lg-wrap px-3">
 	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".shop-header">
 		<span class="navbar-toggler-icon"></span>
@@ -54,5 +54,8 @@
 	</div>
 	<!-- / Menu -->
 	</div>
- </nav>
- <!-- / Navbar -->
+</nav>
+<!-- / Navbar -->
+
+ @push('css')
+ @endpush
