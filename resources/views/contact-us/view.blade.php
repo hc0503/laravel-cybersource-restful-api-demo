@@ -132,7 +132,7 @@
 				@endif
 
 				<div class="text-right m-0">
-					<button type="submit" class="btn btn-secondary">{{ __('global.users.saveAndExit') }}</button>
+					<button class="btn btn-primary ml-2"><i class="ion ion-ios-paper-plane"></i>&nbsp; {{ __('global.emails.send') }}</button>
 				</div>
 			</form>
 			<!-- / Form -->
