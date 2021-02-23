@@ -6,14 +6,14 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use PragmaRX\Countries\Package\Countries;
+use App\Models\ContactEmail;
 
 class MailController extends Controller
 {
-    protected $receiveEmail, $fromEmail, $fromName;
+    protected $fromEmail, $fromName;
 
     public function __construct()
     {
-        $this->receiveEmail = config('mail.to');
         $this->fromEmail = config('mail.from.address');
         $this->fromName = config('app.name');
     }
@@ -53,7 +53,7 @@ class MailController extends Controller
             'enquiry' => $validated['enquiry'],
             'fromEmail' => $this->fromEmail,
             'fromName' => $this->fromName,
-            'receiveEmail' => $this->receiveEmail
+            'receiveEmail' => ContactEmail::all()->pluck('email')->toArray()
         ];
 
         try {

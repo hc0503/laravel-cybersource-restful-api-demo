@@ -5,14 +5,14 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use PragmaRX\Countries\Package\Countries;
 use Illuminate\Support\Facades\Mail;
+use App\Models\ContactEmail;
 
 class ContactUsController extends Controller
 {
-    protected $receiveEmail, $fromEmail, $fromName;
+    protected $fromEmail, $fromName;
 
     public function __construct()
     {
-        $this->receiveEmail = config('mail.to');
         $this->fromEmail = config('mail.from.address');
         $this->fromName = config('app.name');
     }
@@ -44,8 +44,8 @@ class ContactUsController extends Controller
             'enquiry' => ['required'],
             'g-recaptcha-response' => ['required', 'captcha'],
         ]);
-        
-        $validated['receiveEmail'] = $this->receiveEmail;
+
+        $validated['recevieEmails'] = ContactEmail::all()->pluck('email')->toArray();
         $validated['fromEmail'] = $this->fromEmail;
         $validated['fromName'] = $this->fromName;
         $validated['subject'] = 'Contact Us of ' . config('app.name');
@@ -56,7 +56,7 @@ class ContactUsController extends Controller
                 $validated,
                 function ($message) use ($validated) {
                     $message->from($validated['fromEmail'], $validated['fromName'])
-                        ->bcc($validated['receiveEmail'])
+                        ->bcc($validated['recevieEmails'])
                         ->subject($validated['subject']);
                 }
             );
