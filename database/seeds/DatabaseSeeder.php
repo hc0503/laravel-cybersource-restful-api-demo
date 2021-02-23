@@ -23,6 +23,7 @@ class DatabaseSeeder extends Seeder
         $this->call(MagazinesTableSeeder::class);
         $this->call(DocumentsTableSeeder::class);
         $this->call(SlidersTableSeeder::class);
+        $this->call(ContactEmailsTableSeeder::class);
 
         Schema::enableForeignKeyConstraints();
     }

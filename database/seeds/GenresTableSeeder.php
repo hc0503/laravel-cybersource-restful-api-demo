@@ -14,6 +14,6 @@ class GenresTableSeeder extends Seeder
     {
         Genre::truncate();
         
-        factory(Genre::class, 12)->create();
+        factory(Genre::class, 3)->create();
     }
 }

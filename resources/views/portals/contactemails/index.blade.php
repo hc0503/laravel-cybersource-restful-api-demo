@@ -26,9 +26,9 @@
 		<div class="col-12">
 			<div class="card">
 					<div class="card-body">
-						@if (auth()->user()->hasRole('SuperAdmin') || auth()->user()->hasPermissionTo('createrole'))
-						<a href="{{ route('portal.usermanage.roles.create') }}" class="btn waves-effect waves-light btn-secondary">
-							<i class="fas fa-plus"></i> {{ trans('global.roles.create') }}
+						@if (auth()->user()->hasRole('SuperAdmin') || auth()->user()->hasPermissionTo('createcontactemail'))
+						<a href="{{ route('portal.contact-emails.create') }}" class="btn waves-effect waves-light btn-secondary">
+							<i class="fas fa-plus"></i> {{ trans('global.contactEmails.create') }}
 						</a>
 						@endif
 						<div class="table-responsive mt-2">
@@ -36,8 +36,8 @@
 									<thead>
 										<tr>
 											<th>#</th>
-											<th>{{ trans('global.roles.name') }}</th>
-											<th>{{ trans('global.permissions.title') }}</th>
+											<th>{{ trans('global.contactEmails.field.name') }}</th>
+											<th>{{ trans('global.contactEmails.field.email') }}</th>
 											<th>{{ trans('global.createdAt') }}</th>
 											<th width="0px;">{{ trans('global.action') }}</th>
 										</tr>
@@ -45,8 +45,8 @@
 									<tfoot>
 										<tr>
 											<th>#</th>
-											<th>{{ trans('global.roles.name') }}</th>
-											<th>{{ trans('global.permissions.title') }}</th>
+											<th>{{ trans('global.contactEmails.field.name') }}</th>
+											<th>{{ trans('global.contactEmails.field.email') }}</th>
 											<th>{{ trans('global.createdAt') }}</th>
 											<th>{{ trans('global.action') }}</th>
 										</tr>
@@ -73,13 +73,13 @@
 		'processing': true,
 		'serverSide': true,
 		'ajax': {
-			'url': "{{ route('portal.usermanage.roles.index') }}",
+			'url': "{{ route('portal.contact-emails.index') }}",
 			'type': 'GET'
 		},
 		'columns': [
 			{'data': 'id'},
 			{'data': 'name'},
-			{'data': 'permissions'},
+			{'data': 'email'},
 			{'data': 'created_at'},
 			{'data': 'action'},
 		]

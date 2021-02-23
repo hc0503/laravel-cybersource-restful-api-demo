@@ -65,6 +65,15 @@
 		</li>
 		@endif
 
+		@if (auth()->user()->hasRole('SuperAdmin') || auth()->user()->hasPermissionTo('viewcontactemail'))
+		<li class="sidenav-item {{ request()->is('portal/contact-emails') ? 'active' : '' }}">
+			<a href="{{ route('portal.contact-emails.index') }}" class="sidenav-link">
+				<i class="sidenav-icon ion ion-md-mail-open"></i>
+				<div>{{ __('global.contactEmails.title') }}</div>
+			</a>
+		</li>
+		@endif
+
 		<li class="sidenav-item {{ request()->is('portal/documents') ? 'active' : '' }}">
 			<a href="{{ route('portal.documents.index') }}" class="sidenav-link">
 				<i class="sidenav-icon ion ion-md-document"></i>

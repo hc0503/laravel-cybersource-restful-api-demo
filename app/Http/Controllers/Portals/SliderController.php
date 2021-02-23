@@ -52,10 +52,10 @@ class SliderController extends Controller
                 })
                 ->addColumn('action', function ($row) {
                     $btn = '<a href="'. route('portal.sliders.show', $row->guid) .'" data-id="'.$row->guid.'" class="btn btn-success btn-sm mb-1 mr-1"><i class="far fa-eye"></i></a>';
-                    if (auth()->user()->hasRole('SuperAdmin') || auth()->user()->hasPermissionTo('editgenre')) {
+                    if (auth()->user()->hasRole('SuperAdmin') || auth()->user()->hasPermissionTo('editslider')) {
                         $btn .= '<a href="'. route('portal.sliders.edit', $row->guid) .'" data-id="'.$row->guid.'" class="btn btn-primary btn-sm mb-1"><i class="far fa-edit"></i></a>';
                     }
-                    if (auth()->user()->hasRole('SuperAdmin') || auth()->user()->hasPermissionTo('deletegenre')) {
+                    if (auth()->user()->hasRole('SuperAdmin') || auth()->user()->hasPermissionTo('deleteslider')) {
                         $btn .= ' <button onclick="deleteData('. "'$row->guid'" .')" data-id="'.$row->guid.'" class="btn btn-danger btn-sm mb-1"><i class="far fa-trash-alt"></i></button>';
                         $btn .= '<form id="deleteForm'. $row->guid .'" action="'. route('portal.sliders.destroy', $row->guid) .'" method="POST" style="display: none">
                         <input type="hidden" name="_token" value="'. csrf_token() .'">

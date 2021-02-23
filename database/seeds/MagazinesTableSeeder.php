@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use App\Models\Magazine;
+use Illuminate\Filesystem\Filesystem;
 
 class MagazinesTableSeeder extends Seeder
 {
@@ -14,6 +15,12 @@ class MagazinesTableSeeder extends Seeder
     {
         Magazine::truncate();
 
-        factory(Magazine::class, 13)->create();
+        $FileSystem = new Filesystem();
+        $directory = public_path('storage/magazines/covers');
+        if ($FileSystem->exists($directory)) {
+            $FileSystem->deleteDirectory($directory);
+        }
+
+        factory(Magazine::class, 3)->create();
     }
 }

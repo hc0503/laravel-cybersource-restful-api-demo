@@ -80,7 +80,7 @@ class GenreController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'name' => ['required', 'string', 'unique:permissions', 'max:255'],
+            'name' => ['required', 'string', 'unique:genres', 'max:255'],
         ]);
 
         $genre = Genre::create($validated);
