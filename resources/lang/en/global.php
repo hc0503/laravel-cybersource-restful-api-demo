@@ -7,6 +7,7 @@ return [
 	'userManagement' => 'User Management',
 	'goToPortal' => 'Go to portal',
 	'price' => 'Price',
+	'publishersWebsite' => 'Publishers Website',
 	'login' => [
 		'title' => 'Login',
 		'formDescription' => 'Login to Your Account',
