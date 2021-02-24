@@ -5,19 +5,8 @@
 <div class="swiper-container" id="shop-hero-slider">
 	<div class="swiper-wrapper">
 		@foreach ($sliders as $item)
-		<div class="swiper-slide ui-bg-cover" style="background-image: url({{ asset('storage') . $item->image }})">
-			<div class="container px-3 px-3">
-				<div class="shop-hero-container">
-					<div class="flex-shrink-1 text-center py-5">
-						<div class="shop-hero-slider-animated shop-hero-slider-delay-2 display-3 bg-white text-center text-body font-weight-bold text-expanded py-1 px-3 mx-auto">
-							{{ $item->title }}
-						</div>
-						<a href="{{ $item->url }}" class="shop-hero-slider-animated shop-hero-slider-delay-3 btn btn-primary btn-lg text-expanded mt-5" target="__blank">
-							{{ __('global.magazines.field.buyOnline') }}
-						</a>
-					</div>
-				</div>
-			</div>
+		<div class="swiper-slide ui-bg-cover">
+			<img src="{{ asset('storage') . $item->image }}" alt="" width="100%">
 		</div>
 		@endforeach
 	</div>
@@ -35,7 +24,7 @@
 		<div class="col-md-3">
 			<form action="{{ route('home') }}">
 				<select id="genres" name="genre" class="form-control" style="width: 100%" onchange="this.form.submit()">
-					<option value="all" {{ $currentGenre == 'all' ? 'selected' : '' }}>{{ __('global.home.all') }}</option>
+					<option value="all">Select by Genre...</option>
 					@foreach ($genres as $genre)
 					<option value="{{ $genre->guid }}" {{ $currentGenre == $genre->guid ? 'selected' : '' }}>{{ $genre->name }}</option>
 					@endforeach

@@ -10,37 +10,13 @@
 	@endif
 	<div class="row">
 		<div class="col-md-6 col-sm-12">
-			<h5>Magazine Heaven Direct Limited</h5>
-			<p>Steven Hobbs (New Business Enquiries & Client Services)</p>
-			<p>172 Northern Parade</p>
-			<p>Hilsea, Portsmouth</p>
-			<p>Hampshire</p>
-			<p>Po2 9LT</p>
-			<div class="justify-content-between d-flex">
-				<p>Tel: +44 (0) 2392 787 970</p>
-				<a href="mailto:shcirculation@ntlworld.com">shcirculation@ntlworld.com</a>
-			</div>
+			<h5>New Business & Distribution enquiries:</h5>
+			<p>
+				Steve Hobbs <a href="mailto:shcirculation@ntlworld.com" target="__blank">shcirculation@ntlworld.com</a> / Tel  +44 (0)2392 787 970
+			</p>
 
-			<h5>Magazine Heaven / Magazine Heaven Direct Limited</h5>
-			<p>Bill Palmer (Distribution and Retail Sales)</p>
-			<p>c/o Magazine Heaven</p>
-			<p>Unit 1b, South Terrace</p>
-			<p>Rushden Lakes</p>
-			<p>Northants</p>
-			<p>NN10 6FS</p>
-			<div class="justify-content-between d-flex">
-				<p>Tel: +44 (0) 7712 862 582</p>
-				<a href="mailto:bill@magazineheaven.com">bill@magazineheaven.com</a>
-			</div>
-			<p>EU Contacts (French, Spanish, German, Italian Spoken)</p>
-			<div class="justify-content-between d-flex">
-				<p>Ana Suarez</p>
-				<a href="mailto:ana@pineapple-media.com">ana@pineapple-media.com</a>
-			</div>
-			<div class="justify-content-between d-flex">
-				<p>Nico</p>
-				<a href="mailto:nico@pineapplemedia.es">nico@pineapplemedia.es</a>
-			</div>
+			<h5>Direct Sales:</h5>
+			<p>Bill Palmer <a href="mailto:bill@magazineheaven.com" target="__blank">bill@magazineheaven.com</a> / Tel   +44 (0)7712 862 582</p>
 		</div>
 
 		<div class="col-md-6 col-sm-12">
