@@ -36,7 +36,7 @@ class HomeController extends Controller
             $magazines = Magazine::query()->where('status', 1)->paginate(20);
         }
         $pageTitle = __('global.home.title');
-        $genres = Genre::all();
+        $genres = Genre::query()->orderBy('name')->get();
 
         return view('home', compact('sliders', 'magazines', 'pageTitle', 'genres', 'currentGenre'));
     }
