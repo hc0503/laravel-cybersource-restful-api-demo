@@ -25,8 +25,8 @@
 			@if (Auth::check())
 			<li class="nav-item dropdown">
 				<a class="nav-link dropdown-toggle hide-arrow ml-lg-2" href="#" data-toggle="dropdown">
-					<img src="assets/img/avatars/default.jpg" alt class="ui-w-30 rounded-circle align-middle">
-					<span class="d-lg-none align-middle">&nbsp; Mike Greene</span>
+					<img src="{{ asset('assets/img/avatars/default.jpg') }}" alt class="ui-w-30 rounded-circle align-middle">
+					<span class="align-middle">&nbsp; Mike Greene</span>
 				</a>
 				<div class="dropdown-menu dropdown-menu-right">
 					<a class="dropdown-item" href="{{ route('portal.home') }}">
