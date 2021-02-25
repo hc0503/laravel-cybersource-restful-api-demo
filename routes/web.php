@@ -36,6 +36,16 @@ Route::middleware(['auth', 'verified'])->group( function () {
             Route::resource('permissions', 'Portals\PermissionController');
         });
 
+        Route::group(['prefix' => 'privacies', 'as' => 'privacies.'], function () {
+            Route::get('show', 'PrivacyController@showPrivacy')->name('show');
+            Route::post('update/{guid}', 'PrivacyController@updatePrivacy')->name('update');
+        });
+
+        Route::group(['prefix' => 'disclaimers', 'as' => 'disclaimers.'], function () {
+            Route::get('show', 'DisclaimerController@showDisclaimer')->name('show');
+            Route::post('update/{guid}', 'DisclaimerController@updateDisclaimer')->name('update');
+        });
+
         Route::resource('sliders', 'Portals\SliderController');
         Route::resource('genres', 'Portals\GenreController');
         Route::resource('contact-emails', 'Portals\ContactEmailController');
@@ -62,8 +72,8 @@ Route::get('gallery', 'GalleryController@index')->name('gallery');
 Route::group(['prefix' => 'magazines', 'as' => 'magazines.'], function () {
     Route::get('details/{guid}', 'HomeController@getDetails')->name('details');
 });
-Route::get('privacy', 'PrivacyController@getPrivacy');
-Route::get('disclaimer', 'DisclaimerController@getDisclaimer');
+Route::get('privacy', 'PrivacyController@getPrivacy')->name('privacy');
+Route::get('disclaimer', 'DisclaimerController@getDisclaimer')->name('disclaimer');
 
 Route::get('coming-soon', function () {
     $pageTitle = __('global.comingSoon.title');

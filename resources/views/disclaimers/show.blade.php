@@ -32,27 +32,19 @@
 		<div class="col-12">
 			<div class="card">
 				<div class="card-body">
-					<form id="form" method="POST" action="{{ route('portal.emails.send') }}">
+					<form id="form" method="POST" action="{{ route('portal.disclaimers.update', $disclaimer->guid ?? 0) }}">
 						
 						@csrf
 						
 						<div class="form-group">
-							<label class="form-label" for="subject">{{ __('global.emails.subject') }} :</label>
-							<input id="subject" class="form-control @error('subject') is-invalid @enderror" name="subject" value="{{ old('subject') }}">
-							@error('subject')
-								<span class="invalid-feedback" role="alert">
-									<strong>{{ $message }}</strong>
-								</span>
-							@enderror
+							<textarea id="content" name="content">{{ $disclaimer->content ?? '' }}</textarea>
 						</div>
 
-						<div class="form-group">
-							<textarea id="enquiry" name="enquiry"></textarea>
-						</div>
-
+						@if (auth()->user()->hasRole('SuperAdmin') || auth()->user()->hasPermissionTo('editdisclaimer'))
 						<div class="text-right mt-4">
-							<button class="btn btn-secondary ml-2"><i class="ion ion-ios-paper-plane"></i>&nbsp; {{ __('global.emails.send') }}</button>
-						 </div>
+							<button class="btn btn-secondary ml-2">{{ __('global.termsAndConditions.update') }}</button>
+						</div>
+						@endif
 					</form>
 				</div>
 			</div>
@@ -68,7 +60,7 @@
 @push('js')
 <script src="{{ asset('assets/libs/summernote/summernote-bs4.min.js') }}"></script>
 <script>
-	$('#enquiry').summernote({
+	$('#content').summernote({
 		height: 360,                 // set editor height
 		minHeight: null,             // set minimum height of editor
 		maxHeight: null,             // set maximum height of editor

@@ -57,7 +57,13 @@ class PermissionsTableSeeder extends Seeder
             'createcontactemail',
             'editcontactemail',
             'deletecontactemail',
-            'viewcontactemail'
+            'viewcontactemail',
+
+            'viewdisclaimer',
+            'editdisclaimer',
+
+            'viewprivacy',
+            'editprivacy'
         ];
 
         foreach ($permissions as $permission) {
