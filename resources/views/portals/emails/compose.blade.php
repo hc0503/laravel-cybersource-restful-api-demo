@@ -51,7 +51,7 @@
 						</div>
 
 						<div class="text-right mt-4">
-							<button class="btn btn-primary ml-2"><i class="ion ion-ios-paper-plane"></i>&nbsp; {{ __('global.emails.send') }}</button>
+							<button class="btn btn-secondary ml-2"><i class="ion ion-ios-paper-plane"></i>&nbsp; {{ __('global.emails.send') }}</button>
 						 </div>
 					</form>
 				</div>
