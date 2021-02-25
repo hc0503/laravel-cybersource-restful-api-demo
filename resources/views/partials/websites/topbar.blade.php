@@ -1,12 +1,8 @@
 <!-- Logo -->
-<div class="d-flex justify-content-center align-items-center mt-2">
+<a href="{{ route('home') }}" class="d-flex justify-content-center align-items-center mt-2">
 	<img src="{{ asset('assets/img/logo.png') }}" alt="Logo" height="130px">
-</div>
+</a>
 <!-- / Logo -->
-
-<div id="strip" class="d-flex justify-content-center container mt-2">
-	<img src="{{ asset('assets/img/strip.png') }}" alt="Logo" width="100%" style="border-radius: 50%;">
-</div>
 
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg bg-white px-0">
