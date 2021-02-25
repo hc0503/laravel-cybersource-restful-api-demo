@@ -6,8 +6,8 @@
 	  	<a href="{{ route('home') }}" class="footer-link {{ request()->is('home') ? 'active' : '' }}">{{ __('global.home.title') }}</a>
 		<a href="{{ route('about-us') }}" class="footer-link {{ request()->is('about-us') ? 'active' : '' }} ml-4">{{ __('global.aboutUs.footTitle') }}</a>
 		<a href="{{ route('contact-us.view') }}" class="footer-link {{ request()->is('contact-us') ? 'active' : '' }} ml-4">{{ __('global.contactUs.title') }}</a>
-		<a href="{{ url('disclaimer') }}" class="footer-link {{ request()->is('disclaimer') ? 'active' : '' }} ml-4">{{ __('global.termsAndConditions.title') }}</a>
-		<a href="{{ url('privacy') }}" class="footer-link {{ request()->is('privacy') ? 'active' : '' }} ml-4">{{ __('global.privacyPolicy.title') }}</a>
+		<a href="{{ route('disclaimer') }}" class="footer-link {{ request()->is('disclaimer') ? 'active' : '' }} ml-4">{{ __('global.termsAndConditions.title') }}</a>
+		<a href="{{ route('privacy') }}" class="footer-link {{ request()->is('privacy') ? 'active' : '' }} ml-4">{{ __('global.privacyPolicy.title') }}</a>
 	</div>
  </nav>
  <!-- / Footer -->

@@ -24,6 +24,7 @@ class DatabaseSeeder extends Seeder
         $this->call(DocumentsTableSeeder::class);
         $this->call(SlidersTableSeeder::class);
         $this->call(ContactEmailsTableSeeder::class);
+        $this->call(DisclaimersTableSeeder::class);
 
         Schema::enableForeignKeyConstraints();
     }

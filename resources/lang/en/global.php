@@ -228,7 +228,8 @@ return [
 		]
 	],
 	'termsAndConditions' => [
-		'title' => 'Disclaimer & Copyright'
+		'title' => 'Disclaimer & Copyright',
+		'update' => 'Update'
 	],
 	'privacyPolicy' => [
 		'title' => 'Privacy Policy'

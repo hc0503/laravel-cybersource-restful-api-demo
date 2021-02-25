@@ -74,6 +74,24 @@
 		</li>
 		@endif
 
+		@if (auth()->user()->hasRole('SuperAdmin') || auth()->user()->hasPermissionTo('viewdisclaimer'))
+		<li class="sidenav-item {{ request()->is('portal/disclaimers') ? 'active' : '' }}">
+			<a href="{{ route('portal.disclaimers.show') }}" class="sidenav-link">
+				<i class="sidenav-icon ion ion-md-mail-open"></i>
+				<div>{{ __('global.disclaimers.title') }}</div>
+			</a>
+		</li>
+		@endif
+
+		@if (auth()->user()->hasRole('SuperAdmin') || auth()->user()->hasPermissionTo('viewprivacy'))
+		<li class="sidenav-item {{ request()->is('portal/privacies') ? 'active' : '' }}">
+			<a href="{{ route('portal.privacies.show') }}" class="sidenav-link">
+				<i class="sidenav-icon ion ion-md-mail-open"></i>
+				<div>{{ __('global.privacies.title') }}</div>
+			</a>
+		</li>
+		@endif
+
 		<li class="sidenav-item {{ request()->is('portal/documents') ? 'active' : '' }}">
 			<a href="{{ route('portal.documents.index') }}" class="sidenav-link">
 				<i class="sidenav-icon ion ion-md-document"></i>
