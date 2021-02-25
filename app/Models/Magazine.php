@@ -24,7 +24,8 @@ class Magazine extends Model
         'description',
         'cover_image',
         'status',
-        'buy_online'
+        'buy_online',
+        'price'
     ];
 
     public function genre()

@@ -123,7 +123,17 @@
 								@enderror
 							</div>
 
-							<div class="form-group col-md-10 col-sm-12">
+							<div class="form-group col-md-2 col-sm-12">
+								<label class="form-label" for="price">{{ __('global.price') }}</label>
+								<input id="price" type="number" class="form-control @error('price') is-invalid @enderror" name="price" value="{{ $magazine->price }}" step="0.1" min="0">
+								@error('price')
+									<span class="invalid-feedback" role="alert">
+										<strong>{{ $message }}</strong>
+									</span>
+								@enderror
+							</div>
+
+							<div class="form-group col-md-8 col-sm-12">
 								<label class="form-label" for="buy_online">{{ __('global.magazines.field.buyOnline') }}</label>
 								<input id="buy_online" class="form-control @error('buy_online') is-invalid @enderror" name="buy_online" value="{{ $magazine->buy_online }}">
 								@error('buy_online')

@@ -19,5 +19,6 @@ $factory->define(Magazine::class, function (Faker $faker) {
         'cover_image' => Str::random(10) . '.jpg',
         'status' => $faker->boolean,
         'buy_online' => $faker->url,
+        'price' => $faker->randomFloat(2, 0, 50)
     ];
 });

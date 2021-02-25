@@ -99,7 +99,8 @@ class MagazineController extends Controller
             'frequency_id' => ['required', 'int'],
             'cover_image' => ['mimes:jpeg,jpg,png', 'max:2048', 'image'],
             'status' => [],
-            'buy_online' => ['url']
+            'buy_online' => ['url'],
+            'price' => []
         ]);
 
         if ($request->hasFile('cover_image')) {
@@ -176,7 +177,8 @@ class MagazineController extends Controller
             'frequency_id' => ['required', 'int'],
             'cover_image' => ['mimes:jpeg,jpg,png', 'max:2048', 'image'],
             'status' => [],
-            'buy_online' => ['url']
+            'buy_online' => ['url'],
+            'price' => []
         ]);
         
         $magazine = Magazine::query()->whereGuid($guid)->firstOrFail();

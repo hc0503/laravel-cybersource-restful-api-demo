@@ -80,7 +80,12 @@
 							</select>
 						</div>
 
-						<div class="form-group col-md-10 col-sm-12">
+						<div class="form-group col-md-2 col-sm-12">
+							<label class="form-label" for="price">{{ __('global.price') }}</label>
+							<input id="price" type="number" class="form-control @error('price') is-invalid @enderror" name="price" value="{{ $magazine->price }}" step="0.1" min="0" disabled>
+						</div>
+
+						<div class="form-group col-md-8 col-sm-12">
 							<label class="form-label" for="buy_online">{{ __('global.magazines.field.buyOnline') }}</label>
 							<a href="{{ $magazine->buy_online }}" class="form-control" target="_blank">{{ $magazine->buy_online }}</a>
 						</div>
