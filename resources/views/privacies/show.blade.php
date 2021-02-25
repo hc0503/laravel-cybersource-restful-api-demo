@@ -39,10 +39,12 @@
 						<div class="form-group">
 							<textarea id="content" name="content">{{ $privacy->content ?? '' }}</textarea>
 						</div>
-
+						
+						@if (auth()->user()->hasRole('SuperAdmin') || auth()->user()->hasPermissionTo('editprivacy'))
 						<div class="text-right mt-4">
 							<button class="btn btn-secondary ml-2">{{ __('global.termsAndConditions.update') }}</button>
-						 </div>
+						</div>
+						@endif
 					</form>
 				</div>
 			</div>

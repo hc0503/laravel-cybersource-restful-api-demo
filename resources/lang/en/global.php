@@ -229,10 +229,16 @@ return [
 	],
 	'termsAndConditions' => [
 		'title' => 'Disclaimer & Copyright',
-		'update' => 'Update'
+		'update' => 'Update',
+		'message' => [
+			'updateSuccess' => 'Disclaimer & Copyright is updated successfully.'
+		]
 	],
 	'privacyPolicy' => [
-		'title' => 'Privacy Policy'
+		'title' => 'Privacy Policy',
+		'message' => [
+			'updateSuccess' => 'Privacy Policy is updated successfully.'
+		]
 	],
 	'siteMap' => [
 		'title' => 'SiteMap'

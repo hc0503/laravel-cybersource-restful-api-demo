@@ -42,6 +42,6 @@ class PrivacyController extends Controller
         return redirect()
             ->route('portal.privacies.show')
             ->with('status', 'success')
-            ->with('message', __('global.privacies.message.updateSuccess'));
+            ->with('message', __('global.privacyPolicy.message.updateSuccess'));
     }
 }

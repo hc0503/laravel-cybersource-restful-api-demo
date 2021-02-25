@@ -40,9 +40,11 @@
 							<textarea id="content" name="content">{{ $disclaimer->content ?? '' }}</textarea>
 						</div>
 
+						@if (auth()->user()->hasRole('SuperAdmin') || auth()->user()->hasPermissionTo('editdisclaimer'))
 						<div class="text-right mt-4">
 							<button class="btn btn-secondary ml-2">{{ __('global.termsAndConditions.update') }}</button>
-						 </div>
+						</div>
+						@endif
 					</form>
 				</div>
 			</div>

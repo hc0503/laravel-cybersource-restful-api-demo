@@ -42,6 +42,6 @@ class DisclaimerController extends Controller
         return redirect()
             ->route('portal.disclaimers.show')
             ->with('status', 'success')
-            ->with('message', __('global.disclaimers.message.updateSuccess'));
+            ->with('message', __('global.termsAndConditions.message.updateSuccess'));
     }
 }
