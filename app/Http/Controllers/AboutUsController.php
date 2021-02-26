@@ -10,7 +10,7 @@ class AboutUsController extends Controller
     public function __construct()
     {
         $this->middleware('permission:editaboutus',   ['only' => ['updateAboutUs']]);
-        $this->middleware('permission:viewaboutus',   ['only' => ['ShowAboutUs']]);
+        $this->middleware('permission:viewaboutus',   ['only' => ['showAboutUs']]);
     }
 
     public function index()
@@ -21,7 +21,7 @@ class AboutUsController extends Controller
         return view('aboutus.about-us', compact('pageTitle', 'aboutUs'));
     }
 
-    public function ShowAboutUs()
+    public function showAboutUs()
     {
         $pageTitle = __('global.aboutUs.footTitle');
         $aboutUs = AboutUs::first();

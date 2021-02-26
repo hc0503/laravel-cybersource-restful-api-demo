@@ -10,7 +10,7 @@ class PrivacyController extends Controller
     public function __construct()
     {
         $this->middleware('permission:editprivacy',   ['only' => ['updatePrivacy']]);
-        $this->middleware('permission:viewprivacy',   ['only' => ['ShowPrivacy']]);
+        $this->middleware('permission:viewprivacy',   ['only' => ['showPrivacy']]);
     }
 
     public function getPrivacy()
@@ -21,7 +21,7 @@ class PrivacyController extends Controller
         return view('privacies.privacy', compact('pageTitle', 'privacy'));
     }
 
-    public function ShowPrivacy()
+    public function showPrivacy()
     {
         $pageTitle = __('global.privacyPolicy.title');
         $privacy = Privacy::first();

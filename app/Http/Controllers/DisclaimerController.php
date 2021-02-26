@@ -10,7 +10,7 @@ class DisclaimerController extends Controller
     public function __construct()
     {
         $this->middleware('permission:editdisclaimer',   ['only' => ['updateDisclaimer']]);
-        $this->middleware('permission:viewdisclaimer',   ['only' => ['ShowDisclaimer']]);
+        $this->middleware('permission:viewdisclaimer',   ['only' => ['showDisclaimer']]);
     }
 
     public function getDisclaimer()
@@ -21,7 +21,7 @@ class DisclaimerController extends Controller
         return view('disclaimers.disclaimer', compact('pageTitle', 'disclaimer'));
     }
 
-    public function ShowDisclaimer()
+    public function showDisclaimer()
     {
         $pageTitle = __('global.termsAndConditions.title');
         $disclaimer = Disclaimer::first();
