@@ -63,7 +63,13 @@ class PermissionsTableSeeder extends Seeder
             'editdisclaimer',
 
             'viewprivacy',
-            'editprivacy'
+            'editprivacy',
+
+            'editaboutus',
+            'viewaboutus',
+
+            'editcontactus',
+            'viewcontactus',
         ];
 
         foreach ($permissions as $permission) {
