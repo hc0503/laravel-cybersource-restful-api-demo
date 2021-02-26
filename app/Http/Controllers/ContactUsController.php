@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use PragmaRX\Countries\Package\Countries;
 use Illuminate\Support\Facades\Mail;
 use App\Models\ContactEmail;
+use App\Models\ContactUs;
 
 class ContactUsController extends Controller
 {
@@ -15,6 +16,9 @@ class ContactUsController extends Controller
     {
         $this->fromEmail = config('mail.from.address');
         $this->fromName = config('app.name');
+
+        $this->middleware('permission:editcontactus',   ['only' => ['updateContactUs']]);
+        $this->middleware('permission:viewcontactus',   ['only' => ['showContactUs']]);
     }
 
     public function getContactUs()
@@ -28,8 +32,9 @@ class ContactUsController extends Controller
                 ];
             })
             ->values();
+        $contactUs = ContactUs::first();
 
-        return view('contact-us.view', compact('pageTitle', 'countries'));
+        return view('contact-us.view', compact('pageTitle', 'countries', 'contactUs'));
     }
 
     public function postContactUs(Request $request)
@@ -70,5 +75,29 @@ class ContactUsController extends Controller
         return redirect()->route('contact-us.view')
             ->with('status', 'success')
             ->with('message', __('global.contactUs.message.sendSuccess'));
+    }
+
+    public function showContactUs()
+    {
+        $pageTitle = __('global.contactUs.title');
+        $contactUs = ContactUs::first();
+
+        return view('contact-us.show', compact('pageTitle', 'contactUs'));
+    }
+
+    public function updateContactUs(Request $request, $guid)
+    {
+        $validated = $request->validate([
+            'content' => ['required']
+        ]);
+
+        $contactUs = ContactUs::updateOrCreate([
+            'guid' => $guid,
+        ], $validated);
+
+        return redirect()
+            ->route('portal.contactus.show')
+            ->with('status', 'success')
+            ->with('message', __('global.contactUs.message.updateSuccess'));
     }
 }

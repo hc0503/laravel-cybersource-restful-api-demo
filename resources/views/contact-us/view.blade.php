@@ -10,13 +10,7 @@
 	@endif
 	<div class="row">
 		<div class="col-md-6 col-sm-12">
-			<h5>New Business & Distribution enquiries:</h5>
-			<p>
-				Steve Hobbs <a href="mailto:shcirculation@ntlworld.com" target="__blank">shcirculation@ntlworld.com</a> / Tel  +44 (0)2392 787 970
-			</p>
-
-			<h5>Direct Sales:</h5>
-			<p>Bill Palmer <a href="mailto:bill@magazineheaven.com" target="__blank">bill@magazineheaven.com</a> / Tel   +44 (0)7712 862 582</p>
+			{!! $contactUs->content ?? '' !!}
 		</div>
 
 		<div class="col-md-6 col-sm-12">

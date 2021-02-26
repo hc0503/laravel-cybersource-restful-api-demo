@@ -227,7 +227,8 @@ return [
 			'enquiry' => 'Enquiry'
 		],
 		'message' => [
-			'sendSuccess' => 'Your contact is sent successfully.'
+			'sendSuccess' => 'Your contact is sent successfully.',
+			'updateSuccess' => 'Contact Us is updated successfully.'
 		]
 	],
 	'termsAndConditions' => [
