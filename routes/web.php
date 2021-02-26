@@ -46,6 +46,11 @@ Route::middleware(['auth', 'verified'])->group( function () {
             Route::post('update/{guid}', 'DisclaimerController@updateDisclaimer')->name('update');
         });
 
+        Route::group(['prefix' => 'aboutus', 'as' => 'aboutus.'], function () {
+            Route::get('show', 'AboutUsController@showAboutUs')->name('show');
+            Route::post('update/{guid}', 'AboutUsController@updateAboutUs')->name('update');
+        });
+
         Route::resource('sliders', 'Portals\SliderController');
         Route::resource('genres', 'Portals\GenreController');
         Route::resource('contact-emails', 'Portals\ContactEmailController');

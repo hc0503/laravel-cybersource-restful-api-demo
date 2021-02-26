@@ -207,7 +207,10 @@ return [
 	],
 	'aboutUs' => [
 		'title' => 'About Us',
-		'footTitle' => 'About Us & Our Services'
+		'footTitle' => 'About Us & Our Services',
+		'message' => [
+			'updateSuccess' => 'About Us & Our Services is updated successfully.'
+		]
 	],
 	'magazineGallery' => [
 		'title' => 'Magazine Gallery'
