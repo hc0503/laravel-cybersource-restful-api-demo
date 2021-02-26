@@ -86,7 +86,7 @@
 		@if (auth()->user()->hasRole('SuperAdmin') || auth()->user()->hasPermissionTo('viewcontactus'))
 		<li class="sidenav-item {{ request()->is('portal/contactus/show') ? 'active' : '' }}">
 			<a href="{{ route('portal.contactus.show') }}" class="sidenav-link">
-				<i class="sidenav-icon ion ion-ios-leaf"></i>
+				<i class="sidenav-icon ion ion-md-jet"></i>
 				<div>{{ __('global.contactUs.title') }}</div>
 			</a>
 		</li>

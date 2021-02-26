@@ -73,7 +73,7 @@
 									<select id="genre" name="genre_id" class="form-control" style="width: 100%">
 										<option></option>
 										@foreach ($genres as $genre)
-										<option value="{{ $genre->id }}" {{ old('genre') == $genre->id ? 'selected' : '' }}>{{ $genre->name }}</option>
+										<option value="{{ $genre->id }}" {{ old('genre_id') == $genre->id ? 'selected' : '' }}>{{ $genre->name }}</option>
 										@endforeach
 									</select>
 									@error('genre_id')
@@ -88,7 +88,7 @@
 									<select id="frequency" name="frequency_id" class="form-control" style="width: 100%">
 										<option></option>
 										@foreach ($frequencies as $frequency)
-										<option value="{{ $frequency->id }}" {{ old('frequency') == $frequency->id ? 'selected' : '' }}>{{ $frequency->name }}</option>
+										<option value="{{ $frequency->id }}" {{ old('frequency_id') == $frequency->id ? 'selected' : '' }}>{{ $frequency->name }}</option>
 										@endforeach
 									</select>
 									@error('frequency_id')
@@ -104,6 +104,16 @@
 							<label class="form-label" for="description">{{ __('global.magazines.field.description') }} *</label>
 							<textarea id="description" class="form-control @error('description') is-invalid @enderror" name="description" rows="3">{{ old('description') }}</textarea>
 							@error('description')
+								<span class="invalid-feedback" role="alert">
+									<strong>{{ $message }}</strong>
+								</span>
+							@enderror
+						</div>
+
+						<div class="form-group">
+							<label class="form-label" for="publisher_website">{{ __('global.publishersWebsite') }}</label>
+							<input id="publisher_website" class="form-control @error('publisher_website') is-invalid @enderror" name="publisher_website" value="{{ old('publisher_website') }}">
+							@error('publisher_website')
 								<span class="invalid-feedback" role="alert">
 									<strong>{{ $message }}</strong>
 								</span>

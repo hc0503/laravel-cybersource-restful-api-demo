@@ -99,10 +99,11 @@ class MagazineController extends Controller
             'frequency_id' => ['required', 'int'],
             'cover_image' => ['mimes:jpeg,jpg,png', 'max:2048', 'image'],
             'status' => [],
-            'buy_online' => ['url'],
-            'price' => []
+            'buy_online' => ['url', 'nullable'],
+            'price' => [],
+            'publisher_website' => ['url', 'nullable'],
         ]);
-
+        
         if ($request->hasFile('cover_image')) {
             $resizeImage = Image::make($validated['cover_image']->getRealPath())->fit(400, 560);
             $imagePath = '/magazines/covers/'. Str::random(50) .'.'. $validated['cover_image']->getClientOriginalExtension();
@@ -177,8 +178,9 @@ class MagazineController extends Controller
             'frequency_id' => ['required', 'int'],
             'cover_image' => ['mimes:jpeg,jpg,png', 'max:2048', 'image'],
             'status' => [],
-            'buy_online' => ['url'],
-            'price' => []
+            'buy_online' => ['url', 'nullable'],
+            'price' => [],
+            'publisher_website' => ['url', 'nullable'],
         ]);
         
         $magazine = Magazine::query()->whereGuid($guid)->firstOrFail();

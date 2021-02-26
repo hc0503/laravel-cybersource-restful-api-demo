@@ -108,6 +108,16 @@
 							@enderror
 						</div>
 
+						<div class="form-group">
+							<label class="form-label" for="publisher_website">{{ __('global.publishersWebsite') }}</label>
+							<input id="publisher_website" class="form-control @error('publisher_website') is-invalid @enderror" name="price" value="{{ $magazine->publisher_website }}" step="0.1" min="0">
+							@error('publisher_website')
+								<span class="invalid-feedback" role="alert">
+									<strong>{{ $message }}</strong>
+								</span>
+							@enderror
+						</div>
+
 						@if (auth()->user()->hasRole('SuperAdmin') || auth()->user()->hasPermissionTo('activemagazine'))
 						<div class="row">
 							<div class="form-group col-md-2 col-sm-12">

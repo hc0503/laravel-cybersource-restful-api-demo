@@ -70,6 +70,11 @@
 						<label class="form-label" for="description">{{ __('global.magazines.field.description') }}</label>
 						<textarea id="description" class="form-control" name="description" rows="5" disabled>{{ $magazine->description }}</textarea>
 					</div>
+
+					<div class="form-group">
+						<label class="form-label" for="publisher_website">{{ __('global.publishersWebsite') }}</label>
+						<a href="{{ $magazine->publisher_website }}" class="form-control" target="_blank">{{ $magazine->publisher_website }}</a>
+					</div>
 					
 					<div class="row">
 						<div class="form-group col-md-2 col-sm-12">

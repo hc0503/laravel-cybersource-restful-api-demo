@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AlterMagazinesTable extends Migration
+class AlterMagazinesAddPublisherTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,8 +14,8 @@ class AlterMagazinesTable extends Migration
     public function up()
     {
         Schema::table('magazines', function (Blueprint $table) {
-            if (!Schema::hasColumn('magazines', 'price')) {
-                $table->double('price')->default(0.0)->nullable()->after('status');
+            if (!Schema::hasColumn('magazines', 'publisher_website')) {
+                $table->string('publisher_website')->nullable()->after('status');
             }
         });
     }
@@ -28,7 +28,7 @@ class AlterMagazinesTable extends Migration
     public function down()
     {
         Schema::table('magazines', function (Blueprint $table) {
-            $table->dropColumn('price');
+            $table->dropColumn('publisher_website');
         });
     }
 }

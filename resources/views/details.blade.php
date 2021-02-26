@@ -30,7 +30,7 @@
 					<tr>
 						<td class="border-0 text-muted align-middle" style="width: 170px">{{ __('global.publishersWebsite') }} :</td>
 						<td class="border-0">
-							<a href="{{ $magazine->buy_online ?? '' }}" target="__blank">{{ $magazine->buy_online ?? '' }}</a>
+							<a href="{{ $magazine->publisher_website ?? '' }}" target="__blank">{{ $magazine->publisher_website ?? '' }}</a>
 						</td>
 					</tr>
 				</tbody>
