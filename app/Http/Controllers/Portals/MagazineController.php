@@ -100,7 +100,7 @@ class MagazineController extends Controller
             'cover_image' => ['mimes:jpeg,jpg,png', 'max:2048', 'image'],
             'status' => [],
             'buy_online' => ['url', 'nullable'],
-            'price' => [],
+            'price' => ['regex:/^[0-9]+(\.[0-9][0-9]?)?$/'],
             'publisher_website' => ['url', 'nullable'],
         ]);
         
@@ -179,7 +179,7 @@ class MagazineController extends Controller
             'cover_image' => ['mimes:jpeg,jpg,png', 'max:2048', 'image'],
             'status' => [],
             'buy_online' => ['url', 'nullable'],
-            'price' => [],
+            'price' => ['regex:/^[0-9]+(\.[0-9][0-9]?)?$/'],
             'publisher_website' => ['url', 'nullable'],
         ]);
         

@@ -12,30 +12,40 @@
 			<a href="{{ $magazine->buy_online }}" class="btn btn-secondary"><i class="ion ion-md-cart"> {{ __('global.magazines.field.buyOnline') }}</i></a>
       </div>
       <div class="col-lg-7 col-xl-8 py-5 pt-lg-0 pl-lg-5">
-			<p>{{ $magazine->description }}</p>
-			<table class="table my-4">
-				<tbody>
-					<tr>
-						<td class="border-0 text-muted align-middle" style="width: 170px">{{ __('global.frequencies.sTitle') }} :</td>
-						<td class="border-0">
-							{{ $magazine->frequency->name }}
-						</td>
-					</tr>
-					<tr>
-						<td class="border-0 text-muted align-middle" style="width: 170px">{{ __('global.price') }} :</td>
-						<td class="border-0">
-							{{ $magazine->price ?? '' }}
-						</td>
-					</tr>
-					<tr>
-						<td class="border-0 text-muted align-middle" style="width: 170px">{{ __('global.publishersWebsite') }} :</td>
-						<td class="border-0">
-							<a href="{{ $magazine->publisher_website ?? '' }}" target="__blank">{{ $magazine->publisher_website ?? '' }}</a>
-						</td>
-					</tr>
-				</tbody>
-			</table>
+			<div class="magazine-details">
+				<p>{{ $magazine->description }}</p>
+				<table class="table my-4">
+					<tbody>
+						<tr>
+							<td class="border-0 text-muted align-middle" style="width: 170px">{{ __('global.frequencies.sTitle') }} :</td>
+							<td class="border-0">
+								{{ $magazine->frequency->name }}
+							</td>
+						</tr>
+						<tr>
+							<td class="border-0 text-muted align-middle" style="width: 170px">{{ __('global.price') }} :</td>
+							<td class="border-0">
+								£ {{ number_format($magazine->price, 2, '.', '') ?? '0.00' }}
+							</td>
+						</tr>
+						<tr>
+							<td class="border-0 text-muted align-middle" style="width: 170px">{{ __('global.publishersWebsite') }} :</td>
+							<td class="border-0">
+								<a href="{{ $magazine->publisher_website ?? '#' }}" target="__blank">{{ $magazine->publisher_website ?? '' }}</a>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
       </div>
 	</div>
 </div>
 @endsection
+
+@push('css')
+<style>
+	.magazine-details {
+		margin-top: calc(50% - 150px);
+	}
+</style>	 
+@endpush

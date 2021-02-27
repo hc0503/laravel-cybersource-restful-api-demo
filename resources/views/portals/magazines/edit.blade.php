@@ -110,7 +110,7 @@
 
 						<div class="form-group">
 							<label class="form-label" for="publisher_website">{{ __('global.publishersWebsite') }}</label>
-							<input id="publisher_website" class="form-control @error('publisher_website') is-invalid @enderror" name="price" value="{{ $magazine->publisher_website }}" step="0.1" min="0">
+							<input id="publisher_website" class="form-control @error('publisher_website') is-invalid @enderror" name="publisher_website" value="{{ $magazine->publisher_website }}" step="0.1" min="0">
 							@error('publisher_website')
 								<span class="invalid-feedback" role="alert">
 									<strong>{{ $message }}</strong>
@@ -135,7 +135,12 @@
 
 							<div class="form-group col-md-2 col-sm-12">
 								<label class="form-label" for="price">{{ __('global.price') }}</label>
-								<input id="price" type="number" class="form-control @error('price') is-invalid @enderror" name="price" value="{{ $magazine->price }}" step="0.1" min="0">
+								<div class="input-group">
+									<div class="input-group-prepend">
+										<span class="input-group-text">£</span>
+									</div>
+									<input id="price" type="number" class="form-control @error('price') is-invalid @enderror" name="price" value="{{ $magazine->price }}" step="0.01" min="0" max="9999999999">
+								</div>
 								@error('price')
 									<span class="invalid-feedback" role="alert">
 										<strong>{{ $message }}</strong>

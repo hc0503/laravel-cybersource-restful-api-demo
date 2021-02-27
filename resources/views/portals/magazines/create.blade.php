@@ -137,7 +137,12 @@
 
 							<div class="form-group col-md-2 col-sm-12">
 								<label class="form-label" for="price">{{ __('global.price') }}</label>
-								<input id="price" type="number" class="form-control @error('price') is-invalid @enderror" name="price" value="{{ old('price') }}" step="0.1" min="0">
+								<div class="input-group">
+									<div class="input-group-prepend">
+										<span class="input-group-text">£</span>
+									</div>
+									<input id="price" type="number" class="form-control @error('price') is-invalid @enderror" name="price" value="{{ old('price') }}" step="0.01" min="0" max="9999999999">
+								</div>
 								@error('price')
 									<span class="invalid-feedback" role="alert">
 										<strong>{{ $message }}</strong>
