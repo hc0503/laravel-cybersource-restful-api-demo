@@ -75,12 +75,12 @@
             <div class="ui-bg-overlay bg-dark opacity-50"></div>
 
             <!-- Text -->
-            <div class="w-100 text-white px-5">
+            {{-- <div class="w-100 text-white px-5">
             <h1 class="display-2 font-weight-bolder mb-4">{{ __('global.login.joinOurCommunity') }}</h1>
             <div class="text-large font-weight-light">
                 {{ __('global.login.description') }}
             </div>
-            </div>
+            </div> --}}
             <!-- /.Text -->
         </div>
         <!-- / Side container -->

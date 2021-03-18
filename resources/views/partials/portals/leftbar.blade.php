@@ -3,7 +3,7 @@
 	<!-- Brand demo (see assets/css/demo/demo.css) -->
 	<div class="app-brand demo">
 		<a href="{{ route('portal.home') }}">
-			<img src="{{ asset('assets/img/logo_white.png') }}" alt="Logo" height="50px">
+			<img src="{{ asset('assets/img/logo_white.png') }}" alt="Logo" height="40px">
 		</a>
 		{{-- <a href="{{ route('portal.home') }}" class="app-brand-text demo sidenav-text font-weight-normal ml-2">Magazine</a> --}}
 		<a href="javascript:void(0)" class="layout-sidenav-toggle sidenav-link text-large ml-auto">
@@ -20,13 +20,13 @@
 				<div>{{ __('global.userManagement') }}</div>
 			</a>
 			<ul class="sidenav-menu">
-				{{-- @can('viewpermission')
+				@can('viewpermission')
 				<li class="sidenav-item {{ request()->is('portal/usermanage/permissions') ? 'active' : '' }}">
 					<a href="{{ route('portal.usermanage.permissions.index') }}" class="sidenav-link">
 						<div>{{ __('global.permissions.title') }}</div>
 					</a>
 				</li>
-				@endcan --}}
+				@endcan
 
 				@can('viewrole')
 				<li class="sidenav-item {{ request()->is('portal/usermanage/roles') ? 'active' : '' }}">
@@ -47,7 +47,7 @@
 		</li>
 		@endif
 
-		@if (auth()->user()->hasRole('SuperAdmin') || auth()->user()->hasPermissionTo('viewgenre'))
+		{{-- @if (auth()->user()->hasRole('SuperAdmin') || auth()->user()->hasPermissionTo('viewgenre'))
 		<li class="sidenav-item {{ request()->is('portal/genres') ? 'active' : '' }}">
 			<a href="{{ route('portal.genres.index') }}" class="sidenav-link">
 				<i class="sidenav-icon ion ion-md-cube"></i>
@@ -129,7 +129,7 @@
 				<i class="sidenav-icon ion ion-md-mail"></i>
 				<div>{{ __('global.emails.emailUs') }}</div>
 			</a>
-		</li>
+		</li> --}}
 	</ul>
 </div>
 <!-- / Layout sidenav -->
